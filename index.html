@@ -3,63 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>همدم یاب | پیدا کردن نیمه گمشده</title>
+    
+    <!-- تنظیمات سئو (SEO) -->
+    <title>دانلود همدم یاب | بهترین اپلیکیشن دوستیابی و همسریابی آنلاین</title>
+    <meta name="description" content="فاصله شما با نیمه گمشده‌تان فقط یک کلیک است! دانلود رایگان اپلیکیشن همدم یاب با هزاران کاربر فعال، محیط امن و تایید هویت هوشمند.">
+    <meta name="keywords" content="همدم یاب, دوستیابی, همسریابی, دوست یابی آنلاین, دانلود اپلیکیشن دوستیابی, صیغه یابی, چت ناشناس">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+
+    <!-- تگ‌های Open Graph برای شبکه‌های اجتماعی (تلگرام، واتساپ و...) -->
+    <meta property="og:title" content="همدم یاب | پیدا کردن نیمه گمشده">
+    <meta property="og:description" content="اپلیکیشنی امن و سریع برای شروع یک داستان عاشقانه جدید. همین حالا رایگان دانلود کن!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&q=80&w=1200">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        /* متغیرهای رنگی و پایه‌ای */
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #030014; /* تاریک‌ترین حالت ممکن برای درخشش نئون‌ها */
-            color: #ffffff;
-            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Vazirmatn', system-ui, sans-serif;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
+            line-height: 1.6;
         }
 
-        /* بک‌گراند نئونی متحرک و عمیق */
+        /* انیمیشن‌های اسکرول */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* بک‌گراند نئونی متحرک */
         .neon-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.2) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 20, 147, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 60%);
-            animation: pulse-bg 10s infinite alternate ease-in-out;
+                radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+            animation: pulse-bg 15s infinite alternate ease-in-out;
         }
-
         @keyframes pulse-bg {
-            0% { opacity: 0.8; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.05); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
+        /* ساختار کلی محتوا */
         .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 clamp(15px, 4vw, 30px);
+        }
+
+        /* --- هدر تمام صفحه (Hero Section) --- */
+        .hero-section {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: clamp(15px, 4vw, 40px);
-            min-height: 100vh;
-        }
-
-        /* کارت شیشه‌ای اصلی - فوق‌العاده شفاف و مدرن */
-        .glass-panel {
-            width: 100%;
-            max-width: 950px;
-            background: linear-gradient(145deg, rgba(30, 30, 45, 0.4) 0%, rgba(15, 15, 25, 0.6) 100%);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: clamp(30px, 6vw, 60px);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
             text-align: center;
-            margin-top: 20px;
+            padding-top: 40px;
+            padding-bottom: 60px;
         }
 
-        /* بج کاربران آنلاین */
         .online-badge {
             display: inline-flex;
             align-items: center;
@@ -67,244 +96,318 @@
             background: rgba(0, 255, 136, 0.1);
             color: #00ff88;
             border: 1px solid rgba(0, 255, 136, 0.2);
-            padding: 8px 20px;
+            padding: 8px 24px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
-
         .dot {
-            width: 8px; height: 8px;
+            width: 10px; height: 10px;
             background-color: #00ff88;
             border-radius: 50%;
-            box-shadow: 0 0 10px #00ff88;
+            box-shadow: 0 0 12px #00ff88;
             animation: blink 1.5s infinite;
         }
-
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        /* تایپوگرافی جذاب */
-        h1 {
-            font-size: clamp(1.6rem, 5vw, 2.8rem);
+        .hero-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #fff, #ff758c);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #ff758c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(255, 117, 140, 0.3);
+            text-shadow: 0 10px 40px rgba(255, 117, 140, 0.2);
+            line-height: 1.3;
         }
 
-        .subtitle {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: #aeb5cc;
-            line-height: 1.8;
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            color: var(--text-muted);
+            max-width: 700px;
             margin-bottom: 40px;
-            font-weight: 500;
         }
 
-        /* آمار و ارقام (Social Proof) */
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 45px;
-            flex-wrap: wrap;
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 25px;
-            border-radius: 20px;
-            min-width: 130px;
-            box-shadow: inset 0 2px 10px rgba(255,255,255,0.02);
-        }
-
-        .stat-num {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #8b92a5;
-        }
-
-        .stat-num.highlight { color: #ff007f; text-shadow: 0 0 15px rgba(255,0,127,0.4); }
-
-        /* دکمه دانلود با افکت پالس */
         .cta-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(90deg, #ff007f, #6f00ff);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: #fff;
             text-decoration: none;
-            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             font-weight: 900;
-            padding: 20px 60px;
+            padding: 20px 50px;
             border-radius: 100px;
-            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: pulse-btn 2s infinite;
-            margin-bottom: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
-
         @keyframes pulse-btn {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 0, 128, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.5); }
+            70% { box-shadow: 0 0 0 25px rgba(255, 0, 128, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0); }
         }
-
         .cta-btn:hover {
-            transform: scale(1.05);
-            background: linear-gradient(90deg, #ff1a8c, #7b1aff);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 0, 128, 0.6);
         }
 
-        /* گالری اسکرین‌شات‌ها با عکس‌های جذاب */
+        .stats-grid {
+            display: flex;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .stat-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 15px 30px;
+            border-radius: 20px;
+            min-width: 150px;
+        }
+        .stat-val { font-size: 1.8rem; font-weight: 900; color: #fff; }
+        .stat-val.highlight { color: var(--primary); }
+        .stat-label { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- ویژگی‌های کلیدی --- */
+        .features-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .feature-card {
+            background: linear-gradient(180deg, rgba(30,30,45,0.6) 0%, rgba(15,15,25,0.8) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px 20px;
+            backdrop-filter: blur(20px);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; margin-bottom: 20px; }
+        .feature-title { font-size: 1.3rem; margin-bottom: 10px; color: #fff; }
+        .feature-desc { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- اسکرین‌شات‌ها --- */
+        .gallery-section { padding: 60px 0; }
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: clamp(20px, 4vw, 40px);
-            width: 100%;
-            margin-bottom: 60px;
+            gap: clamp(20px, 4vw, 35px);
         }
-
         .mockup {
-            width: clamp(170px, 30vw, 240px);
+            width: clamp(180px, 30vw, 260px);
             aspect-ratio: 9/19;
             background: #000;
-            border-radius: 35px;
+            border-radius: 40px;
             padding: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255,255,255,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             position: relative;
-            transform: translateY(0);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .mockup:hover { transform: translateY(-15px) rotate(2deg); }
-        .mockup:nth-child(2) { margin-top: -20px; } /* وسطی کمی بالاتر */
-
+        .mockup:nth-child(even) { margin-top: 40px; } /* شکست در چینش برای زیبایی */
         .screen {
             width: 100%; height: 100%;
-            border-radius: 25px;
+            border-radius: 30px;
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
         }
-
-        /* عکس‌های پرتره با کیفیت از Unsplash */
-        .s1 { background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'); }
-        .s2 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400'); }
+        /* عکس‌های بسیار باکیفیت و جذاب */
+        .s1 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400'); }
+        .s2 { background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'); }
         .s3 { background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400'); }
-
+        
         .ui-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
-            padding: 40px 15px 20px;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+            padding: 50px 15px 25px;
             text-align: center;
         }
+        .ui-name { font-weight: 900; font-size: 1.2rem; margin-bottom: 5px; }
+        .ui-status { font-size: 0.85rem; color: #00ff88; }
 
-        .ui-name { font-weight: 900; font-size: 1.1rem; margin-bottom: 5px; }
-        .ui-status { font-size: 0.8rem; color: #00ff88; display: flex; align-items: center; justify-content: center; gap: 5px; }
-
-        /* نظرات کاربران فیک */
-        .reviews {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 50px;
+        /* --- نظرات کاربران --- */
+        .reviews-section { padding: 80px 0; }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-
         .review-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: right;
+            backdrop-filter: blur(10px);
+        }
+        .review-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            text-align: right;
-        }
-
-        .review-avatar {
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            background: #333;
-            background-size: cover;
-        }
-
-        .r1 { background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100'); }
-        .r2 { background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100'); }
-
-        .review-text h4 { font-size: 0.95rem; color: #fff; margin-bottom: 3px; }
-        .review-text p { font-size: 0.85rem; color: #aeb5cc; }
-        .stars { color: #ffd700; font-size: 0.8rem; }
-
-        /* سوالات متداول */
-        .faq-wrapper { width: 100%; text-align: right; margin-top: 20px; }
-        .faq-box {
-            background: rgba(0, 0, 0, 0.3);
-            border-right: 3px solid #ff007f;
-            border-radius: 15px;
-            padding: 20px;
             margin-bottom: 15px;
         }
-        .faq-title { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 1.1rem; }
-        .faq-text { color: #8b92a5; font-size: 0.95rem; line-height: 1.8; }
+        .review-avatar {
+            width: 55px; height: 55px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid var(--primary);
+        }
+        .r1 { background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150'); } /* پسر */
+        .r2 { background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150'); } /* دختر */
+        .r3 { background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150'); } /* پسر */
+        .r4 { background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150'); } /* دختر */
 
+        .review-info h4 { font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 5px; }
+        .verified-icon { width: 16px; height: 16px; fill: #00d2ff; }
+        .stars { color: #ffc107; font-size: 0.9rem; letter-spacing: 2px; }
+        .review-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- سوالات متداول (FAQ) --- */
+        .faq-section { padding: 60px 0 100px; }
+        details {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        summary {
+            padding: 20px 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
+        details[open] summary::after { content: '-'; }
+        .faq-content {
+            padding: 0 25px 25px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        /* --- فوتر --- */
+        footer {
+            background: rgba(0,0,0,0.8);
+            border-top: 1px solid var(--glass-border);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .footer-content { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
+        .footer-links a:hover { color: #fff; }
+        .warning-18 {
+            display: inline-block;
+            background: rgba(255,0,0,0.1); color: #ff4d4d;
+            padding: 5px 15px; border-radius: 5px; border: 1px solid rgba(255,0,0,0.2);
+            font-weight: 900; margin: 10px auto;
+        }
+
+        /* --- دکمه دانلود چسبان (موبایل) --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: -100px; left: 20px; right: 20px;
+            background: linear-gradient(90deg, #ff007f, #6f00ff);
+            color: #fff; text-align: center; text-decoration: none;
+            padding: 18px; border-radius: 20px; font-weight: 900; font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,128,0.5);
+            z-index: 999;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta { display: block; }
+            .sticky-cta.show { bottom: 20px; }
+            h1 { font-size: 1.8rem; }
+            .mockup:nth-child(even) { margin-top: 0; }
+            footer { padding-bottom: 100px; } /* فضای خالی برای دکمه چسبان */
+        }
     </style>
 </head>
 <body>
+
+    <!-- افکت نئون بک گراند -->
     <div class="neon-bg"></div>
-    
-    <div class="container">
-        <div class="glass-panel">
-            
-            <div class="online-badge">
-                <span class="dot"></span>
-                +۲۴,۵۰۰ کاربر آنلاین همین الان
-            </div>
-            
-            <h1>بزرگترین سامانه همدم‌یابی ایران 🔥</h1>
-            
-            <div class="subtitle">
-                فاصله تو با نیمه گمشده‌ت فقط یک کلیکه! روزانه هزاران چت موفق و قرار آشنایی تو اپلیکیشن ما ثبت میشه. کاملاً رایگان، امن و بدون محدودیت.
+
+    <!-- دکمه چسبان مخصوص موبایل (با اسکرول ظاهر میشود) -->
+    <!-- آدرس فایل APK را اینجا قرار دهید -->
+    <a href="./apk/app-release.apk" class="sticky-cta" download id="stickyBtn">دانلود سریع اپلیکیشن 🚀</a>
+
+    <main class="container">
+        
+        <!-- بخش اول: هدر -->
+        <header class="hero-section">
+            <div class="reveal">
+                <div class="online-badge">
+                    <span class="dot"></span>
+                    +۲۴,۵۰۰ کاربر آنلاین همین الان
+                </div>
+                
+                <h1 class="hero-title">بزرگترین سامانه دوستیابی و همدم‌یابی ایران 🔥</h1>
+                
+                <p class="hero-subtitle">
+                    فاصله تو با یک قرار عاشقانه و پیدا کردن نیمه گمشده‌ت فقط یک کلیکه! روزانه هزاران چت موفق تو اپلیکیشن ما ثبت میشه. کاملاً رایگان، امن و بدون فیلتر.
+                </p>
+
+                <!-- آدرس فایل APK را اینجا قرار دهید -->
+                <a href="./apk/app-release.apk" class="cta-btn" download>📥 دانلود مستقیم (APK)</a>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-num highlight">+۵۰۰ هزار</div>
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <div class="stat-val highlight">+۵۰۰ هزار</div>
                     <div class="stat-label">نصب فعال</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-num">۴.۸ ⭐️</div>
+                <div class="stat-item">
+                    <div class="stat-val">۴.۸ ⭐️</div>
                     <div class="stat-label">رضایت کاربران</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-num">۱۰۰٪</div>
-                    <div class="stat-label">تضمین امنیت</div>
+                <div class="stat-item">
+                    <div class="stat-val">۱۰۰٪</div>
+                    <div class="stat-label">امنیت و رمزنگاری</div>
                 </div>
             </div>
+        </header>
 
-            <a href="#" class="cta-btn">📥 دانلود مستقیم اپلیکیشن (APK)</a>
-
+        <!-- بخش دوم: گالری محیط برنامه -->
+        <section class="gallery-section reveal">
+            <h2 class="section-title">محیط کاربری <span style="color: var(--primary)">فوق‌العاده جذاب</span></h2>
             <div class="gallery">
                 <div class="mockup">
                     <div class="screen s1">
                         <div class="ui-overlay">
-                            <div class="ui-name">سارا، ۲۴ ساله</div>
+                            <div class="ui-name">الناز، ۲۴ ساله</div>
                             <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> آنلاین در نزدیکی شما</div>
                         </div>
                     </div>
@@ -312,50 +415,166 @@
                 <div class="mockup">
                     <div class="screen s2">
                         <div class="ui-overlay">
-                            <div class="ui-name">الناز، ۲۷ ساله</div>
-                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> آماده برای چت</div>
+                            <div class="ui-name">سارا، ۲۱ ساله</div>
+                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> در حال تایپ...</div>
                         </div>
                     </div>
                 </div>
                 <div class="mockup">
                     <div class="screen s3">
                         <div class="ui-overlay">
-                            <div class="ui-name">مهسا، ۲۲ ساله</div>
-                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> حساب تایید شده</div>
+                            <div class="ui-name">مهسا، ۲۶ ساله</div>
+                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> حساب کاربری تایید شده</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="reviews">
-                <div class="review-card">
-                    <div class="review-avatar r1"></div>
-                    <div class="review-text">
-                        <h4>علی از تهران <span class="stars">★★★★★</span></h4>
-                        <p>واقعا دمتون گرم، بهترین اپلیکیشنیه که تا حالا نصب کردم. محیطش خیلی سالم و کاربرای فیک نداره.</p>
-                    </div>
+        <!-- بخش سوم: ویژگی‌های کلیدی -->
+        <section class="features-section reveal">
+            <h2 class="section-title">چرا <span style="color: var(--secondary)">همدم یاب</span> بهترین انتخاب است؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">رادار هوشمند افراد نزدیک</h3>
+                    <p class="feature-desc">با استفاده از سیستم مکان‌یاب، افرادی که در شهر یا محله شما هستند را به راحتی پیدا کنید و پیشنهاد چت بدهید.</p>
                 </div>
-                <div class="review-card">
-                    <div class="review-avatar r2"></div>
-                    <div class="review-text">
-                        <h4>نگین از شیراز <span class="stars">★★★★★</span></h4>
-                        <p>من اولش اعتماد نداشتم چون تو گوگل پلی نبود، اما سرعت برنامه و امنیتش فوق‌العادست.</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3 class="feature-title">خداحافظی با فیک‌ها</h3>
+                    <p class="feature-desc">تمامی پروفایل‌ها توسط سیستم هوش مصنوعی ما از نظر تصویر تایید می‌شوند. اینجا همه واقعی هستند.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">چت محرمانه و آزاد</h3>
+                    <p class="feature-desc">بدون نیاز به فیلترشکن، با سرعت بالا پیام صوتی، عکس و ویدیو بفرستید. چت‌های شما غیرقابل ردیابی است.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="faq-wrapper">
-                <div class="faq-box">
-                    <div class="faq-title">چرا برنامه در مارکت‌ها نیست؟</div>
-                    <div class="faq-text">به دلیل تحریم‌های ناعادلانه گوگل و قوانین سخت‌گیرانه مارکت‌های داخلی برای چت آزاد، نسخه اصلی و بدون سانسور فقط از همینجا قابل دانلود است.</div>
+        <!-- بخش چهارم: نظرات و اعتماد سازی -->
+        <section class="reviews-section reveal">
+            <h2 class="section-title">کاربران ما <span style="color: var(--primary)">چه می‌گویند؟</span></h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar r1"></div>
+                        <div class="review-info">
+                            <h4>علی از تهران 
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+                            </h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>واقعا دمتون گرم، محیطش خیلی سالمه و تونستم با چند نفر تو منطقه خودمون آشنا بشم. سرعت برنامه هم عالیه.</p>
                 </div>
-                <div class="faq-box">
-                    <div class="faq-title">امنیت اطلاعات من چطور تامین میشه؟</div>
-                    <div class="faq-text">تمام پیام‌ها و تصاویر شما به صورت End-to-End رمزنگاری شده و حتی ما هم به چت‌های شما دسترسی نداریم. حریم خصوصی شما خط قرمز ماست.</div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar r2"></div>
+                        <div class="review-info">
+                            <h4>نگین از کرج
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+                            </h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>اولش شک داشتم چون تو گوگل پلی نبود، اما وقتی نصب کردم دیدم خیلی بهتر از اپلیکیشن‌های خارجیه. مرسی از تیم پشتیبانی.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar r3"></div>
+                        <div class="review-info">
+                            <h4>رضا از مشهد
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+                            </h4>
+                            <div class="stars">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p>سیستم رادارش خیلی خوب کار میکنه. فقط کاش امکان تماس تصویری هم زودتر بهش اضافه بشه. در کل راضیم.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar r4"></div>
+                        <div class="review-info">
+                            <h4>مریم از اصفهان
+                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
+                            </h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>امنیتش برام خیلی مهم بود که خداروشکر عالیه. پروفایل‌های فیک سریع مسدود میشن و کسی مزاحمت ایجاد نمیکنه.</p>
                 </div>
             </div>
+        </section>
 
+        <!-- بخش پنجم: سوالات متداول (SEO FAQ) -->
+        <section class="faq-section reveal">
+            <h2 class="section-title">سوالات <span style="color: var(--secondary)">متداول</span></h2>
+            
+            <details>
+                <summary>چرا برنامه در گوگل پلی یا کافه بازار نیست؟</summary>
+                <div class="faq-content">
+                    متاسفانه به دلیل تحریم‌های ناعادلانه و همچنین قوانین بسیار سخت‌گیرانه مارکت‌های داخلی در خصوص برنامه‌های دوستیابی و چت آزاد، امکان انتشار نسخه اصلی در مارکت‌ها وجود ندارد. ما نسخه کامل و بدون سانسور را مستقیماً در اختیار شما قرار داده‌ایم.
+                </div>
+            </details>
+            
+            <details>
+                <summary>آیا نصب و استفاده از برنامه کاملا رایگان است؟</summary>
+                <div class="faq-content">
+                    بله! دانلود، نصب، ساخت پروفایل و استفاده از ویژگی‌های پایه مثل رادار و چت در همدم یاب کاملاً رایگان است و نیازی به پرداخت هیچگونه وجهی برای شروع ندارید.
+                </div>
+            </details>
+
+            <details>
+                <summary>امنیت اطلاعات و چت‌های من چگونه تامین می‌شود؟</summary>
+                <div class="faq-content">
+                    حریم خصوصی کاربران خط قرمز ماست. تمامی پیام‌های متنی و فایل‌های ارسالی شما با سیستم‌های پیشرفته، رمزنگاری End-to-End می‌شوند و هیچ شخصی (حتی سرورهای ما) به محتوای خصوصی شما دسترسی ندارد.
+                </div>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-content">
+            <span class="warning-18">🔞 استفاده از این سرویس تنها برای افراد بالای ۱۸ سال مجاز است.</span>
+            <div class="footer-links">
+                <a href="#">قوانین و مقررات</a>
+                <a href="#">حریم خصوصی</a>
+                <a href="#">پشتیبانی تلگرام: HamdamSupport@</a>
+            </div>
+            <p>تمامی حقوق مادی و معنوی این نرم‌افزار محفوظ می‌باشد. © ۲۰۲۴</p>
         </div>
-    </div>
+    </footer>
+
+    <!-- کدهای جاوااسکریپت برای انیمیشن‌ها و دکمه چسبان -->
+    <script>
+        // اسکریپت ظاهر شدن المان‌ها هنگام اسکرول (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // فراخوانی اولیه
+
+        // اسکریپت نمایش دکمه دانلود چسبان در موبایل بعد از کمی اسکرول
+        var stickyBtn = document.getElementById("stickyBtn");
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 300) {
+                stickyBtn.classList.add("show");
+            } else {
+                stickyBtn.classList.remove("show");
+            }
+        });
+    </script>
 </body>
 </html>
