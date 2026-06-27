@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="display: block;">
-    <foreignObject width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #090a0f; margin: 0; padding: 0; display: block;">
+    <foreignObject x="0" y="0" width="100%" height="100%">
         <html xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; margin: 0; padding: 0;">
             <head>
                 <meta charset="UTF-8" />
@@ -12,12 +12,21 @@
                         height: 100%;
                         margin: 0;
                         padding: 0;
-                        background-color: #090a0f;
+                        background-color: transparent;
                         color: #ffffff;
                         font-family: 'Vazirmatn', system-ui, sans-serif;
-                        overflow-x: hidden;
-                        overflow-y: auto; /* فعال کردن اسکرول داخلی */
+                        overflow: hidden; /* جلوگیری از اسکرول بدنه مرورگر */
                         direction: rtl;
+                    }
+
+                    /* کانتینر اصلی برای مدیریت اسکرول داخلی */
+                    .scroll-container {
+                        width: 100%;
+                        height: 100%;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+                        position: relative;
+                        z-index: 1;
                     }
 
                     /* پس‌زمینه متحرک و نئونی */
@@ -37,7 +46,7 @@
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        padding: clamp(20px, 5vw, 40px);
+                        padding: clamp(15px, 4vw, 40px);
                         box-sizing: border-box;
                     }
 
@@ -50,14 +59,14 @@
                         -webkit-backdrop-filter: blur(25px);
                         border: 1px solid rgba(255, 255, 255, 0.05);
                         border-radius: 30px;
-                        padding: clamp(30px, 6vw, 60px);
+                        padding: clamp(25px, 5vw, 60px);
                         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         text-align: center;
-                        margin-top: 20px;
-                        margin-bottom: 40px;
+                        margin-top: 10px;
+                        margin-bottom: 30px;
                     }
 
                     .free-badge {
@@ -67,27 +76,27 @@
                         padding: 8px 24px;
                         border-radius: 50px;
                         font-weight: 700;
-                        font-size: clamp(0.8rem, 2vw, 1rem);
+                        font-size: clamp(0.75rem, 2vw, 0.9rem);
                         margin-bottom: 25px;
                         box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
                     }
 
                     .icon-container {
-                        width: clamp(100px, 15vw, 130px);
-                        height: clamp(100px, 15vw, 130px);
+                        width: clamp(90px, 15vw, 120px);
+                        height: clamp(90px, 15vw, 120px);
                         background: linear-gradient(135deg, #ff007f, #6f00ff);
-                        border-radius: 30px;
+                        border-radius: 28px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        font-size: clamp(3rem, 6vw, 4rem);
+                        font-size: clamp(2.5rem, 6vw, 3.5rem);
                         margin-bottom: 25px;
                         box-shadow: 0 15px 35px rgba(255, 0, 128, 0.4);
                         border: 2px solid rgba(255, 255, 255, 0.1);
                     }
 
                     h1 {
-                        font-size: clamp(1.4rem, 4vw, 2.2rem);
+                        font-size: clamp(1.3rem, 3.5vw, 2rem);
                         font-weight: 900;
                         line-height: 1.4;
                         margin-bottom: 15px;
@@ -97,10 +106,10 @@
                     }
 
                     .subtitle {
-                        font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+                        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
                         color: #a0a5b5;
                         line-height: 1.8;
-                        margin-bottom: 40px;
+                        margin-bottom: 35px;
                         max-width: 600px;
                     }
 
@@ -109,20 +118,15 @@
                         background: linear-gradient(90deg, #00d2ff, #3a7bd5);
                         color: #ffffff;
                         text-decoration: none;
-                        font-size: clamp(1.1rem, 3vw, 1.3rem);
+                        font-size: clamp(1rem, 3vw, 1.2rem);
                         font-weight: 700;
-                        padding: 16px 45px;
+                        padding: 15px 40px;
                         border-radius: 50px;
                         box-shadow: 0 10px 30px rgba(0, 210, 255, 0.4);
                         transition: all 0.3s ease;
-                        margin-bottom: 50px;
+                        margin-bottom: 40px;
                         cursor: pointer;
                         border: none;
-                    }
-
-                    .download-btn:hover {
-                        transform: translateY(-2px);
-                        box-shadow: 0 15px 40px rgba(0, 210, 255, 0.6);
                     }
 
                     /* رسپانسیو بودن اسکرین‌شات‌ها */
@@ -130,26 +134,26 @@
                         display: flex;
                         flex-wrap: wrap;
                         justify-content: center;
-                        gap: clamp(15px, 3vw, 30px);
+                        gap: clamp(15px, 3vw, 25px);
                         width: 100%;
-                        margin-bottom: 50px;
+                        margin-bottom: 40px;
                     }
 
                     .mockup {
-                        width: clamp(180px, 30vw, 220px);
+                        width: clamp(160px, 28vw, 210px);
                         aspect-ratio: 9/19;
                         background: #000;
-                        border-radius: 25px;
-                        padding: 8px;
+                        border-radius: 20px;
+                        padding: 6px;
                         border: 1px solid rgba(255, 255, 255, 0.15);
-                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
                         position: relative;
                     }
 
                     .screen {
                         width: 100%;
                         height: 100%;
-                        border-radius: 18px;
+                        border-radius: 14px;
                         background-size: cover;
                         background-position: center;
                         position: relative;
@@ -165,12 +169,12 @@
 
                     .screen-text {
                         position: absolute;
-                        bottom: 15px;
+                        bottom: 12px;
                         left: 0;
                         right: 0;
                         text-align: center;
                         font-weight: 700;
-                        font-size: clamp(0.8rem, 2vw, 1rem);
+                        font-size: clamp(0.75rem, 2vw, 0.95rem);
                         z-index: 2;
                         text-shadow: 0 2px 5px #000;
                     }
@@ -181,90 +185,87 @@
                         text-align: right;
                         display: flex;
                         flex-direction: column;
-                        gap: 20px;
+                        gap: 15px;
                     }
 
                     .faq-card {
                         background: rgba(0, 0, 0, 0.3);
                         border: 1px solid rgba(255, 255, 255, 0.03);
                         border-radius: 20px;
-                        padding: clamp(20px, 4vw, 30px);
-                        transition: background 0.3s;
-                    }
-
-                    .faq-card:hover {
-                        background: rgba(255, 255, 255, 0.02);
+                        padding: clamp(15px, 4vw, 25px);
                     }
 
                     .faq-title {
                         color: #ff007f;
-                        font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+                        font-size: clamp(1rem, 2.5vw, 1.15rem);
                         font-weight: 700;
-                        margin-bottom: 10px;
+                        margin-bottom: 8px;
                     }
 
                     .faq-desc {
                         color: #b0b5c5;
-                        font-size: clamp(0.9rem, 2vw, 1.05rem);
-                        line-height: 1.8;
+                        font-size: clamp(0.85rem, 2vw, 1rem);
+                        line-height: 1.7;
                     }
 
                 </style>
             </head>
             <body>
-                <div class="background"></div>
-                
-                <div class="wrapper">
-                    <div class="glass-panel">
-                        
-                        <div class="free-badge">✓ برنامه کاملا رایگان است - بدون نیاز به پرداخت هیچ مبلغی</div>
-                        
-                        <div class="icon-container">❤️</div>
-                        
-                        <h1>🔥 بزرگترین سامانه همدم‌یابی و دوستیابی آنلاین (نسخه جدید) 🔥</h1>
-                        
-                        <div class="subtitle">
-                            دنبال یک رابطه جدی هستی یا میخوای با آدم‌های جدید تو شهر خودت آشنا بشی؟🥰<br/>
-                            اپلیکیشن ما با هزاران کاربر فعال تو سراسر ایران منتظرته! محیطی کاملا امن برای پیدا کردن نیمه گمشده شما.
-                        </div>
-
-                        <a href="#" class="download-btn">دانلود مستقیم اپلیکیشن</a>
-
-                        <div class="screenshots-wrapper">
-                            <div class="mockup">
-                                <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1549282367-17e974e6443c?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                                    <div class="screen-text">پروفایل‌های تایید شده</div>
-                                </div>
-                            </div>
-                            <div class="mockup">
-                                <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                                    <div class="screen-text">چت امن و سریع</div>
-                                </div>
-                            </div>
-                            <div class="mockup">
-                                <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                                    <div class="screen-text">جستجوی پیشرفته</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="faq-container">
-                            <div class="faq-card">
-                                <div class="faq-title">❓🔤 چرا برنامه در گوگل پلی نیست؟</div>
-                                <div class="faq-desc">متاسفانه به دلیل تحریم‌های ناعادلانه گوگل علیه برنامه‌های ایرانی و مسدودسازی سرورهای داخلی ما، فعلا امکان انتشار نسخه اصلی در گوگل پلی وجود نداره و مجبوریم نسخه مستقیم رو براتون قرار بدیم.</div>
-                            </div>
+                <div class="scroll-container">
+                    <div class="background"></div>
+                    
+                    <div class="wrapper">
+                        <div class="glass-panel">
                             
-                            <div class="faq-card">
-                                <div class="faq-title">🔤 چرا تو کافه بازار یا مایکت نیست؟</div>
-                                <div class="faq-desc">همونطور که میدونید مارکت‌های داخلی اجازه انتشار برنامه‌های دوستیابی، صیغه‌یابی و چت آزاد رو نمیدن و قوانین سخت‌گیرانه‌ای دارن. به همین دلیل اپلیکیشن رو بدون واسطه در اختیارتون گذاشتیم.</div>
-                            </div>
+                            <div class="free-badge">✓ برنامه کاملا رایگان است - بدون نیاز به پرداخت هیچ مبلغی</div>
                             
-                            <div class="faq-card">
-                                <div class="faq-title">🤨🤝 آیا برنامه امن هست؟</div>
-                                <div class="faq-desc">بله، ۱۰۰٪. تمام اطلاعات و چت‌های شما رمزنگاری میشه و حریم خصوصی کاربران خط قرمز ماست.</div>
+                            <div class="icon-container">❤️</div>
+                            
+                            <h1>🔥 بزرگترین سامانه همدم‌یابی و دوستیابی آنلاین (نسخه جدید) 🔥</h1>
+                            
+                            <div class="subtitle">
+                                دنبال یک رابطه جدی هستی یا میخوای با آدم‌های جدید تو شهر خودت آشنا بشی؟🥰<br/>
+                                اپلیکیشن ما با هزاران کاربر فعال تو سراسر ایران منتظرته! محیطی کاملا امن برای پیدا کردن نیمه گمشده شما.
                             </div>
-                        </div>
 
+                            <a href="#" class="download-btn">دانلود مستقیم اپلیکیشن</a>
+
+                            <div class="screenshots-wrapper">
+                                <div class="mockup">
+                                    <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1549282367-17e974e6443c?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
+                                        <div class="screen-text">پروفایل‌های تایید شده</div>
+                                    </div>
+                                </div>
+                                <div class="mockup">
+                                    <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
+                                        <div class="screen-text">چت امن و سریع</div>
+                                    </div>
+                                </div>
+                                <div class="mockup">
+                                    <div class="screen" style="background-image: url('https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
+                                        <div class="screen-text">جستجوی پیشرفته</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-container">
+                                <div class="faq-card">
+                                    <div class="faq-title">❓🔤 چرا برنامه در گوگل پلی نیست؟</div>
+                                    <div class="faq-desc">متاسفانه به دلیل تحریم‌های ناعادلانه گوگل علیه برنامه‌های ایرانی و مسدودسازی سرورهای داخلی ما، فعلا امکان انتشار نسخه اصلی در گوگل پلی وجود نداره و مجبوریم نسخه مستقیم رو براتون قرار بدیم.</div>
+                                </div>
+                                
+                                <div class="faq-card">
+                                    <div class="faq-title">🔤 چرا تو کافه بازار یا مایکت نیست؟</div>
+                                    <div class="faq-desc">همونطور که میدونید مارکت‌های داخلی اجازه انتشار برنامه‌های دوستیابی، صیغه‌یابی و چت آزاد رو نمیدن و قوانین سخت‌گیرانه‌ای دارن. به همین دلیل اپلیکیشن رو بدون واسطه در اختیارتون گذاشتیم.</div>
+                                </div>
+                                
+                                <div class="faq-card">
+                                    <div class="faq-title">🤨🤝 آیا برنامه امن هست؟</div>
+                                    <div class="faq-desc">بله، ۱۰۰٪. تمام اطلاعات و چت‌های شما رمزنگاری میشه و حریم خصوصی کاربران خط قرمز ماست.</div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </body>
