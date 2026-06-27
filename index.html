@@ -5,275 +5,353 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>همدم یاب | پیدا کردن نیمه گمشده</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
 
-        /* تنظیمات پایه */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #050508;
+            background-color: #030014; /* تاریک‌ترین حالت ممکن برای درخشش نئون‌ها */
             color: #ffffff;
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* افکت‌های نئونی پس‌زمینه */
+        /* بک‌گراند نئونی متحرک و عمیق */
         .neon-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(255, 0, 128, 0.2) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 20, 147, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 60%);
+            animation: pulse-bg 10s infinite alternate ease-in-out;
         }
 
-        .main-container {
+        @keyframes pulse-bg {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: clamp(20px, 5vw, 40px);
+            padding: clamp(15px, 4vw, 40px);
             min-height: 100vh;
         }
 
-        /* پنل شیشه‌ای اصلی */
-        .glass-card {
+        /* کارت شیشه‌ای اصلی - فوق‌العاده شفاف و مدرن */
+        .glass-panel {
             width: 100%;
-            max-width: 900px;
-            background: rgba(25, 26, 35, 0.4);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 950px;
+            background: linear-gradient(145deg, rgba(30, 30, 45, 0.4) 0%, rgba(15, 15, 25, 0.6) 100%);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
             padding: clamp(30px, 6vw, 60px);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 2px 0 rgba(255, 255, 255, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
             text-align: center;
-            margin: 20px 0 50px 0;
+            margin-top: 20px;
         }
 
-        .badge {
-            background: rgba(0, 255, 128, 0.15);
-            color: #00ff80;
-            border: 1px solid rgba(0, 255, 128, 0.3);
-            padding: 10px 25px;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            margin-bottom: 30px;
-            box-shadow: 0 0 25px rgba(0, 255, 128, 0.2);
-            display: inline-block;
-        }
-
-        .app-icon {
-            width: clamp(100px, 15vw, 130px);
-            height: clamp(100px, 15vw, 130px);
-            background: linear-gradient(135deg, #ff007f 0%, #6f00ff 100%);
-            border-radius: 32px;
-            display: flex;
-            justify-content: center;
+        /* بج کاربران آنلاین */
+        .online-badge {
+            display: inline-flex;
             align-items: center;
-            font-size: clamp(3rem, 6vw, 4rem);
+            gap: 8px;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
             margin-bottom: 25px;
-            box-shadow: 0 20px 40px rgba(255, 0, 128, 0.4);
-            position: relative;
         }
 
-        .app-icon::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 32px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+        .dot {
+            width: 8px; height: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff88;
+            animation: blink 1.5s infinite;
         }
 
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* تایپوگرافی جذاب */
         h1 {
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-size: clamp(1.6rem, 5vw, 2.8rem);
             font-weight: 900;
-            line-height: 1.5;
             margin-bottom: 15px;
-            background: linear-gradient(180deg, #ffffff 0%, #b3b3b3 100%);
+            background: linear-gradient(to right, #fff, #ff758c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(255, 117, 140, 0.3);
         }
 
-        p.description {
-            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-            color: #9ba1b5;
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #aeb5cc;
             line-height: 1.8;
             margin-bottom: 40px;
-            max-width: 650px;
+            font-weight: 500;
         }
 
-        .download-btn {
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            color: #ffffff;
+        /* آمار و ارقام (Social Proof) */
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 25px;
+            border-radius: 20px;
+            min-width: 130px;
+            box-shadow: inset 0 2px 10px rgba(255,255,255,0.02);
+        }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #8b92a5;
+        }
+
+        .stat-num.highlight { color: #ff007f; text-shadow: 0 0 15px rgba(255,0,127,0.4); }
+
+        /* دکمه دانلود با افکت پالس */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(90deg, #ff007f, #6f00ff);
+            color: #fff;
             text-decoration: none;
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-weight: 700;
-            padding: 18px 50px;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: 900;
+            padding: 20px 60px;
             border-radius: 100px;
-            box-shadow: 0 12px 35px rgba(0, 210, 255, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            animation: pulse-btn 2s infinite;
             margin-bottom: 60px;
-            border: none;
-            cursor: pointer;
         }
 
-        .download-btn:hover {
-            box-shadow: 0 15px 45px rgba(0, 210, 255, 0.6);
-            transform: translateY(-2px);
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.6); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 0, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0); }
         }
 
-        .download-btn:active {
-            transform: scale(0.96);
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #ff1a8c, #7b1aff);
         }
 
-        /* چیدمان اسکرین‌شات‌ها */
+        /* گالری اسکرین‌شات‌ها با عکس‌های جذاب */
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: clamp(15px, 3vw, 30px);
+            gap: clamp(20px, 4vw, 40px);
             width: 100%;
             margin-bottom: 60px;
         }
 
-        .device-mockup {
-            width: clamp(160px, 28vw, 220px);
+        .mockup {
+            width: clamp(170px, 30vw, 240px);
             aspect-ratio: 9/19;
             background: #000;
-            border-radius: 28px;
-            padding: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease;
+            border-radius: 35px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255,255,255,0.1);
+            position: relative;
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .device-mockup:hover {
-            transform: translateY(-10px);
-        }
+        .mockup:hover { transform: translateY(-15px) rotate(2deg); }
+        .mockup:nth-child(2) { margin-top: -20px; } /* وسطی کمی بالاتر */
 
-        .device-screen {
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
+        .screen {
+            width: 100%; height: 100%;
+            border-radius: 25px;
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
         }
 
-        .device-screen::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0; height: 60%;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
-        }
+        /* عکس‌های پرتره با کیفیت از Unsplash */
+        .s1 { background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'); }
+        .s2 { background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400'); }
+        .s3 { background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400'); }
 
-        .screen-caption {
+        .ui-overlay {
             position: absolute;
-            bottom: 15px;
-            left: 10px;
-            right: 10px;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            padding: 40px 15px 20px;
             text-align: center;
-            font-weight: 700;
-            font-size: clamp(0.8rem, 2vw, 1rem);
-            z-index: 2;
-            text-shadow: 0 2px 10px #000;
         }
 
-        /* باکس‌های متنی */
-        .faq-wrapper {
-            width: 100%;
+        .ui-name { font-weight: 900; font-size: 1.1rem; margin-bottom: 5px; }
+        .ui-status { font-size: 0.8rem; color: #00ff88; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+        /* نظرات کاربران فیک */
+        .reviews {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-align: right;
         }
 
+        .review-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: #333;
+            background-size: cover;
+        }
+
+        .r1 { background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100'); }
+        .r2 { background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=100'); }
+
+        .review-text h4 { font-size: 0.95rem; color: #fff; margin-bottom: 3px; }
+        .review-text p { font-size: 0.85rem; color: #aeb5cc; }
+        .stars { color: #ffd700; font-size: 0.8rem; }
+
+        /* سوالات متداول */
+        .faq-wrapper { width: 100%; text-align: right; margin-top: 20px; }
         .faq-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 24px;
-            padding: clamp(20px, 4vw, 30px);
+            background: rgba(0, 0, 0, 0.3);
+            border-right: 3px solid #ff007f;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
         }
+        .faq-title { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 1.1rem; }
+        .faq-text { color: #8b92a5; font-size: 0.95rem; line-height: 1.8; }
 
-        .faq-title {
-            color: #ff007f;
-            font-size: clamp(1.05rem, 2.5vw, 1.25rem);
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .faq-text {
-            color: #b4b9cb;
-            font-size: clamp(0.9rem, 2vw, 1.05rem);
-            line-height: 1.8;
-        }
     </style>
 </head>
 <body>
     <div class="neon-bg"></div>
     
-    <div class="main-container">
-        <div class="glass-card">
+    <div class="container">
+        <div class="glass-panel">
             
-            <div class="badge">✓ کاملا رایگان - بدون نیاز به پرداخت هیچ مبلغی</div>
+            <div class="online-badge">
+                <span class="dot"></span>
+                +۲۴,۵۰۰ کاربر آنلاین همین الان
+            </div>
             
-            <div class="app-icon">❤️</div>
+            <h1>بزرگترین سامانه همدم‌یابی ایران 🔥</h1>
             
-            <h1>🔥 بزرگترین سامانه همدم‌یابی و دوستیابی آنلاین (نسخه جدید) 🔥</h1>
-            
-            <p class="description">
-                دنبال یک رابطه جدی هستی یا میخوای با آدم‌های جدید تو شهر خودت آشنا بشی؟🥰<br/>
-                اپلیکیشن ما با هزاران کاربر فعال تو سراسر ایران منتظرته! محیطی کاملا امن برای پیدا کردن نیمه گمشده شما.
-            </p>
+            <div class="subtitle">
+                فاصله تو با نیمه گمشده‌ت فقط یک کلیکه! روزانه هزاران چت موفق و قرار آشنایی تو اپلیکیشن ما ثبت میشه. کاملاً رایگان، امن و بدون محدودیت.
+            </div>
 
-            <a href="#" class="download-btn">دانلود مستقیم اپلیکیشن</a>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-num highlight">+۵۰۰ هزار</div>
+                    <div class="stat-label">نصب فعال</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">۴.۸ ⭐️</div>
+                    <div class="stat-label">رضایت کاربران</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num">۱۰۰٪</div>
+                    <div class="stat-label">تضمین امنیت</div>
+                </div>
+            </div>
+
+            <a href="#" class="cta-btn">📥 دانلود مستقیم اپلیکیشن (APK)</a>
 
             <div class="gallery">
-                <div class="device-mockup">
-                    <div class="device-screen" style="background-image: url('https://images.unsplash.com/photo-1549282367-17e974e6443c?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                        <div class="screen-caption">پروفایل‌های تایید شده</div>
+                <div class="mockup">
+                    <div class="screen s1">
+                        <div class="ui-overlay">
+                            <div class="ui-name">سارا، ۲۴ ساله</div>
+                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> آنلاین در نزدیکی شما</div>
+                        </div>
                     </div>
                 </div>
-                <div class="device-mockup">
-                    <div class="device-screen" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                        <div class="screen-caption">چت امن و سریع</div>
+                <div class="mockup">
+                    <div class="screen s2">
+                        <div class="ui-overlay">
+                            <div class="ui-name">الناز، ۲۷ ساله</div>
+                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> آماده برای چت</div>
+                        </div>
                     </div>
                 </div>
-                <div class="device-mockup">
-                    <div class="device-screen" style="background-image: url('https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&amp;fit=crop&amp;q=80&amp;w=400');">
-                        <div class="screen-caption">جستجوی پیشرفته</div>
+                <div class="mockup">
+                    <div class="screen s3">
+                        <div class="ui-overlay">
+                            <div class="ui-name">مهسا، ۲۲ ساله</div>
+                            <div class="ui-status"><span class="dot" style="width:6px;height:6px;"></span> حساب تایید شده</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews">
+                <div class="review-card">
+                    <div class="review-avatar r1"></div>
+                    <div class="review-text">
+                        <h4>علی از تهران <span class="stars">★★★★★</span></h4>
+                        <p>واقعا دمتون گرم، بهترین اپلیکیشنیه که تا حالا نصب کردم. محیطش خیلی سالم و کاربرای فیک نداره.</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-avatar r2"></div>
+                    <div class="review-text">
+                        <h4>نگین از شیراز <span class="stars">★★★★★</span></h4>
+                        <p>من اولش اعتماد نداشتم چون تو گوگل پلی نبود، اما سرعت برنامه و امنیتش فوق‌العادست.</p>
                     </div>
                 </div>
             </div>
 
             <div class="faq-wrapper">
                 <div class="faq-box">
-                    <div class="faq-title">❓🔤 چرا برنامه در گوگل پلی نیست؟</div>
-                    <div class="faq-text">متاسفانه به دلیل تحریم‌های ناعادلانه گوگل علیه برنامه‌های ایرانی و مسدودسازی سرورهای داخلی ما، فعلا امکان انتشار نسخه اصلی در گوگل پلی وجود نداره و مجبوریم نسخه مستقیم رو براتون قرار بدیم.</div>
+                    <div class="faq-title">چرا برنامه در مارکت‌ها نیست؟</div>
+                    <div class="faq-text">به دلیل تحریم‌های ناعادلانه گوگل و قوانین سخت‌گیرانه مارکت‌های داخلی برای چت آزاد، نسخه اصلی و بدون سانسور فقط از همینجا قابل دانلود است.</div>
                 </div>
-                
                 <div class="faq-box">
-                    <div class="faq-title">🔤 چرا تو کافه بازار یا مایکت نیست؟</div>
-                    <div class="faq-text">همونطور که میدونید مارکت‌های داخلی اجازه انتشار برنامه‌های دوستیابی، صیغه‌یابی و چت آزاد رو نمیدن و قوانین سخت‌گیرانه‌ای دارن. به همین دلیل اپلیکیشن رو بدون واسطه در اختیارتون گذاشتیم.</div>
-                </div>
-                
-                <div class="faq-box">
-                    <div class="faq-title">🤨🤝 آیا برنامه امن هست؟</div>
-                    <div class="faq-text">بله، ۱۰۰٪. تمام اطلاعات و چت‌های شما رمزنگاری میشه و حریم خصوصی کاربران خط قرمز ماست.</div>
+                    <div class="faq-title">امنیت اطلاعات من چطور تامین میشه؟</div>
+                    <div class="faq-text">تمام پیام‌ها و تصاویر شما به صورت End-to-End رمزنگاری شده و حتی ما هم به چت‌های شما دسترسی نداریم. حریم خصوصی شما خط قرمز ماست.</div>
                 </div>
             </div>
 
