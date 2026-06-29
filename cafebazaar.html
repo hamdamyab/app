@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دانلود همدم یاب از بازار</title>
+    <style>
+        @import url('https://v1.fontapi.ir/css/Vazir');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 70px; /* فضای منوی پایین */
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            margin: 0 16px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border: 1px solid #eaeaea;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 13px;
+            color: #333;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .breadcrumb::-webkit-scrollbar { display: none; }
+
+        .crumb-item {
+            font-size: 12px;
+            color: #555;
+            background: #f5f5f5;
+            padding: 4px 12px;
+            border-radius: 16px;
+            border: 1px solid #eaeaea;
+        }
+
+        .crumb-separator {
+            color: #999;
+            font-size: 10px;
+        }
+
+        /* App Info Section */
+        .app-header {
+            display: flex;
+            padding: 16px;
+            gap: 16px;
+        }
+
+        .app-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 24px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .app-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .app-developer {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .app-version {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            padding: 0 16px;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 10px 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #777;
+        }
+
+        /* Download Button */
+        .download-section {
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+
+        .btn-download {
+            display: block;
+            width: 100%;
+            background-color: #12a05c; /* سبز بازار */
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+        }
+
+        /* Antivirus Box */
+        .antivirus-box {
+            margin: 0 16px 24px 16px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #444;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Screenshots */
+        .section-title {
+            padding: 0 16px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 12px;
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 12px;
+            padding: 0 16px 16px 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .screenshots-scroll::-webkit-scrollbar { display: none; }
+
+        .screenshot-item {
+            width: 200px;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid #f0f0f0;
+            background: #f9f9f9;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 10;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #777;
+            font-size: 11px;
+            gap: 4px;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-item.active {
+            color: #12a05c;
+            font-weight: bold;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background-color: #12a05c;
+            border-radius: 2px 2px 0 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="top-bar">
+            <button class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" placeholder="جست‌وجو در بازار" dir="rtl">
+            </div>
+            <button class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+        </div>
+
+        <div class="breadcrumb">
+            <span class="crumb-item">برنامه‌ها</span>
+            <span class="crumb-separator">❮</span>
+            <span class="crumb-item">شبکه‌های اجتماعی</span>
+            <span class="crumb-separator">❮</span>
+            <span style="font-size: 12px; color: #333;">همدم یاب</span>
+        </div>
+
+        <div class="app-header">
+            <div class="app-icon">
+                <img src="https://hamdamyab.github.io/app/images/logo.png" alt="همدم یاب">
+            </div>
+            <div class="app-details">
+                <h1 class="app-title">همدم یاب</h1>
+                <div class="app-developer">همدم یاب</div>
+                <div class="app-version">نسخهٔ ۱.۰.۰</div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value">۱۰۰ هزار+</div>
+                <div class="stat-label">نصب</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    ۴.۸
+                </div>
+                <div class="stat-label">از ۱۲,۴۰۰ رأی</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">اجتماعی</div>
+                <div class="stat-label">دسته‌بندی</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">۲۵ مگابایت</div>
+                <div class="stat-label">حجم</div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <a href="https://hamdamyab.github.io/app/apk/app-release.apk" class="btn-download">دانلود</a>
+        </div>
+
+        <div class="antivirus-box">
+            <span>مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+
+        <h2 class="section-title">تصاویر برنامه</h2>
+        <div class="screenshots-scroll">
+            <div class="screenshot-item">
+                <img src="https://hamdamyab.github.io/app/images/s1.jpg" alt="Screenshot 1">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://hamdamyab.github.io/app/images/s2.jpg" alt="Screenshot 2">
+            </div>
+            <div class="screenshot-item">
+                <img src="https://hamdamyab.github.io/app/images/s3.jpg" alt="Screenshot 3">
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>فیلم و سریال</span>
+            </div>
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M12 12h.01M16 12h.01M8 12h.01"></path></svg>
+                <span>بازی</span>
+            </div>
+            <div class="nav-item active">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+                <span>برنامه</span>
+            </div>
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>نصب بازار</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
