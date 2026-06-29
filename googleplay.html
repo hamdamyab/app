@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود اپلیکیشن</title>
+    <title>دانلود همدم یاب</title>
     <style>
         @import url('https://v1.fontapi.ir/css/Vazir');
 
@@ -143,11 +143,11 @@
             overflow-x: auto;
             padding-bottom: 12px;
             margin-bottom: 24px;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
         
         .screenshots-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .screenshot-box {
@@ -157,6 +157,13 @@
             border-radius: 8px;
             flex-shrink: 0;
             border: 1px solid #e8eaed;
+            overflow: hidden;
+        }
+
+        .screenshot-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Reviews Section */
@@ -231,20 +238,22 @@
 
     <div class="app-container">
         
+        <!-- Header -->
         <div class="header-section">
             <div class="app-icon">
-                <span style="color: #9aa0a6; font-size: 12px;">Logo</span>
+                <img src="https://hamdamyab.github.io/app/images/logo.png" alt="همدم یاب لوگو">
             </div>
             <div class="app-details">
-                <h1 class="app-title">نام اپلیکیشن شما</h1>
-                <a href="#" class="app-developer">نام شرکت یا توسعه‌دهنده</a>
+                <h1 class="app-title">همدم یاب</h1>
+                <a href="#" class="app-developer">همدم یاب</a>
             </div>
         </div>
 
+        <!-- Stats -->
         <div class="stats-row">
             <div class="stat-item">
                 <div class="stat-top">4.8 <span class="star-icon">★</span></div>
-                <div class="stat-bottom">3.87K reviews</div>
+                <div class="stat-bottom">12.4K reviews</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
@@ -260,45 +269,96 @@
             </div>
         </div>
 
+        <!-- Install Button -->
         <a href="https://hamdamyab.github.io/app/apk/app-release.apk" class="btn-install">
             Install
         </a>
 
+        <!-- Screenshots -->
         <div class="screenshots-container">
-            <div class="screenshot-box"></div>
-            <div class="screenshot-box"></div>
-            <div class="screenshot-box"></div>
+            <div class="screenshot-box">
+                <img src="https://hamdamyab.github.io/app/images/s1.jpg" alt="Screenshot 1">
+            </div>
+            <div class="screenshot-box">
+                <img src="https://hamdamyab.github.io/app/images/s2.jpg" alt="Screenshot 2">
+            </div>
+            <div class="screenshot-box">
+                <img src="https://hamdamyab.github.io/app/images/s3.jpg" alt="Screenshot 3">
+            </div>
         </div>
 
+        <!-- Reviews -->
         <div class="section-header">
             <h2 class="section-title">Ratings and reviews</h2>
         </div>
 
         <div class="review-item">
             <div class="review-author-row">
-                <div class="author-avatar">ع</div>
-                <div class="author-name">علی احمدی</div>
+                <div class="author-avatar" style="background-color: #e91e63;">م</div>
+                <div class="author-name">محمد رضایی</div>
             </div>
             <div class="review-rating-row">
                 <div class="stars-green">★★★★★</div>
-                <div class="review-date">12/05/2026</div>
+                <div class="review-date">24/06/2026</div>
             </div>
             <div class="review-text">
-                برنامه خیلی خوبی هست و سرعت بالایی داره. دقیقا همون چیزی بود که میخواستم.
+                واقعا اپلیکیشن بی‌نظیریه. خیلی سریع نصب شد و محیط کاربری فوق‌العاده راحتی داره. دست سازندش درد نکنه.
             </div>
         </div>
 
         <div class="review-item">
             <div class="review-author-row">
-                <div class="author-avatar">S</div>
-                <div class="author-name">Sara K</div>
+                <div class="author-avatar" style="background-color: #9c27b0;">S</div>
+                <div class="author-name">Sara Karimi</div>
+            </div>
+            <div class="review-rating-row">
+                <div class="stars-green">★★★★★</div>
+                <div class="review-date">21/06/2026</div>
+            </div>
+            <div class="review-text">
+                بهترین برنامه‌ای که تو این زمینه دیدم. امکاناتش کامله و اصلا هنگ نمیکنه.
+            </div>
+        </div>
+        
+        <div class="review-item">
+            <div class="review-author-row">
+                <div class="author-avatar" style="background-color: #3f51b5;">ا</div>
+                <div class="author-name">امید تهرانی</div>
             </div>
             <div class="review-rating-row">
                 <div class="stars-green">★★★★☆</div>
-                <div class="review-date">08/04/2026</div>
+                <div class="review-date">15/06/2026</div>
             </div>
             <div class="review-text">
-                کاربری راحتی داره و بدون مشکل نصب شد. ممنون از تیم سازنده.
+                خوبه ولی جا داره آپدیت‌های بیشتری براش بیاد. در کل راضیم ازش و پیشنهادش میکنم.
+            </div>
+        </div>
+
+        <div class="review-item">
+            <div class="review-author-row">
+                <div class="author-avatar" style="background-color: #ff9800;">ن</div>
+                <div class="author-name">نگین</div>
+            </div>
+            <div class="review-rating-row">
+                <div class="stars-green">★★★★★</div>
+                <div class="review-date">10/06/2026</div>
+            </div>
+            <div class="review-text">
+                عالی! پشتیبانی برنامه هم خیلی خوب جواب میدن. حتما نصب کنید پشیمون نمیشید.
+            </div>
+        </div>
+
+        <div class="review-item">
+            <div class="review-author-row">
+                <div class="author-avatar" style="background-color: #009688;">A</div>
+                <div class="author-name">Ali H.</div>
+            </div>
+            <div class="review-rating-row">
+                <div class="stars-green">★★★★★</div>
+                <div class="review-date">05/06/2026</div>
+            </div>
+            <div class="review-text">
+                همه چیز عالی کار میکنه. سرعت برنامه خیلی بالاست و کاملا با چیزی که تو توضیحات گفته شده مطابقت داره.
             </div>
         </div>
 
