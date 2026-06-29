@@ -7,302 +7,301 @@
     <style>
         @import url('https://v1.fontapi.ir/css/Vazir');
 
-        :root {
-            --bg-color: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --neon-accent: #00f2fe;
-            --neon-glow: 0 0 15px rgba(0, 242, 254, 0.5);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --star-color: #fbbf24;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Vazir', sans-serif;
+            font-family: 'Vazir', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(79, 70, 229, 0.15), transparent 25%);
-            color: var(--text-main);
-            min-height: 100vh;
+            background-color: #ffffff;
+            color: #202124;
             display: flex;
             justify-content: center;
-            padding: 20px;
         }
 
-        .container {
+        .app-container {
             max-width: 600px;
             width: 100%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 24px;
+            background: #ffffff;
         }
 
-        /* App Header */
-        .app-header {
+        /* Top Header Area */
+        .header-section {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .app-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #4f46e5, #00f2fe);
-            border-radius: 22px;
+            width: 92px;
+            height: 92px;
+            border-radius: 20px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+            background-color: #f1f3f4;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
-            box-shadow: var(--neon-glow);
+            overflow: hidden;
+            flex-shrink: 0;
         }
 
-        .app-info h1 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            font-weight: 700;
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .app-info .developer {
-            color: var(--neon-accent);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+        .app-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        .app-title {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+        }
+
+        .app-developer {
+            font-size: 14px;
+            font-weight: 600;
+            color: #01875f;
+            text-decoration: none;
         }
 
         /* Stats Row */
         .stats-row {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            background: var(--glass-bg);
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 30px;
-            border: 1px solid var(--glass-border);
+            margin-bottom: 24px;
+            padding: 0 12px;
         }
 
-        .stat-box {
-            text-align: center;
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             flex: 1;
         }
 
-        .stat-box:not(:last-child) {
-            border-left: 1px solid var(--glass-border);
+        .stat-divider {
+            width: 1px;
+            height: 24px;
+            background-color: #e8eaed;
         }
 
-        .stat-value {
-            font-size: 1.1rem;
-            font-weight: bold;
+        .stat-top {
+            font-size: 14px;
+            font-weight: 600;
+            color: #202124;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 4px;
+            gap: 2px;
+            margin-bottom: 4px;
         }
 
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
+        .stat-bottom {
+            font-size: 12px;
+            color: #5f6368;
         }
 
-        .stars {
-            color: var(--star-color);
+        .star-icon {
+            font-size: 12px;
         }
 
-        /* Download Button */
-        .download-btn {
+        /* Buttons */
+        .btn-install {
             display: block;
             width: 100%;
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            color: #000;
+            background-color: #01875f;
+            color: #ffffff;
             text-align: center;
-            padding: 16px;
-            border-radius: 16px;
+            padding: 10px 0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+            margin-bottom: 12px;
             border: none;
             cursor: pointer;
-            margin-bottom: 40px;
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: bold;
+        /* Screenshots */
+        .screenshots-container {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .screenshots-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .screenshot-box {
+            width: 130px;
+            height: 230px;
+            background-color: #f1f3f4;
+            border-radius: 8px;
+            flex-shrink: 0;
+            border: 1px solid #e8eaed;
         }
 
         /* Reviews Section */
-        .reviews-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .review-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 15px;
-        }
-
-        .review-header {
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .user-info {
+        .section-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #202124;
+        }
+
+        .review-item {
+            margin-bottom: 24px;
+        }
+
+        .review-author-row {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        .avatar {
-            width: 35px;
-            height: 35px;
-            background: #334155;
+        .author-avatar {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
+            background-color: #01875f;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 14px;
         }
 
-        .user-name {
-            font-size: 0.9rem;
-            font-weight: bold;
+        .author-name {
+            font-size: 14px;
+            color: #202124;
+        }
+
+        .review-rating-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .stars-green {
+            color: #01875f;
+            font-size: 12px;
+            letter-spacing: 1px;
         }
 
         .review-date {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 12px;
+            color: #5f6368;
         }
 
         .review-text {
-            font-size: 0.9rem;
-            color: var(--text-main);
-            line-height: 1.6;
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 20px;
         }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- App Header -->
-        <div class="app-header">
+    <div class="app-container">
+        
+        <div class="header-section">
             <div class="app-icon">
-                <!-- جای خالی برای لوگو شما -->
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span style="color: #9aa0a6; font-size: 12px;">Logo</span>
             </div>
-            <div class="app-info">
-                <h1>نام اپلیکیشن شما</h1>
-                <div class="developer">شرکت توسعه‌دهنده</div>
-                <div class="stars">★★★★☆ <span style="color:var(--text-muted); font-size: 0.8rem;">(4.8)</span></div>
+            <div class="app-details">
+                <h1 class="app-title">نام اپلیکیشن شما</h1>
+                <a href="#" class="app-developer">نام شرکت یا توسعه‌دهنده</a>
             </div>
         </div>
 
-        <!-- Stats -->
         <div class="stats-row">
-            <div class="stat-box">
-                <div class="stat-value">4.8 <span class="stars">★</span></div>
-                <div class="stat-label">۱۲ هزار نظر</div>
+            <div class="stat-item">
+                <div class="stat-top">4.8 <span class="star-icon">★</span></div>
+                <div class="stat-bottom">3.87K reviews</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-value">100K+</div>
-                <div class="stat-label">دانلود</div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-top">
+                    <span style="border: 1px solid #202124; padding: 0 4px; border-radius: 2px; font-size: 10px;">+18</span>
+                </div>
+                <div class="stat-bottom">PEGI 18</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-value">+18</div>
-                <div class="stat-label">رده‌بندی سنی</div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-top">100K+</div>
+                <div class="stat-bottom">Downloads</div>
             </div>
         </div>
 
-        <!-- Install Button -->
-        <a href="https://hamdamyab.github.io/app/apk/app-release.apk" class="download-btn">
-            دانلود و نصب مستقیم
+        <a href="https://hamdamyab.github.io/app/apk/app-release.apk" class="btn-install">
+            Install
         </a>
 
-        <!-- Reviews Section -->
-        <h2 class="section-title">نظرات کاربران</h2>
-        <div class="reviews-container">
-            
-            <!-- Review 1 -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-info">
-                        <div class="avatar">ع</div>
-                        <div>
-                            <div class="user-name">علی محمدی</div>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <div class="review-date">۲ روز پیش</div>
-                </div>
-                <div class="review-text">
-                    برنامه بسیار عالی و کاربردی بود. سرعت بالا و طراحی زیبایی داره. حتما پیشنهاد میکنم استفاده کنید.
-                </div>
-            </div>
-
-            <!-- Review 2 -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-info">
-                        <div class="avatar">س</div>
-                        <div>
-                            <div class="user-name">سارا کریمی</div>
-                            <div class="stars">★★★★☆</div>
-                        </div>
-                    </div>
-                    <div class="review-date">۱ هفته پیش</div>
-                </div>
-                <div class="review-text">
-                    همه چیز خوب کار میکنه، فقط کاشکی امکانات شخصی‌سازی بیشتری هم بهش اضافه بشه. در کل راضیم.
-                </div>
-            </div>
-
-            <!-- Review 3 -->
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="user-info">
-                        <div class="avatar">م</div>
-                        <div>
-                            <div class="user-name">محمد رضا</div>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <div class="review-date">۳ هفته پیش</div>
-                </div>
-                <div class="review-text">
-                    عالی! دقیقا همون چیزی بود که دنبالش میگشتم. خسته نباشید به تیم توسعه‌دهنده.
-                </div>
-            </div>
-
+        <div class="screenshots-container">
+            <div class="screenshot-box"></div>
+            <div class="screenshot-box"></div>
+            <div class="screenshot-box"></div>
         </div>
+
+        <div class="section-header">
+            <h2 class="section-title">Ratings and reviews</h2>
+        </div>
+
+        <div class="review-item">
+            <div class="review-author-row">
+                <div class="author-avatar">ع</div>
+                <div class="author-name">علی احمدی</div>
+            </div>
+            <div class="review-rating-row">
+                <div class="stars-green">★★★★★</div>
+                <div class="review-date">12/05/2026</div>
+            </div>
+            <div class="review-text">
+                برنامه خیلی خوبی هست و سرعت بالایی داره. دقیقا همون چیزی بود که میخواستم.
+            </div>
+        </div>
+
+        <div class="review-item">
+            <div class="review-author-row">
+                <div class="author-avatar">S</div>
+                <div class="author-name">Sara K</div>
+            </div>
+            <div class="review-rating-row">
+                <div class="stars-green">★★★★☆</div>
+                <div class="review-date">08/04/2026</div>
+            </div>
+            <div class="review-text">
+                کاربری راحتی داره و بدون مشکل نصب شد. ممنون از تیم سازنده.
+            </div>
+        </div>
+
     </div>
 
 </body>
