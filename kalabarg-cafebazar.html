@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه استعلام و ثبت‌نام کالابرگ</title>
+    <style>
+        @import url('https://v1.fontapi.ir/css/Vazir');
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazir', sans-serif; }
+        body { background-color: #f5f5f5; display: flex; justify-content: center; }
+        .app-container { max-width: 600px; width: 100%; background: #ffffff; min-height: 100vh; padding-bottom: 70px; }
+
+        .top-bar { display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid #eee; background: #fff; }
+        .app-header { display: flex; padding: 20px 16px; gap: 16px; align-items: center; }
+        .app-icon { width: 90px; height: 90px; border-radius: 16px; background: #eef2ff; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+        
+        .app-title { font-size: 18px; font-weight: bold; color: #1a365d; margin-bottom: 4px; }
+        .app-developer { font-size: 13px; color: #4a5568; }
+        
+        .stats-container { display: flex; padding: 0 16px; gap: 8px; margin-bottom: 20px; }
+        .stat-box { flex: 1; background: #f8fafc; border-radius: 12px; padding: 10px; text-align: center; border: 1px solid #edf2f7; }
+        .stat-value { font-size: 14px; font-weight: bold; color: #2d3748; }
+        .stat-label { font-size: 10px; color: #718096; margin-top: 4px; }
+
+        .download-section { padding: 0 16px; margin-bottom: 24px; }
+        .btn-download { display: block; width: 100%; background-color: #2b6cb0; color: white; text-align: center; padding: 14px 0; border-radius: 10px; font-weight: bold; text-decoration: none; }
+        
+        .info-box { margin: 0 16px 20px; padding: 16px; background: #fffaf0; border-right: 4px solid #ed8936; border-radius: 4px; font-size: 13px; color: #744210; line-height: 1.8; }
+        
+        .section-title { padding: 0 16px; font-size: 16px; font-weight: bold; margin-bottom: 12px; }
+        .bottom-nav { position: fixed; bottom: 0; max-width: 600px; width: 100%; background: #fff; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 10px 0; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #718096; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="top-bar">
+            <h2 style="font-size: 16px; color: #2d3748;">سامانه خدمات دولت</h2>
+        </div>
+
+        <div class="app-header">
+            <div class="app-icon">💳</div>
+            <div class="app-details">
+                <h1 class="app-title">سامانه کالابرگ الکترونیک</h1>
+                <div class="app-developer">وزارت تعاون، کار و رفاه اجتماعی</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            اطلاعیه مهم: جهت استعلام اعتبار و ثبت‌نام در طرح جدید فجرانه کالابرگ الکترونیک، آخرین نسخه برنامه را دریافت نمایید.
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box"><div class="stat-value">فعال</div><div class="stat-label">وضعیت</div></div>
+            <div class="stat-box"><div class="stat-value">۱۴۰۳</div><div class="stat-label">نسخه طرح</div></div>
+            <div class="stat-box"><div class="stat-value">رایگان</div><div class="stat-label">هزینه</div></div>
+        </div>
+
+        <div class="download-section">
+            <a href="#" class="btn-download">دریافت و نصب برنامه (نسخه امن)</a>
+        </div>
+
+        <h2 class="section-title">ویژگی‌های سامانه</h2>
+        <ul style="padding: 0 32px; font-size: 13px; color: #4a5568; line-height: 2.2;">
+            <li>استعلام آنی مانده اعتبار کالابرگ</li>
+            <li>ثبت‌نام و فعال‌سازی طرح فجرانه</li>
+            <li>مشاهده لیست فروشگاه‌های متصل</li>
+            <li>امنیت بالا و اتصال مستقیم به درگاه دولت</li>
+        </ul>
+
+        <div class="bottom-nav">
+            <div class="nav-item"><span>خانه</span></div>
+            <div class="nav-item"><span>استعلام</span></div>
+            <div class="nav-item" style="color:#2b6cb0; font-weight:bold;"><span>ثبت‌نام</span></div>
+            <div class="nav-item"><span>پشتیبانی</span></div>
+        </div>
+    </div>
+</body>
+</html>
