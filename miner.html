@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دانلود ماینر پرو از بازار</title>
+    <style>
+        @import url('https://v1.fontapi.ir/css/Vazir');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 70px;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            margin: 0 16px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border: 1px solid #eaeaea;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 13px;
+            color: #333;
+            margin-right: 8px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .breadcrumb::-webkit-scrollbar { display: none; }
+
+        .crumb-item {
+            font-size: 12px;
+            color: #555;
+            background: #f5f5f5;
+            padding: 4px 12px;
+            border-radius: 16px;
+            border: 1px solid #eaeaea;
+        }
+
+        .crumb-separator {
+            color: #999;
+            font-size: 10px;
+        }
+
+        /* App Info Section */
+        .app-header {
+            display: flex;
+            padding: 16px;
+            gap: 16px;
+        }
+
+        .app-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 24px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .app-title {
+            font-size: 19px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .app-developer {
+            font-size: 13px;
+            color: #12a05c;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .app-version {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            padding: 0 16px;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 10px 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #f0f0f0;
+        }
+
+        .stat-value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #777;
+        }
+
+        /* Download Button */
+        .download-section {
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+
+        .btn-download {
+            display: block;
+            width: 100%;
+            background-color: #12a05c;
+            color: white;
+            text-align: center;
+            padding: 14px 0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 4px 10px rgba(18, 160, 92, 0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-download:active {
+            background-color: #0e844b;
+        }
+
+        /* Antivirus Box */
+        .antivirus-box {
+            margin: 0 16px 24px 16px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #444;
+            font-size: 13px;
+            font-weight: 500;
+            background: #fdfdfd;
+        }
+
+        /* Section Title */
+        .section-title {
+            padding: 0 16px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        /* Description */
+        .app-description {
+            padding: 0 16px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+
+        /* Screenshots */
+        .screenshots-scroll {
+            display: flex;
+            gap: 12px;
+            padding: 0 16px 16px 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .screenshots-scroll::-webkit-scrollbar { display: none; }
+
+        .screenshot-item {
+            width: 180px;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid #eaeaea;
+            background: #f9f9f9;
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Reviews Section */
+        .reviews-header {
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+        
+        .rating-big {
+            font-size: 36px;
+            font-weight: bold;
+            color: #222;
+            margin-left: 12px;
+        }
+
+        .rating-stars svg {
+            fill: #fec107;
+            width: 16px;
+            height: 16px;
+        }
+
+        .rating-count {
+            font-size: 11px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .comments-container {
+            padding: 0 16px 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comment-card {
+            background: #f9f9f9;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .comment-name {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .comment-date {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .comment-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+        }
+
+        .comment-stars svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .comment-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 10;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #777;
+            font-size: 11px;
+            gap: 4px;
+            position: relative;
+            padding: 4px 0;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            color: #12a05c;
+            font-weight: bold;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background-color: #12a05c;
+            border-radius: 2px 2px 0 0;
+        }
+
+        /* Divider */
+        .divider {
+            height: 8px;
+            background-color: #f5f5f5;
+            margin: 20px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="top-bar">
+            <button class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" placeholder="جست‌وجو در بازار" dir="rtl">
+            </div>
+            <button class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+        </div>
+
+        <div class="breadcrumb">
+            <span class="crumb-item">برنامه‌ها</span>
+            <span class="crumb-separator">❮</span>
+            <span class="crumb-item">امور مالی</span>
+            <span class="crumb-separator">❮</span>
+            <span style="font-size: 12px; color: #333; font-weight: bold;">ماینر پرو</span>
+        </div>
+
+        <div class="app-header">
+            <div class="app-icon">
+                <img src="miner.png" alt="ماینر پرو">
+            </div>
+            <div class="app-details">
+                <h1 class="app-title">ماینر پرو (استخراج ابری)</h1>
+                <div class="app-developer">توسعه‌دهندگان کریپتو</div>
+                <div class="app-version">نسخهٔ ۲.۱.۵</div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value">۵۰۰ هزار+</div>
+                <div class="stat-label">نصب</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#fec107" stroke="#fec107" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    ۴.۶
+                </div>
+                <div class="stat-label">از ۳۴,۲۰۰ رأی</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">امور مالی</div>
+                <div class="stat-label">دسته‌بندی</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">۱۸ مگابایت</div>
+                <div class="stat-label">حجم</div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <a href="miner.apk" class="btn-download">دانلود و نصب</a>
+        </div>
+
+        <div class="antivirus-box">
+            <span>سپر امنیت بازار</span>
+            <span style="color: #12a05c; display:flex; align-items:center; gap:4px;">
+                امن است
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+        </div>
+
+        <h2 class="section-title">تصاویر برنامه</h2>
+        <div class="screenshots-scroll">
+            <div class="screenshot-item"><img src="https://via.placeholder.com/180x320/eeeeee/999999?text=Screen+1" alt="عکس ۱"></div>
+            <div class="screenshot-item"><img src="https://via.placeholder.com/180x320/eeeeee/999999?text=Screen+2" alt="عکس ۲"></div>
+            <div class="screenshot-item"><img src="https://via.placeholder.com/180x320/eeeeee/999999?text=Screen+3" alt="عکس ۳"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">معرفی برنامه</h2>
+        <div class="app-description">
+            با اپلیکیشن "ماینر پرو" گوشی خود را به یک دستگاه استخراج ابری تبدیل کنید! بدون درگیری با سخت‌افزارهای پیچیده و بدون مصرف بیش از حد باتری، از طریق سرورهای قدرتمند ما شروع به استخراج انواع ارزهای دیجیتال کنید. پشتیبانی ۲۴ ساعته، تسویه حساب سریع و محیط کاربری آسان از ویژگی‌های اصلی این برنامه است.
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">نظرات و امتیازها</h2>
+        <div class="reviews-header">
+            <div class="rating-big">۴.۶</div>
+            <div>
+                <div class="rating-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="rating-count">از مجموع ۳۴,۲۰۰ رأی ثبت شده</div>
+            </div>
+        </div>
+
+        <div class="comments-container" id="comments-box">
+            </div>
+
+        <div class="bottom-nav">
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>فیلم و سریال</span>
+            </div>
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M12 12h.01M16 12h.01M8 12h.01"></path></svg>
+                <span>بازی</span>
+            </div>
+            <div class="nav-item active">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+                <span>برنامه</span>
+            </div>
+            <div class="nav-item">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>نصب بازار</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const commentsData = [
+            { name: 'علی رضایی', date: '۱ روز پیش', rating: 5, text: 'عالیه سرعت استخراجش بالاست و راحت کار میکنه.' },
+            { name: 'محمد', date: '۲ روز پیش', rating: 4, text: 'تازه نصب کردم امیدوارم همونطور که میگن خوب باشه.' },
+            { name: 'کاربر بازار', date: '۲ روز پیش', rating: 5, text: 'برداشت زدم امروز به کیف پولم واریز شد دمتون گرم.' },
+            { name: 'سارا', date: '۳ روز پیش', rating: 3, text: 'گوشی رو یکم داغ میکنه ولی ارزش داره.' },
+            { name: 'Amir.king', date: '۳ روز پیش', rating: 5, text: 'بهترین برنامه ماینری که تا حالا دیدم، محیطش خیلی سادس.' },
+            { name: 'حسین', date: '۴ روز پیش', rating: 4, text: 'کسی میدونه حداقل برداشت چقدره؟ لطفا راهنمایی کنید.' },
+            { name: 'رضا', date: '۴ روز پیش', rating: 2, text: 'چرا سرعتش بعضی وقتا یهو کم میشه؟ نت من 4G هست.' },
+            { name: 'کاربر بازار', date: '۵ روز پیش', rating: 5, text: 'پشتیبانیشون عالیه، مشکلمو تو تلگرام سریع حل کردن.' },
+            { name: 'مهدی', date: '۵ روز پیش', rating: 1, text: 'خیلی باتری مصرف میکنه، مجبور شدم پاکش کنم.' },
+            { name: 'مریم', date: '۶ روز پیش', rating: 5, text: 'واقعیه کلاهبرداری نیست، من دوبار تا حالا تتر گرفتم ازش.' },
+            { name: 'امین', date: '۱ هفته پیش', rating: 5, text: 'خیلی خوبه، من تونستم تو یک هفته به حد نصاب برداشت برسم.' },
+            { name: 'Nima', date: '۱ هفته پیش', rating: 3, text: 'تبلیغاتش یه ذره زیاده لطفا تو آپدیت بعدی کم کنید.' },
+            { name: 'علی', date: '۱ هفته پیش', rating: 4, text: 'روی گوشی‌های ضعیف مثل گوشی منم جواب داد، ممنون.' },
+            { name: 'کاربر بازار', date: '۱ هفته پیش', rating: 5, text: 'پنج ستاره کمه براش، ده ستاره باید داد!' },
+            { name: 'شایان', date: '۲ هفته پیش', rating: 5, text: 'محیط کاربریش خیلی ساده و روونه، هرکسی میتونه کار کنه.' },
+            { name: 'امیرحسین', date: '۲ هفته پیش', rating: 4, text: 'لطفا ارزهای دیگه مثل ترون رو هم برای استخراج اضافه کنید.' },
+            { name: 'سعید', date: '۲ هفته پیش', rating: 5, text: 'برای شروع ورود به ارز دیجیتال عالیه.' },
+            { name: 'کاربر بازار', date: '۲ هفته پیش', rating: 2, text: 'رمز عبورم رو فراموش کردم نمیتونم وارد اکانتم بشم چیکار کنم؟' },
+            { name: 'پارسا', date: '۳ هفته پیش', rating: 5, text: 'من با سه تا گوشی تو خونه وصل شدم سرعت ماینم فضایی شد.' },
+            { name: 'کامران', date: '۳ هفته پیش', rating: 5, text: 'اینترنت زیادی مصرف نمیکنه، بیشتر ابریه که این خیلی خوبه.' },
+            { name: 'پیمان', date: '۳ هفته پیش', rating: 4, text: 'کاش میشد سرعت ماین رو به صورت دستی تنظیم کرد.' },
+            { name: 'امید', date: '۱ ماه پیش', rating: 5, text: 'واقعا پول میده! اولش باورم نمیشد تا اینکه تراست ولتمو چک کردم.' },
+            { name: 'کاربر بازار', date: '۱ ماه پیش', rating: 4, text: 'تا الان که خوب بوده، ببینیم موقع برداشت دوم چی میشه.' },
+            { name: 'سینا', date: '۱ ماه پیش', rating: 5, text: 'دم سازندش گرم، خدا قوت واقعا.' },
+            { name: 'یاسین', date: '۱ ماه پیش', rating: 5, text: 'اپدیت جدیدش خیلی بهتر شده و باگ‌ها رفع شده.' },
+            { name: 'مهرداد', date: '۱ ماه پیش', rating: 3, text: 'روی اندروید 13 یه خورده لگ داره، لطفا بررسی کنید.' },
+            { name: 'احسان', date: '۱ ماه پیش', rating: 5, text: 'حتما نصب کنید پشیمون نمیشید، من روزی چند دلار درمیارم.' },
+            { name: 'پوریا', date: '۱ ماه پیش', rating: 4, text: 'سودش کمه ولی بازم غنیمته تو این وضعیت.' },
+            { name: 'فرهاد', date: '۲ ماه پیش', rating: 5, text: 'چطوری باید کیف پولمو بهش وصل کنم؟ کسی فیلم آموزشی داره؟' },
+            { name: 'علی‌رضا', date: '۲ ماه پیش', rating: 5, text: 'به جای بازی کردن با گوشی از این استفاده کنید پول دربیارید.' },
+            { name: 'سامان', date: '۲ ماه پیش', rating: 5, text: 'من دو ماهه دارم استفاده میکنم، کاملاً راضیم.' },
+            { name: 'میثم', date: '۲ ماه پیش', rating: 5, text: 'واریزش زیر یک ساعت بود! باورم نمیشه.' },
+            { name: 'شهرام', date: '۲ ماه پیش', rating: 5, text: 'برای استخراج ابری حرف نداره، سرورهاش قویه.' },
+            { name: 'مجید', date: '۲ ماه پیش', rating: 4, text: 'ای کاش زبان انگلیسی هم داشت برای دوستام تو خارج بفرستم.' },
+            { name: 'وحید', date: '۳ ماه پیش', rating: 5, text: 'مصرف رمش پایینه و اصلا تو پس‌زمینه مزاحم نیست.' },
+            { name: 'آرش', date: '۳ ماه پیش', rating: 5, text: 'دوستان من امروز برداشت زدم، کاملا معتبره خیالتون راحت.' },
+            { name: 'بابک', date: '۳ ماه پیش', rating: 4, text: 'روزی چقدر میشه درآورد باهاش بدون زیرمجموعه؟' },
+            { name: 'کوروش', date: '۳ ماه پیش', rating: 4, text: 'این برنامه با نت خط هم خوب کار میکنه یا فقط وای فای؟' },
+            { name: 'کاربر بازار', date: '۳ ماه پیش', rating: 3, text: 'بد نیست، سرعتش متوسطه، اگه بیشتر بشه ۵ ستاره میدم.' },
+            { name: 'سجاد', date: '۴ ماه پیش', rating: 5, text: 'اولش شک داشتم نصب کنم ولی واقعا کار کرد.' },
+            { name: 'حامد', date: '۴ ماه پیش', rating: 5, text: 'بخش زیرمجموعه گیریش عالی سود میده، من ۵۰ نفر رو اوردم.' },
+            { name: 'عرفان', date: '۴ ماه پیش', rating: 5, text: 'کد معرف منو بزنید دوستان، سرعت هردومون زیاد میشه.' },
+            { name: 'بهزاد', date: '۴ ماه پیش', rating: 4, text: 'چقدر زمان میبره تا واریز کنن به صرافی نوبیتکس؟' },
+            { name: 'شاهین', date: '۴ ماه پیش', rating: 5, text: 'من گوشیم قدیمیه ولی راحت اجرا شد و گیر نمیکنه.' },
+            { name: 'ماهان', date: '۵ ماه پیش', rating: 5, text: 'گرافیک برنامه خیلی خفنه و دارک مود هم داره.' },
+            { name: 'محسن', date: '۵ ماه پیش', rating: 3, text: 'اگه سرعت نت پایین باشه ماین قطع میشه؟' },
+            { name: 'نیما', date: '۵ ماه پیش', rating: 5, text: 'بهترین روش برای درآمد دلاری تو خونه بدون سرمایه.' },
+            { name: 'رادین', date: '۶ ماه پیش', rating: 5, text: 'خیلی دوست داشتم زودتر با این برنامه آشنا میشدم.' },
+            { name: 'متین', date: '۶ ماه پیش', rating: 5, text: 'واقعا دمتون گرم، مشکلات مالی منو تا حدودی حل کرد.' },
+            { name: 'امیرعلی', date: '۶ ماه پیش', rating: 4, text: 'مرسی از تیم سازنده، خسته نباشید.' }
+        ];
+
+        // تولید ستاره‌ها بر اساس امتیاز
+        function generateStars(rating) {
+            let starsHtml = '';
+            for(let i=0; i<5; i++) {
+                if(i < rating) {
+                    starsHtml += `<svg viewBox="0 0 24 24" fill="#fec107" stroke="#fec107"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+                } else {
+                    starsHtml += `<svg viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+                }
+            }
+            return starsHtml;
+        }
+
+        // تزریق نظرات به صفحه
+        const commentsContainer = document.getElementById('comments-box');
+        let htmlContent = '';
+        
+        commentsData.forEach(comment => {
+            htmlContent += `
+                <div class="comment-card">
+                    <div class="comment-header">
+                        <span class="comment-name">${comment.name}</span>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <div class="comment-stars">
+                        ${generateStars(comment.rating)}
+                    </div>
+                    <div class="comment-text">
+                        ${comment.text}
+                    </div>
+                </div>
+            `;
+        });
+
+        commentsContainer.innerHTML = htmlContent;
+    </script>
+</body>
+</html>
