@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئو صفحه دوستیابی -->
+    <title>بهترین برنامه دوستیابی آنلاین | پیدا کردن دوست و پارتنر</title>
+    <meta name="description" content="اپلیکیشن دوست یابی آنلاین برای پیدا کردن پارتنر، دوست و همدم در اطراف شما. با رادار دوستیابی، افراد آنلاین شهر خود را پیدا کنید و چت کنید.">
+    <meta name="keywords" content="دوستیابی, دوست یابی, دوستیابی آنلاین, دوست یابی اطراف من, پیدا کردن پارتنر, اپلیکیشن دوستیابی, رل زدن, سایت دوست یابی, دوستیابی مجازی">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #9d00ff; /* تم بنفش جذاب برای دوستیابی */
+            --secondary: #ff007f;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 20%, rgba(157, 0, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .page-header { text-align: center; margin-bottom: 50px; }
+        .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, #d475ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .page-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        .search-filters { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); padding: 20px; border-radius: 20px; display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
+        .filter-select { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px 20px; border-radius: 10px; outline: none; cursor: pointer; flex: 1; min-width: 150px; }
+        .filter-btn { background: linear-gradient(90deg, var(--primary), var(--secondary)); border: none; color: #fff; padding: 10px 30px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(157, 0, 255, 0.3); transition: transform 0.3s; }
+        .filter-btn:hover { transform: scale(1.05); }
+
+        .profiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        
+        .profile-card { background: linear-gradient(180deg, rgba(30,30,45,0.7) 0%, rgba(15,15,25,0.9) 100%); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; backdrop-filter: blur(10px); transition: transform 0.3s; position: relative; }
+        .profile-card:hover { transform: translateY(-10px); border-color: rgba(157, 0, 255, 0.5); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        
+        .profile-img-box { position: relative; width: 100%; height: 250px; overflow: hidden; }
+        .profile-img-box img { width: 100%; height: 100%; object-fit: cover; filter: blur(4px); transition: filter 0.3s; }
+        .profile-card:hover .profile-img-box img { filter: blur(1px); }
+        
+        .status-badge { position: absolute; top: 15px; right: 15px; background: rgba(255, 0, 127, 0.2); color: #ff007f; border: 1px solid rgba(255, 0, 127, 0.4); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; backdrop-filter: blur(5px); }
+        .lock-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+
+        .profile-info { padding: 20px; text-align: center; }
+        .profile-name { font-size: 1.2rem; font-weight: 900; margin-bottom: 5px; color: #fff; display: flex; justify-content: center; align-items: center; gap: 5px; }
+        .profile-details { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
+        .profile-tags { margin-bottom: 15px; font-size: 0.8rem; color: #d475ff; }
+        
+        .btn-view { display: block; width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: all 0.3s; cursor: pointer; }
+        .profile-card:hover .btn-view { background: linear-gradient(90deg, var(--primary), var(--secondary)); border-color: transparent; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: linear-gradient(180deg, rgba(30,30,45,0.9) 0%, rgba(15,15,25,0.95) 100%); border: 1px solid var(--primary); padding: 40px 20px; border-radius: 30px; text-align: center; max-width: 400px; width: 100%; box-shadow: 0 20px 60px rgba(157, 0, 255, 0.3); }
+        .modal-icon { font-size: 3rem; margin-bottom: 15px; }
+        .modal-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; color: #fff; }
+        .modal-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.8; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 900; width: 100%; }
+        .btn-close { margin-top: 15px; display: inline-block; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; }
+
+        .seo-content { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 25px; padding: 40px; margin-top: 40px; }
+        .seo-content h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 20px; font-weight: 900; }
+        .seo-content h3 { color: #d475ff; font-size: 1.2rem; margin-top: 30px; margin-bottom: 15px; }
+        .seo-content p { color: var(--text-muted); line-height: 1.9; margin-bottom: 15px; text-align: justify; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">دوستیابی آنلاین و پیدا کردن پارتنر</h1>
+            <p class="page-subtitle">جهان پر از آدم‌های جالبیه که منتظرن باهاشون آشنا بشی! با همدم یاب، دوست‌های جدید پیدا کن، چت کن و قرارهای هیجان‌انگیز بذار.</p>
+        </header>
+
+        <div class="search-filters" onclick="openModal()">
+            <select class="filter-select">
+                <option>فاصله از من...</option>
+                <option>کمتر از ۵ کیلومتر</option>
+                <option>تا ۲۰ کیلومتر</option>
+                <option>در شهر من</option>
+            </select>
+            <select class="filter-select">
+                <option>علاقه‌مندی‌ها...</option>
+                <option>کافه گردی و سینما</option>
+                <option>گیمینگ و بازی</option>
+                <option>طبیعت‌گردی و سفر</option>
+            </select>
+            <button class="filter-btn">جستجوی دوستان</button>
+        </div>
+
+        <div class="profiles-grid">
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=60" alt="پیدا کردن دوست دختر">
+                    <span class="status-badge">فاصله: ۲ کیلومتر</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">آیدا، ۲۲ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00ff88"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">دنبال یک دوست پایه و باحال</p>
+                    <p class="profile-tags">#کافه‌گردی #فیلم_دیدن</p>
+                    <button class="btn-view">شروع چت و آشنایی</button>
+                </div>
+            </div>
+
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=60" alt="دوستیابی مجازی">
+                    <span class="status-badge">آنلاین</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">امیر، ۲۵ ساله</h3>
+                    <p class="profile-details">پایه مسافرت و گیمینگ</p>
+                    <p class="profile-tags">#گیمر #طبیعت</p>
+                    <button class="btn-view">شروع چت و آشنایی</button>
+                </div>
+            </div>
+
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=60" alt="سایت دوست یابی">
+                    <span class="status-badge">فاصله: ۸۰۰ متر</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">غزل، ۲۰ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00ff88"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">دانشجو، عاشق موزیک و هنر</p>
+                    <p class="profile-tags">#موسیقی #کتاب</p>
+                    <button class="btn-view">شروع چت و آشنایی</button>
+                </div>
+            </div>
+            
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=60" alt="رل زدن مجازی">
+                    <span class="status-badge">دیروز فعال بود</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">آرش، ۲۸ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00ff88"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">ورزشکار و اهل معاشرت</p>
+                    <p class="profile-tags">#باشگاه #ورزش</p>
+                    <button class="btn-view">شروع چت و آشنایی</button>
+                </div>
+            </div>
+        </div>
+
+        <article class="seo-content">
+            <h2>تجربه متفاوت دوستیابی آنلاین</h2>
+            <p>این روزها پیدا کردن افراد هم‌فکر برای دوستی و ارتباط کار سختی شده است. اپلیکیشن <strong>دوستیابی</strong> همدم یاب به شما کمک می‌کند تا دایره ارتباطات خود را گسترش دهید و با افراد جدیدی در اطراف خود آشنا شوید. چه به دنبال <strong>پیدا کردن پارتنر</strong> باشید، چه یک دوست برای رفتن به سینما و کافه، اینجا بهترین نقطه شروع است.</p>
+            
+            <h3>چرا اپلیکیشن ما برای دوست یابی بهترین است؟</h3>
+            <p>ما از الگوریتم‌های هوشمند بر اساس علایق مشترک و لوکیشن استفاده می‌کنیم. با قابلیت <a href="/app/radar.html" style="color:var(--primary);">رادار دوست یابی</a>، شما دقیقاً می‌دانید چه کسانی در نزدیکی شما هستند و به دنبال دوست می‌گردند. برخلاف شبکه‌های اجتماعی عمومی که پیام دادن به غریبه‌ها ممکن است باعث مزاحمت شود، در این <strong>سایت دوست یابی</strong> همه افراد با هدف مشخص آشنایی حضور دارند و می‌توانید از طریق <a href="/app/anonymous-chat.html" style="color:var(--primary);">چت روم امن</a> ارتباط خود را آغاز کنید.</p>
+        </article>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-icon">🔥</div>
+            <h3 class="modal-title">شروع چت و دیدن عکس واضح</h3>
+            <p class="modal-desc">برای رفع تاری تصاویر، دیدن فاصله دقیق این کاربر با شما و شروع چت خصوصی، اپلیکیشن را رایگان نصب کنید.</p>
+            <a href="./apk/app-release.apk" class="btn-download" download>📥 دانلود مستقیم اپلیکیشن</a>
+            <span class="btn-close" onclick="closeModal()">انصراف</span>
+        </div>
+    </div>
+
+    <script src="layout.js"></script>
+    <script>
+        function openModal() { document.getElementById('downloadModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('downloadModal').style.display = 'none'; }
+    </script>
+</body>
+</html>
