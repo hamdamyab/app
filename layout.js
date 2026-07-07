@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerHTML = `
         <nav class="main-nav">
             <div class="nav-container">
-                <a href="/app" class="logo">همدم یاب</a>
+                <a href="/app/" class="logo">همدم یاب</a>
                 <ul class="nav-links">
-                    <li><a href="/app">صفحه اصلی</a></li>
+                    <li><a href="/app/">صفحه اصلی</a></li>
                     <li><a href="/app/radar.html" style="color: #ff007f;">رادار افراد نزدیک</a></li>
                     <li><a href="/app/anonymous-chat.html">چت ناشناس</a></li>
                 </ul>
