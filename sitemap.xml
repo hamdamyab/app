@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- صفحه اصلی -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://hamdamyab.github.io/app/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- لندینگ افراد نزدیک (بالاترین پتانسیل سرچ فعلی شما) -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/radar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- لندینگ دوستیابی -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/dating.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- لندینگ چت ناشناس -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/anonymous-chat.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- لندینگ صیغه یابی -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/sigheh.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- لندینگ همسریابی دائم -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/marriage.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
