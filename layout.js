@@ -5,11 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
         <nav class="main-nav">
             <div class="nav-container">
                 <a href="/app/" class="logo">همدم یاب</a>
-                <ul class="nav-links">
-                    <li><a href="/app/">صفحه اصلی</a></li>
-                    <li><a href="/app/radar.html" style="color: #ff007f;">رادار افراد نزدیک</a></li>
-                    <li><a href="/app/anonymous-chat.html">چت ناشناس</a></li>
-                </ul>
+               <ul class="nav-links">
+    <li><a href="/app/">صفحه اصلی</a></li>
+    <li><a href="/app/radar.html">رادار افراد نزدیک</a></li>
+    <li><a href="/app/sigheh.html" style="color: #ff007f; font-weight: 700;">صیغه یابی</a></li>
+    <li><a href="/app/anonymous-chat.html">چت ناشناس</a></li>
+</ul>
             </div>
         </nav>
         <style>
