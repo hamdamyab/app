@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئو صفحه صیغه یابی -->
+    <title>صیغه یابی آنلاین و ازدواج موقت | پلتفرم امن صیغه حلال</title>
+    <meta name="description" content="معتبرترین سامانه صیغه یابی، ازدواج موقت و صیغه حلال در ایران. با جستجوی پیشرفته همدم خود را بر اساس شهر و شرایط دلخواه پیدا کنید. ثبت نام رایگان.">
+    <meta name="keywords" content="صیغه یابی, صیغه حلال, ازدواج موقت, سایت صیغه یابی, پیدا کردن همدم, دوست یابی موقت, صیغه محرمیت, همسریابی موقت, اپلیکیشن صیغه یابی">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* سئو هدر */
+        .page-header { text-align: center; margin-bottom: 50px; }
+        .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, #ff758c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .page-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* فیلترهای جستجوی فیک */
+        .search-filters { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); padding: 20px; border-radius: 20px; display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
+        .filter-select { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 10px 20px; border-radius: 10px; outline: none; cursor: pointer; flex: 1; min-width: 150px; }
+        .filter-btn { background: linear-gradient(90deg, var(--primary), var(--secondary)); border: none; color: #fff; padding: 10px 30px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(255,0,127,0.3); }
+
+        /* گالری پروفایل‌ها */
+        .profiles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        
+        .profile-card { background: linear-gradient(180deg, rgba(30,30,45,0.7) 0%, rgba(15,15,25,0.9) 100%); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; backdrop-filter: blur(10px); transition: transform 0.3s; position: relative; }
+        .profile-card:hover { transform: translateY(-10px); border-color: rgba(255,0,127,0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        
+        .profile-img-box { position: relative; width: 100%; height: 250px; overflow: hidden; }
+        .profile-img-box img { width: 100%; height: 100%; object-fit: cover; filter: blur(5px); transition: filter 0.3s; }
+        .profile-card:hover .profile-img-box img { filter: blur(2px); }
+        
+        .status-badge { position: absolute; top: 15px; right: 15px; background: rgba(0, 255, 136, 0.2); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.4); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; backdrop-filter: blur(5px); }
+        .lock-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2); }
+
+        .profile-info { padding: 20px; text-align: center; }
+        .profile-name { font-size: 1.2rem; font-weight: 900; margin-bottom: 5px; color: #fff; display: flex; justify-content: center; align-items: center; gap: 5px; }
+        .profile-details { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
+        
+        .btn-view { display: block; width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: all 0.3s; cursor: pointer; }
+        .profile-card:hover .btn-view { background: linear-gradient(90deg, var(--primary), var(--secondary)); border-color: transparent; }
+
+        /* پاپ‌آپ دانلود */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: linear-gradient(180deg, rgba(30,30,45,0.9) 0%, rgba(15,15,25,0.95) 100%); border: 1px solid var(--primary); padding: 40px 20px; border-radius: 30px; text-align: center; max-width: 400px; width: 100%; box-shadow: 0 20px 60px rgba(255,0,127,0.3); }
+        .modal-icon { font-size: 3rem; margin-bottom: 15px; }
+        .modal-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; color: #fff; }
+        .modal-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.8; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 900; width: 100%; }
+        .btn-close { margin-top: 15px; display: inline-block; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; }
+
+        /* بخش محتوای سئو شده */
+        .seo-content { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 25px; padding: 40px; margin-top: 40px; }
+        .seo-content h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 20px; font-weight: 900; }
+        .seo-content h3 { color: #00d2ff; font-size: 1.2rem; margin-top: 30px; margin-bottom: 15px; }
+        .seo-content p { color: var(--text-muted); line-height: 1.9; margin-bottom: 15px; text-align: justify; font-size: 0.95rem; }
+        .seo-content ul { color: var(--text-muted); margin-right: 20px; margin-bottom: 20px; line-height: 1.9; }
+        .seo-content li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">سامانه امن صیغه یابی و ازدواج موقت</h1>
+            <p class="page-subtitle">با استفاده از پلتفرم همدم یاب، پروفایل افراد آماده برای آشنایی و صیغه حلال در شهر خود را مشاهده کنید و به صورت ناشناس ارتباط برقرار کنید.</p>
+        </header>
+
+        <!-- فیلترهای جستجو -->
+        <div class="search-filters" onclick="openModal()">
+            <select class="filter-select">
+                <option>استان محل سکونت...</option>
+                <option>تهران</option>
+                <option>خراسان رضوی</option>
+                <option>اصفهان</option>
+                <option>فارس</option>
+            </select>
+            <select class="filter-select">
+                <option>محدوده سنی...</option>
+                <option>۲۰ تا ۳۰ سال</option>
+                <option>۳۰ تا ۴۰ سال</option>
+                <option>بالای ۴۰ سال</option>
+            </select>
+            <button class="filter-btn">جستجوی همدم</button>
+        </div>
+
+        <!-- گالری پروفایل‌ها -->
+        <div class="profiles-grid">
+            <!-- پروفایل 1 -->
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=60" alt="پروفایل صیغه یابی">
+                    <span class="status-badge">آنلاین</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">آرزو، ۲۸ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00d2ff"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">تهران - آماده آشنایی موقت</p>
+                    <button class="btn-view">مشاهده پروفایل و چت</button>
+                </div>
+            </div>
+
+            <!-- پروفایل 2 -->
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=60" alt="سایت ازدواج موقت">
+                    <span class="status-badge">امروز فعال بود</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">مریم، ۳۴ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00d2ff"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">مشهد - صیغه محرمیت</p>
+                    <button class="btn-view">مشاهده پروفایل و چت</button>
+                </div>
+            </div>
+
+            <!-- پروفایل 3 -->
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=60" alt="پیدا کردن همدم">
+                    <span class="status-badge">آنلاین</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">سمیرا، ۲۶ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00d2ff"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">اصفهان - آشنایی و دوست یابی</p>
+                    <button class="btn-view">مشاهده پروفایل و چت</button>
+                </div>
+            </div>
+            
+            <!-- پروفایل 4 -->
+            <div class="profile-card" onclick="openModal()">
+                <div class="profile-img-box">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=60" alt="همسریابی موقت">
+                    <span class="status-badge" style="color:#ffc107; background:rgba(255,193,7,0.2); border-color:rgba(255,193,7,0.4)">در حال مکالمه</span>
+                    <div class="lock-icon">🔒</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">نیلوفر، ۳۱ ساله <svg width="16" height="16" viewBox="0 0 24 24" fill="#00d2ff"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h3>
+                    <p class="profile-details">شیراز - ازدواج حلال</p>
+                    <button class="btn-view">مشاهده پروفایل و چت</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- محتوای متنی مخصوص خزنده‌های گوگل (SEO Article) -->
+        <article class="seo-content">
+            <h2>سایت صیغه یابی و ازدواج موقت همدم یاب</h2>
+            <p>در دنیای امروز، پیدا کردن فردی مناسب برای شروع یک رابطه هدفمند کار آسانی نیست. پلتفرم <strong>صیغه یابی</strong> و همسریابی ما با هدف ایجاد یک محیط امن، ناشناس و کاملاً شرعی برای کاربرانی که به دنبال <strong>ازدواج موقت</strong> و آشنایی هستند طراحی شده است. ما بستری را فراهم کرده‌ایم تا بتوانید با خیالی آسوده، نیمه گمشده خود را در شهر محل سکونتتان پیدا کنید.</p>
+            
+            <h3>مزایای استفاده از اپلیکیشن صیغه حلال</h3>
+            <ul>
+                <li><strong>حفظ حریم خصوصی:</strong> در سیستم دوست یابی و همسریابی موقت ما، هیچ اطلاعات هویتی و شماره تماسی بدون رضایت شما به کاربر مقابل نمایش داده نمی‌شود.</li>
+                <li><strong>پروفایل‌های تایید شده:</strong> جلوگیری از ورود ربات‌ها و پروفایل‌های جعلی (Fake) با استفاده از تایید هویت هوشمند.</li>
+                <li><strong>جستجوی پیشرفته بر اساس مکان:</strong> با استفاده از <a href="/app/radar.html" style="color:var(--primary);">رادار افراد نزدیک</a>، می‌توانید کاربرانی که در نزدیکی شما آماده آشنایی و <strong>ازدواج حلال</strong> هستند را روی نقشه مشاهده کنید.</li>
+                <li><strong>چت درون برنامه‌ای:</strong> سیستم <a href="/app/anonymous-chat.html" style="color:var(--primary);">چت ناشناس</a> رمزنگاری شده برای مکالمه اولیه قبل از هرگونه قرار حضوری.</li>
+            </ul>
+
+            <h3>چگونه در سامانه همسریابی موقت ثبت نام کنیم؟</h3>
+            <p>برخلاف بسیاری از <strong>سایت های صیغه یابی</strong> که هزینه‌های سنگینی برای ثبت نام دریافت می‌کنند، نصب و ایجاد حساب کاربری در اپلیکیشن همدم یاب کاملاً رایگان است. کافیست فایل نصبی اندروید را مستقیماً از همین صفحه دانلود کرده، فرم مشخصات ظاهری و معیارهای خود را پر کنید و وارد دنیای جدیدی از ارتباطات شوید.</p>
+        </article>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- پاپ‌آپ دانلود -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-icon">🔐</div>
+            <h3 class="modal-title">احراز هویت و مشاهده پروفایل</h3>
+            <p class="modal-desc">جهت حفظ امنیت و حریم خصوصی کاربران، برای مشاهده تصاویر بدون تاری، دیدن مشخصات کامل و ارسال پیام، لطفاً اپلیکیشن اندروید را نصب کنید.</p>
+            <a href="./apk/app-release.apk" class="btn-download" download>📥 دانلود اپلیکیشن و ثبت نام رایگان</a>
+            <span class="btn-close" onclick="closeModal()">انصراف</span>
+        </div>
+    </div>
+
+    <script src="layout.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
