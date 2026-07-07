@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئو صفحه چت ناشناس -->
+    <title>چت ناشناس و امن | چت روم خلوت و دوستیابی بدون شماره</title>
+    <meta name="description" content="تجربه چت ناشناس و کاملاً امن با افراد نزدیک. بدون نیاز به ثبت شماره موبایل، به صورت رندوم با دختران و پسران آنلاین چت کنید و همدم پیدا کنید.">
+    <meta name="keywords" content="چت ناشناس, چت روم خلوت, دوست یابی بدون شماره, چت امن, برنامه چت ناشناس, چت رندوم, چت روم آنلاین">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --glass-bg: rgba(20, 20, 30, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%); }
+
+        .container { flex: 1; max-width: 800px; margin: 0 auto; padding: 40px 15px; width: 100%; display: flex; flex-direction: column; }
+
+        /* سئو تایتل (پنهان شده برای کاربر، خوانا برای گوگل) */
+        .seo-heading { font-size: 1.2rem; color: var(--primary); text-align: center; margin-bottom: 20px; font-weight: 900; text-shadow: 0 0 10px rgba(255,0,127,0.3); }
+        .seo-desc { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px; }
+
+        /* رابط کاربری چت */
+        .chat-box { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 25px; overflow: hidden; display: flex; flex-direction: column; height: 500px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        
+        .chat-header { background: rgba(0,0,0,0.4); padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid var(--glass-border); }
+        .chat-avatar { width: 45px; height: 45px; background: linear-gradient(135deg, var(--secondary), var(--primary)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; margin-left: 15px; }
+        .chat-info h2 { font-size: 1.1rem; color: #fff; margin-bottom: 2px; }
+        .chat-status { font-size: 0.8rem; color: #00ff88; display: flex; align-items: center; gap: 5px; }
+        .dot { width: 8px; height: 8px; background-color: #00ff88; border-radius: 50%; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        
+        .sys-msg { text-align: center; font-size: 0.8rem; color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; align-self: center; }
+        
+        .msg { max-width: 80%; padding: 12px 18px; border-radius: 20px; font-size: 0.95rem; line-height: 1.5; opacity: 0; transform: translateY(20px); animation: msgIn 0.4s forwards ease-out; }
+        @keyframes msgIn { to { opacity: 1; transform: translateY(0); } }
+        
+        .msg.received { background: linear-gradient(135deg, rgba(111, 0, 255, 0.4) 0%, rgba(30, 30, 45, 0.8) 100%); border-bottom-right-radius: 5px; align-self: flex-start; border: 1px solid rgba(111, 0, 255, 0.3); }
+        
+        .typing-indicator { display: none; gap: 5px; padding: 12px 18px; background: rgba(30, 30, 45, 0.8); border-radius: 20px; align-self: flex-start; border-bottom-right-radius: 5px; width: fit-content; }
+        .typing-indicator span { width: 6px; height: 6px; background: var(--text-muted); border-radius: 50%; animation: typing 1.4s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+        .chat-input { padding: 15px; background: rgba(0,0,0,0.4); border-top: 1px solid var(--glass-border); display: flex; gap: 10px; align-items: center; }
+        .fake-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 50px; color: var(--text-muted); font-size: 0.95rem; cursor: text; transition: border 0.3s; }
+        .fake-input:hover { border-color: var(--primary); }
+        .btn-send { background: linear-gradient(90deg, var(--primary), var(--secondary)); border: none; width: 45px; height: 45px; border-radius: 50%; color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 15px rgba(255,0,127,0.3); transition: transform 0.3s; }
+        .btn-send:hover { transform: scale(1.1); }
+        .btn-send svg { width: 20px; height: 20px; fill: #fff; transform: rotate(180deg); margin-right: 5px; }
+
+        /* پاپ‌آپ دانلود */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: linear-gradient(180deg, rgba(30,30,45,0.9) 0%, rgba(15,15,25,0.95) 100%); border: 1px solid var(--primary); padding: 40px 20px; border-radius: 30px; text-align: center; max-width: 400px; width: 100%; box-shadow: 0 20px 60px rgba(255,0,127,0.3); }
+        .modal-icon { font-size: 3rem; margin-bottom: 15px; }
+        .modal-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; color: #fff; }
+        .modal-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.8; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 900; width: 100%; }
+        .btn-close { margin-top: 15px; display: inline-block; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+
+    <!-- جایگاه تزریق هدر توسط layout.js -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <h1 class="seo-heading">چت ناشناس و پیدا کردن همدم بدون شماره</h1>
+        <p class="seo-desc">در این بخش می‌توانید به صورت کاملاً امن و ناشناس با افراد نزدیک خود چت کنید. پیام‌های شما رمزنگاری شده است.</p>
+        
+        <div class="chat-box">
+            <!-- هدر چت -->
+            <div class="chat-header">
+                <div class="chat-avatar">🎭</div>
+                <div class="chat-info">
+                    <h2>کاربر ناشناس (نزدیک شما)</h2>
+                    <div class="chat-status" id="chatStatus">
+                        <span class="dot"></span> آنلاین
+                    </div>
+                </div>
+            </div>
+
+            <!-- پیام‌ها -->
+            <div class="chat-messages" id="chatArea">
+                <div class="sys-msg">🔒 شما وارد یک چت ناشناس شدید. حریم خصوصی شما محفوظ است.</div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- ورودی کاربر (تله) -->
+            <div class="chat-input" onclick="triggerDownload()">
+                <div class="fake-input">پیام خود را اینجا بنویسید...</div>
+                <button class="btn-send">
+                    <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- جایگاه تزریق فوتر توسط layout.js -->
+    <div id="footer-placeholder"></div>
+
+    <!-- پاپ‌آپ دانلود اپلیکیشن -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-icon">💬</div>
+            <h3 class="modal-title">ارسال پیام در چت ناشناس</h3>
+            <p class="modal-desc">برای پاسخ دادن به این کاربر و استفاده از امکانات چت متنی، صوتی و ارسال تصویر، باید نسخه اصلی اپلیکیشن را نصب کنید. نصب کاملاً رایگان است!</p>
+            <a href="./apk/app-release.apk" class="btn-download" download>📥 دانلود مستقیم و شروع چت</a>
+            <span class="btn-close" onclick="closeModal()">انصراف</span>
+        </div>
+    </div>
+
+    <!-- اسکریپت‌های عملکردی -->
+    <script src="layout.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const status = document.getElementById('chatStatus');
+            const typing = document.getElementById('typingIndicator');
+            const chatArea = document.getElementById('chatArea');
+
+            // بعد از 1.5 ثانیه، وضعیت به در حال تایپ تغییر می‌کند
+            setTimeout(() => {
+                status.innerHTML = '<span style="color:var(--text-muted);">در حال تایپ...</span>';
+                typing.style.display = 'flex';
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }, 1500);
+
+            // بعد از 4.5 ثانیه، پیام فیک ارسال می‌شود
+            setTimeout(() => {
+                typing.style.display = 'none';
+                status.innerHTML = '<span class="dot"></span> آنلاین';
+                
+                const msg = document.createElement('div');
+                msg.className = 'msg received';
+                msg.innerText = 'سلام خوبی؟ منم تو همین منطقه‌م. دیدم آنلاینی گفتم پیام بدم پایه ای آشنا بشیم؟ 😉';
+                
+                chatArea.appendChild(msg);
+                chatArea.scrollTop = chatArea.scrollHeight;
+                
+                // پخش صدای نوتیفیکیشن فیک
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+                    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    oscillator.start();
+                    oscillator.stop(audioCtx.currentTime + 0.5);
+                } catch(e) {}
+                
+            }, 4500);
+        });
+
+        // باز کردن پاپ‌آپ هنگام کلیک روی کادر تایپ
+        function triggerDownload() {
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
