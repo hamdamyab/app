@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const headerHTML = `
         <nav class="main-nav">
             <div class="nav-container">
-                <a href="/" class="logo">همدم یاب</a>
+                <a href="/app" class="logo">همدم یاب</a>
                 <ul class="nav-links">
-                    <li><a href="/">صفحه اصلی</a></li>
-                    <li><a href="/radar.html" style="color: #ff007f;">رادار افراد نزدیک</a></li>
-                    <li><a href="/anonymous-chat.html">چت ناشناس</a></li>
+                    <li><a href="/app">صفحه اصلی</a></li>
+                    <li><a href="/app/radar.html" style="color: #ff007f;">رادار افراد نزدیک</a></li>
+                    <li><a href="/app/anonymous-chat.html">چت ناشناس</a></li>
                 </ul>
             </div>
         </nav>
@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="footer-content">
                 <span class="warning-18">🔞 استفاده از خدمات این سامانه تنها برای افراد بالای ۱۸ سال مجاز است.</span>
                 <div class="footer-links">
-                    <a href="/terms.html">قوانین سایت</a>
-                    <a href="/privacy.html">حریم خصوصی</a>
-                    <a href="https://t.me/YourSupport" target="_blank" rel="nofollow">پشتیبانی</a>
+                    <a href="/app/terms.html">قوانین سایت</a>
+                    <a href="/app/privacy.html">حریم خصوصی</a>
+                    
                 </div>
                 <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © ۲۰۲۴</p>
             </div>
