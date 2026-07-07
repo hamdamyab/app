@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئو صفحه رادار -->
+    <title>جایگزین افراد نزدیک تلگرام | رادار آنلاین دوست یابی اطراف من</title>
+    <meta name="description" content="با رادار هوشمند همدم یاب، دختران و پسران آنلاین اطراف خود را پیدا کنید. بهترین جایگزین برای قابلیت افراد نزدیک (People Nearby) تلگرام در محیطی امن و ناشناس.">
+    <meta name="keywords" content="افراد نزدیک تلگرام, جایگزین people nearby, رادار دوستیابی, پیدا کردن افراد نزدیک, دوست یابی در اطراف من, چت با افراد نزدیک">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        /* استایل‌های رادار تعاملی */
+        .radar-section { text-align: center; margin-bottom: 60px; padding: 40px 20px; background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 30px; }
+        
+        .radar-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 900; margin-bottom: 10px; background: linear-gradient(135deg, #fff 0%, #00d2ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .radar-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px; }
+
+        .radar-display { width: 280px; height: 280px; margin: 0 auto 30px; border-radius: 50%; border: 2px solid rgba(0, 210, 255, 0.3); position: relative; box-shadow: 0 0 40px rgba(0, 210, 255, 0.1); display: flex; justify-content: center; align-items: center; }
+        .radar-grid { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); }
+        .radar-grid:nth-child(1) { transform: scale(0.33); }
+        .radar-grid:nth-child(2) { transform: scale(0.66); }
+        
+        .radar-sweep { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 70%, rgba(0, 210, 255, 0.6) 100%); animation: sweep 2s linear infinite; display: none; }
+        @keyframes sweep { 100% { transform: rotate(360deg); } }
+
+        .btn-scan { background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: #fff; border: none; padding: 15px 40px; font-size: 1.1rem; font-weight: 900; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); transition: transform 0.3s; }
+        .btn-scan:hover { transform: scale(1.05); }
+
+        /* نتایج فیک رادار */
+        .mock-results { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; }
+        .mock-avatar { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 2px solid #00ff88; cursor: pointer; filter: blur(3px); transition: filter 0.3s, transform 0.3s; animation: popIn 0.5s ease-out forwards; opacity: 0; }
+        @keyframes popIn { 100% { opacity: 1; transform: scale(1); } }
+        .mock-avatar:hover { filter: blur(1px); transform: scale(1.1); }
+        .mock-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        
+        .pos-1 { top: 20%; left: 30%; animation-delay: 0.2s; }
+        .pos-2 { top: 60%; left: 70%; animation-delay: 0.6s; }
+        .pos-3 { top: 75%; left: 25%; animation-delay: 1.1s; }
+
+        /* استایل مدال (پاپ‌آپ) دانلود */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: linear-gradient(180deg, rgba(30,30,45,0.9) 0%, rgba(15,15,25,0.95) 100%); border: 1px solid var(--primary); padding: 40px 20px; border-radius: 30px; text-align: center; max-width: 400px; width: 100%; box-shadow: 0 20px 60px rgba(255,0,127,0.3); }
+        .modal-icon { font-size: 3rem; margin-bottom: 15px; }
+        .modal-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 10px; }
+        .modal-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 900; width: 100%; }
+        .btn-close { margin-top: 15px; display: inline-block; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; }
+
+        /* مقالات سئو */
+        .seo-article { padding: 40px; background: rgba(0,0,0,0.4); border-radius: 20px; border: 1px solid var(--glass-border); }
+        .seo-article h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; }
+        .seo-article h3 { font-size: 1.2rem; margin-top: 30px; margin-bottom: 15px; color: #00d2ff; }
+        .seo-article p { color: var(--text-muted); margin-bottom: 15px; line-height: 1.8; text-align: justify; }
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+
+    <!-- جایگاه تزریق هدر توسط layout.js -->
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <!-- بخش تعاملی رادار -->
+        <section class="radar-section">
+            <h1 class="radar-title">اسکنر آنلاین افراد نزدیک</h1>
+            <p class="radar-desc">بدون نیاز به شماره موبایل، ببینید چه کسانی در چند متری شما آنلاین هستند!</p>
+            
+            <div class="radar-display">
+                <div class="radar-grid"></div>
+                <div class="radar-grid"></div>
+                <div class="radar-sweep" id="radarSweep"></div>
+                
+                <!-- نتایج که با جاوااسکریپت نمایش داده می‌شوند -->
+                <div class="mock-results" id="mockResults">
+                    <div class="mock-avatar pos-1" onclick="openModal()"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=60" alt="کاربر آنلاین"></div>
+                    <div class="mock-avatar pos-2" onclick="openModal()"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=60" alt="دوست یابی"></div>
+                    <div class="mock-avatar pos-3" onclick="openModal()"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=60" alt="چت نزدیک"></div>
+                </div>
+            </div>
+
+            <button class="btn-scan" id="btnScan" onclick="startRadar()">📡 شروع اسکن اطراف من</button>
+            <p id="scanStatus" style="display: none; margin-top: 15px; color: #00ff88; font-weight: bold;"></p>
+        </section>
+
+        <!-- متن‌های سئو شده برای گوگل -->
+        <article class="seo-article">
+            <h2>بهترین جایگزین برای قابلیت افراد نزدیک تلگرام (People Nearby)</h2>
+            <p>قابلیت <strong>افراد نزدیک تلگرام</strong> یا همان People Nearby مدت‌هاست که به دلیل مشکلات امنیتی، باگ‌های لوکیشن و هجوم ربات‌های تبلیغاتی و اسپم، کارایی سابق خود را از دست داده است. بسیاری از کاربران در ایران به دنبال یک جایگزین امن و مطمئن برای <a href="/" style="color: var(--primary);">دوستیابی آنلاین</a> و پیدا کردن افراد در اطراف خود هستند.</p>
+            
+            <h3>چرا رادار همدم یاب امن‌تر است؟</h3>
+            <p>برخلاف سایر شبکه‌های اجتماعی که شماره موبایل یا آیدی شما را به افراد غریبه نمایش می‌دهند، در سیستم رادار ما، حریم خصوصی شما کاملاً محفوظ است. شما می‌توانید پروفایل افراد را مشاهده کنید و تنها در صورت تمایل دوطرفه، وارد یک <strong>چت ناشناس</strong> و امن شوید.</p>
+            
+            <h3>چگونه در اطراف من دوست پیدا کنم؟</h3>
+            <p>کافیست اپلیکیشن اندروید ما را به صورت مستقیم نصب کنید، GPS گوشی خود را روشن کرده و وارد بخش رادار شوید. الگوریتم‌های هوش مصنوعی ما، نزدیک‌ترین کاربران فعال را (از فاصله ۱۰۰ متری تا ۵۰ کیلومتری) بر اساس فیلترهای دلخواه شما (سن، جنسیت و...) روی صفحه نمایش می‌دهند.</p>
+        </article>
+
+    </main>
+
+    <!-- جایگاه تزریق فوتر توسط layout.js -->
+    <div id="footer-placeholder"></div>
+
+    <!-- پاپ‌آپ دانلود اپلیکیشن -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-icon">🔒</div>
+            <h3 class="modal-title">مشاهده تصویر و شروع چت</h3>
+            <p class="modal-desc">برای رفع تاری تصاویر، مشاهده مشخصات دقیق این کاربر و شروع چت خصوصی، باید نسخه اصلی اپلیکیشن را نصب کنید.</p>
+            <a href="./apk/app-release.apk" class="btn-download" download>📥 دانلود مستقیم اپلیکیشن</a>
+            <span class="btn-close" onclick="closeModal()">انصراف</span>
+        </div>
+    </div>
+
+    <!-- اسکریپت‌های عملکردی -->
+    <script src="layout.js"></script>
+    <script>
+        function startRadar() {
+            const btn = document.getElementById('btnScan');
+            const sweep = document.getElementById('radarSweep');
+            const status = document.getElementById('scanStatus');
+            const results = document.getElementById('mockResults');
+
+            // مخفی کردن دکمه و شروع انیمیشن
+            btn.style.display = 'none';
+            sweep.style.display = 'block';
+            status.style.display = 'block';
+            status.innerText = "در حال جستجوی سیگنال در شعاع ۲ کیلومتری...";
+
+            // شبیه‌سازی اسکن به مدت ۳.۵ ثانیه
+            setTimeout(() => {
+                sweep.style.display = 'none';
+                status.innerText = "۳ کاربر آنلاین در نزدیکی شما پیدا شد!";
+                results.style.display = 'block';
+            }, 3500);
+        }
+
+        function openModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
