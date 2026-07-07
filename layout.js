@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
                <ul class="nav-links">
     <li><a href="/app/">صفحه اصلی</a></li>
     <li><a href="/app/radar.html">رادار افراد نزدیک</a></li>
-    <li><a href="/app/sigheh.html" style="color: #ff007f; font-weight: 700;">صیغه یابی</a></li>
-    <li><a href="/app/anonymous-chat.html">چت ناشناس</a></li>
+    <li><a href="/app/sigheh.html">صیغه یابی</a></li>
+    <li><a href="/app/marriage.html" style="color: #00d2ff; font-weight: 700;">همسریابی دائم</a></li>
 </ul>
             </div>
         </nav>
