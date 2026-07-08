@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="/app/install-guide.html">راهنمای نصب و دسترسی‌ها</a>
                     <a href="/app/terms.html">قوانین سایت</a>
                     <a href="/app/privacy.html">حریم خصوصی</a>
+                    <a href="/app/channels.html">لیست کانال‌ها</a>
                 </div>
                 <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © 2026</p>
             </div>
