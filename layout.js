@@ -1,3 +1,41 @@
+// ==========================================
+// --- Google Analytics 4 (GA4) Injection ---
+// ==========================================
+const gaID = 'G-4BCMRM8MRJ';
+
+// ساخت اسکریپت اول گوگل
+const script1 = document.createElement('script');
+script1.async = true;
+script1.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaID;
+document.head.appendChild(script1);
+
+// ساخت اسکریپت دوم (تنظیمات)
+const script2 = document.createElement('script');
+script2.innerHTML = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${gaID}');
+`;
+document.head.appendChild(script2);
+
+// ردیابی هوشمند کلیک روی دکمه‌های دانلود APK
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('a');
+    // اگر کاربر روی یک لینک کلیک کرد که پسوند آن .apk بود
+    if (target && target.href && target.href.includes('.apk')) {
+        if (typeof gtag === 'function') {
+            gtag('event', 'download_apk', {
+                'event_category': 'Downloads',
+                'event_label': window.location.pathname // نشان می‌دهد از کدام صفحه دانلود شده
+            });
+        }
+    }
+});
+// ==========================================
+
+
+// کدهای مربوط به رابط کاربری (هدر و فوتر)
 document.addEventListener("DOMContentLoaded", function() {
     // کدهای هدر (نویگیشن ریسپانسیو)
     const headerHTML = `
@@ -62,11 +100,11 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="footer-content">
                 <span class="warning-18">🔞 استفاده از خدمات این سامانه تنها برای افراد بالای ۱۸ سال مجاز است.</span>
                <div class="footer-links">
-    <a href="/app/install-guide.html">راهنمای نصب</a>
-    <a href="/app/channels.html">لیست کانال‌ها</a>
-    <a href="/app/mashhad.html" style="color: #00ff88;">صیغه مشهد (جدید)</a>
-    <a href="/app/terms.html">قوانین سایت</a>
-</div>
+                    <a href="/app/install-guide.html">راهنمای نصب</a>
+                    <a href="/app/channels.html">لیست کانال‌ها</a>
+                    <a href="/app/mashhad.html" style="color: #00ff88;">صیغه مشهد (جدید)</a>
+                    <a href="/app/terms.html">قوانین سایت</a>
+                </div>
                 <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © 2026</p>
             </div>
         </footer>
