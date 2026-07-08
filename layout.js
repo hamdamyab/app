@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="/app/terms.html">قوانین سایت</a>
                     <a href="/app/privacy.html">حریم خصوصی</a>
                 </div>
-                <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © ۲۰۲۴</p>
+                <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © 2026</p>
             </div>
         </footer>
         <style>
