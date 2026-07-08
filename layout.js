@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function() {
                <ul class="nav-links">
     <li><a href="/app/">صفحه اصلی</a></li>
     <li><a href="/app/radar.html">رادار افراد نزدیک</a></li>
-    <li><a href="/app/dating.html" style="color: #9d00ff; font-weight: 700;">دوستیابی</a></li>
+    <li><a href="/app/dating.html">دوستیابی</a></li>
     <li><a href="/app/sigheh.html">صیغه یابی</a></li>
-    <li><a href="/app/marriage.html">همسریابی دائم</a></li>
+    <li><a href="/app/sigheh-text.html" style="color: #ffc107; font-weight: 700;">متن صیغه</a></li>
 </ul>
             </div>
         </nav>
