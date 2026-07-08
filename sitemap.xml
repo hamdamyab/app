@@ -58,4 +58,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- لندینگ تارگتینگ کانال‌های تلگرام و روبیکا -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/channels.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
