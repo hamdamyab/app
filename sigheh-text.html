@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئو صفحه آموزش متن صیغه -->
+    <title>متن صیغه محرمیت به فارسی و عربی | آموزش خواندن صیغه موقت</title>
+    <meta name="description" content="آموزش کامل و دقیق خواندن صیغه محرمیت. متن صیغه موقت به زبان عربی و فارسی، شرایط صحت عقد موقت و معنی صیغه. دانلود اپلیکیشن صیغه یابی همدم یاب.">
+    <meta name="keywords" content="متن صیغه, صیغه محرمیت, خواندن صیغه محرمیت به فارسی, خواندن صیغه, صیغه موقت متن, معنی صیغه, متن صیغه موقت, صیغه چیست, صیغه نذر چیست">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+            --gold: #ffc107;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.8; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 15% 20%, rgba(111, 0, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.15) 0%, transparent 50%); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        /* هدر صفحه */
+        .page-header { text-align: center; margin-bottom: 50px; }
+        .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; line-height: 1.4; }
+        .page-subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* باکس‌های متنی آموزشی */
+        .vow-box { background: linear-gradient(180deg, rgba(30,30,45,0.7) 0%, rgba(15,15,25,0.9) 100%); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; margin-bottom: 30px; backdrop-filter: blur(10px); position: relative; overflow: hidden; }
+        .vow-box::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, var(--primary), var(--secondary)); }
+        
+        .vow-box h2 { font-size: 1.4rem; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .vow-box h2 span { font-size: 1.8rem; }
+        
+        .arabic-text { font-size: 1.6rem; font-weight: 700; color: var(--gold); text-align: center; margin: 20px 0; line-height: 2; padding: 15px; background: rgba(255,193,7,0.05); border-radius: 15px; border: 1px dashed rgba(255,193,7,0.2); }
+        .persian-text { color: var(--text-muted); font-size: 1.05rem; text-align: justify; margin-bottom: 15px; }
+        .persian-translation { text-align: center; font-size: 1.1rem; color: #00ff88; font-weight: 500; background: rgba(0,255,136,0.05); padding: 10px; border-radius: 10px; }
+
+        /* بنر تبلیغاتی بین متن‌ها (تله دانلود) */
+        .cta-banner { background: linear-gradient(135deg, rgba(111,0,255,0.2) 0%, rgba(255,0,127,0.2) 100%); border: 1px solid var(--primary); border-radius: 20px; padding: 30px; text-align: center; margin: 40px 0; box-shadow: 0 10px 30px rgba(255,0,127,0.15); }
+        .cta-banner h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; font-weight: 900; }
+        .cta-banner p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; padding: 15px 35px; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(255,0,127,0.3); transition: transform 0.3s; }
+        .btn-download:hover { transform: scale(1.05); }
+
+        /* بخش سوالات متداول سئو شده */
+        .faq-section { margin-top: 50px; }
+        .faq-section h2 { font-size: 1.5rem; color: #fff; margin-bottom: 25px; text-align: center; }
+        details { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 15px; margin-bottom: 15px; overflow: hidden; }
+        summary { padding: 18px 25px; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #00d2ff; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
+        details[open] summary::after { content: '-'; }
+        .faq-content { padding: 0 25px 20px; color: var(--text-muted); font-size: 0.95rem; text-align: justify; }
+
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">آموزش کامل متن صیغه محرمیت (عربی و فارسی)</h1>
+            <p class="page-subtitle">در این صفحه نحوه صحیح خواندن صیغه موقت، معنی دقیق آن و شرایط ابطال صیغه را بر اساس احکام شرعی آموزش می‌بینید.</p>
+        </header>
+
+        <section>
+            <!-- باکس 1: خواندن از طرف زن -->
+            <div class="vow-box">
+                <h2><span>👩</span> مرحله اول: خواندن خطبه توسط خانم</h2>
+                <p class="persian-text">ابتدا خانم باید شرایط عقد یعنی مدت زمان دقیق صیغه (مثلاً یک ماه) و مبلغ مهریه (مثلاً مشخص شده) را تعیین کند. سپس متن صیغه موقت زیر را بخواند:</p>
+                <div class="arabic-text">
+                    زَوَّجْتُکَ نَفْسِی فِی الْمُدَّةِ الْمَعْلُومَةِ عَلَی الْمَهْرِ الْمَعْلُومِ
+                </div>
+                <div class="persian-translation">
+                    معنی صیغه: من خودم را به همسری تو درآوردم، برای مدت زمان مشخص شده و با مهریه مشخص شده.
+                </div>
+            </div>
+
+            <!-- باکس 2: خواندن از طرف مرد -->
+            <div class="vow-box">
+                <h2><span>👨</span> مرحله دوم: قبول کردن توسط آقا</h2>
+                <p class="persian-text">بلافاصله بعد از اینکه خانم جمله بالا را به طور صحیح ادا کرد، آقا باید قبول کردن خود را با خواندن متن زیر اعلام کند:</p>
+                <div class="arabic-text">
+                    قَبِلْتُ التَّزْویجَ
+                </div>
+                <div class="persian-translation">
+                    معنی صیغه: این ازدواج (صیغه محرمیت) را قبول کردم.
+                </div>
+            </div>
+
+            <!-- بنر تبلیغاتی اپلیکیشن -->
+            <div class="cta-banner">
+                <h3>دنبال فرد مناسب برای آشنایی و صیغه محرمیت هستی؟</h3>
+                <p>با اپلیکیشن همدم یاب، در شهر خودت افراد آنلاین رو پیدا کن، چت کن و شماره مستقیم بگیر. کاملاً ناشناس و امن!</p>
+                <a href="./apk/app-release.apk" class="btn-download" download>📥 دانلود مستقیم همدم یاب</a>
+            </div>
+
+            <!-- باکس 3: خواندن صیغه به فارسی -->
+            <div class="vow-box">
+                <h2><span>🌐</span> آیا خواندن صیغه محرمیت به فارسی صحیح است؟</h2>
+                <p class="persian-text">بسیاری از کاربران سوال می‌کنند که <strong>خواندن صیغه محرمیت به فارسی</strong> مجاز است یا خیر؟ بر اساس نظر اکثر مراجع تقلید، اگر زن و مرد نتوانند صیغه را به عربی صحیح بخوانند، خواندن آن به زبان فارسی یا هر زبان دیگری جایز است.</p>
+                <p class="persian-text"><strong>متن فارسی از طرف زن:</strong> «من خودم را به همسری تو درآوردم در مدت زمان مشخص و با مهریه تعیین شده.»</p>
+                <p class="persian-text"><strong>متن فارسی از طرف مرد:</strong> «من هم این ازدواج موقت را قبول کردم.»</p>
+            </div>
+        </section>
+
+        <!-- بخش سوالات متداول (SEO FAQ) حاوی کلمات کلیدی در حال رشد -->
+        <section class="faq-section">
+            <h2>پاسخ به سوالات شرعی و رایج شما</h2>
+            
+            <details>
+                <summary>صیغه چیست و چه تفاوتی با عقد دائم دارد؟</summary>
+                <div class="faq-content">
+                    صیغه یا عقد موقت، نوعی ازدواج اسلامی است که در آن زن و مرد برای مدت زمان کاملاً مشخص و محدود (از یک ساعت تا چند سال) با تعیین مهریه، به یکدیگر محرم می‌شوند. تفاوت اصلی آن با ازدواج دائم در همین محدودیت زمانی و عدم وجوب نفقه (مگر با شرط) است.
+                </div>
+            </details>
+
+            <details>
+                <summary>صیغه ۹۹ ساله چگونه باطل میشود؟</summary>
+                <div class="faq-content">
+                    کلمه کلیدی <strong>صیغه ۹۹ ساله</strong> در واقع همان عقد موقت با مدت زمان بسیار طولانی است. ابطال آن با طلاق انجام نمی‌شود! بلکه مرد باید مدت زمان باقی‌مانده را به زن ببخشد (بذل مدت کند). با گفتن جمله «باقی‌مانده مدت را به تو بخشیدم»، صیغه ۹۹ ساله باطل می‌شود.
+                </div>
+            </details>
+
+            <details>
+                <summary>صیغه نذر چیست؟</summary>
+                <div class="faq-content">
+                    <strong>صیغه نذر چیست؟</strong> صیغه نذر ارتباطی به ازدواج ندارد. بلکه جمله‌ای شرعی است (مانند: لِلّهِ عَلیَّ...) که شخص هنگام نذر کردن به زبان می‌آورد تا نذر او از نظر شرعی واجب الاطاعه شود و ملزم به انجام آن گردد.
+                </div>
+            </details>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="layout.js"></script>
+</body>
+</html>
