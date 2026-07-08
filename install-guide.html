@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>راهنمای نصب و فعال‌سازی | همدم یاب</title>
-    <meta name="description" content="آموزش تصویری نصب اپلیکیشن همدم یاب و رفع خطای سپر ایمنی گوگل (Play Protect). راهنمای فعال‌سازی دسترسی‌ها (Accessibility) در گوشی‌های فارسی و انگلیسی.">
+    <meta name="description" content="آموزش تصویری نصب اپلیکیشن همدم یاب، رفع خطای سپر ایمنی گوگل (Play Protect) و حل مشکل تنظیمات محدودشده در اندروید ۱۳ (Allow restricted settings).">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#030014">
     
@@ -25,8 +25,8 @@
             --android-bg: #1e1e22;
             --android-surface: #2b2b30;
             --android-text: #e3e3e3;
-            --android-accent: #8ab4f8; /* آبی کلاسیک گوگل */
-            --android-danger: #f28b82; /* قرمز اخطار */
+            --android-accent: #8ab4f8; 
+            --android-danger: #f28b82; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
@@ -39,38 +39,50 @@
         .page-header { text-align: center; margin-bottom: 40px; }
         .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, #00d2ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
         
-        /* دکمه انتخاب زبان */
         .lang-switcher { display: flex; justify-content: center; margin-bottom: 40px; }
         .switch-toggle { display: flex; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 50px; overflow: hidden; padding: 5px; }
         .lang-btn { background: transparent; border: none; color: var(--text-muted); padding: 10px 30px; font-size: 1rem; font-weight: 700; cursor: pointer; border-radius: 50px; transition: all 0.3s; }
         .lang-btn.active { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; box-shadow: 0 5px 15px rgba(255,0,127,0.3); }
 
-        /* باکس‌های شبیه‌ساز اندروید */
         .instruction-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; margin-bottom: 40px; backdrop-filter: blur(10px); }
         .instruction-title { font-size: 1.3rem; margin-bottom: 20px; color: #fff; display: flex; align-items: center; gap: 10px; }
-        .instruction-title span { background: var(--primary); width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1rem; }
+        .instruction-title span { background: var(--primary); width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1rem; flex-shrink: 0;}
 
         /* UI فیک اندروید */
-        .android-mockup { background: var(--android-bg); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.6); max-width: 400px; margin: 0 auto; font-family: Roboto, sans-serif; }
+        .android-mockup { background: var(--android-bg); border-radius: 15px; overflow: visible; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.6); max-width: 400px; margin: 0 auto; font-family: Roboto, sans-serif; position: relative; }
         
-        /* حالت‌ها (نمایش بر اساس زبان) */
         .content-en { display: none; direction: ltr; text-align: left; }
         .content-fa { display: block; direction: rtl; text-align: right; }
 
-        /* شبیه‌ساز پاپ‌آپ Play Protect */
+        /* Step 1: Play Protect */
         .play-protect-dialog { padding: 24px; }
         .dialog-icon { font-size: 2.5rem; color: var(--android-danger); margin-bottom: 15px; }
         .dialog-title { font-size: 1.25rem; color: var(--android-text); margin-bottom: 10px; font-weight: 500; }
         .dialog-desc { color: #9aa0a6; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
-        .dialog-more { color: var(--android-accent); font-size: 0.9rem; margin-bottom: 20px; display: inline-block; cursor: pointer; text-decoration: underline; }
+        .dialog-more { color: var(--android-accent); font-size: 0.9rem; margin-bottom: 20px; display: inline-block; text-decoration: underline; }
         .dialog-actions { display: flex; justify-content: flex-end; gap: 15px; }
-        .btn-text { color: var(--android-accent); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; }
+        .btn-text { color: var(--android-accent); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
         .btn-text.highlight { position: relative; }
-        /* افکت کلیک روی دکمه در هر صورت نصب شود */
         .btn-text.highlight::after { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; border: 2px solid var(--primary); border-radius: 5px; animation: pulse-border 1.5s infinite; }
         @keyframes pulse-border { 0% { transform: scale(0.9); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
 
-        /* شبیه‌ساز منوی تنظیمات (Accessibility) */
+        /* Step 2: App Info & Restricted Settings */
+        .app-info-header { background: var(--android-surface); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dots-menu { font-weight: bold; font-size: 1.2rem; padding: 0 10px; position: relative; }
+        
+        /* منوی آبشاری سه‌نقطه */
+        .dropdown { position: absolute; top: 120%; background: var(--android-surface); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); z-index: 10; width: max-content; overflow: hidden; }
+        .content-fa .dropdown { left: 10px; }
+        .content-en .dropdown { right: 10px; }
+        .dropdown-item { padding: 15px 20px; color: var(--android-text); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-item.highlight-item { background: rgba(255, 0, 127, 0.15); border-right: 3px solid var(--primary); color: #fff; font-weight: bold; }
+        .content-en .dropdown-item.highlight-item { border-right: none; border-left: 3px solid var(--primary); }
+
+        .app-info-body { padding: 20px; text-align: center; }
+        .app-info-body img { width: 60px; height: 60px; border-radius: 15px; margin-bottom: 10px; }
+        .app-info-title { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
+
+        /* Step 3: Accessibility */
         .settings-header { background: var(--android-surface); padding: 15px 20px; font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .settings-list { padding: 10px 0; }
         .settings-item { padding: 15px 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -79,12 +91,10 @@
         .item-title { font-size: 1rem; color: var(--android-text); }
         .item-sub { font-size: 0.85rem; color: #9aa0a6; }
         
-        /* دکمه سوئیچ اندروید (Toggle) */
-        .toggle-switch { width: 44px; height: 24px; background: rgba(255,255,255,0.3); border-radius: 24px; position: relative; cursor: pointer; }
+        .toggle-switch { width: 44px; height: 24px; background: rgba(255,255,255,0.3); border-radius: 24px; position: relative; }
         .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: all 0.3s; }
         .toggle-switch.on { background: var(--android-accent); }
         .toggle-switch.on::after { transform: translateX(20px); }
-        /* برای چپ‌چین/راست‌چین سوئیچ */
         .content-fa .toggle-switch::after { right: 2px; left: auto; }
         .content-fa .toggle-switch.on::after { transform: translateX(-20px); }
 
@@ -103,7 +113,6 @@
             <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">برای عملکرد صحیح رادار و امکانات چت، باید مجوزهای لازم را به اپلیکیشن بدهید. آموزش‌ها را بر اساس زبان گوشی خود دنبال کنید.</p>
         </header>
 
-        <!-- دکمه انتخاب زبان گوشی -->
         <div class="lang-switcher">
             <div class="switch-toggle">
                 <button class="lang-btn active" onclick="switchLang('fa')" id="btn-fa">فارسی 🇮🇷</button>
@@ -114,10 +123,9 @@
         <!-- مرحله اول: اخطار نصب -->
         <section class="instruction-box">
             <h2 class="instruction-title"><span>۱</span> رفع خطای سپر ایمنی (Play Protect)</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">چون این اپلیکیشن مستقیماً از سایت دانلود می‌شود، ممکن است گوگل پلی اخطار دهد. نگران نباشید، برنامه کاملاً امن است. فقط کافیست روی <span style="color: var(--primary);">جزئیات بیشتر</span> کلیک کرده و نصب را تایید کنید.</p>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">هنگام نصب، روی <span style="color: var(--primary);">جزئیات بیشتر</span> کلیک کرده و نصب را تایید کنید.</p>
 
             <div class="android-mockup">
-                <!-- حالت فارسی -->
                 <div class="content-fa">
                     <div class="play-protect-dialog">
                         <div class="dialog-icon">⚠️</div>
@@ -131,7 +139,6 @@
                     </div>
                 </div>
 
-                <!-- حالت انگلیسی -->
                 <div class="content-en">
                     <div class="play-protect-dialog">
                         <div class="dialog-icon">⚠️</div>
@@ -147,16 +154,61 @@
             </div>
         </section>
 
-        <!-- مرحله دوم: دسترسی Accessibility -->
+        <!-- مرحله دوم: رفع محدودیت اندروید (جدید) -->
         <section class="instruction-box">
-            <h2 class="instruction-title"><span>۲</span> فعال‌سازی دسترسی (Accessibility)</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">برای دریافت نوتیفیکیشن پیام‌های چت و پیدا کردن افراد نزدیک، باید سرویس قابلیت دسترسی را برای اپلیکیشن ما روشن کنید.</p>
+            <h2 class="instruction-title"><span>۲</span> رفع محدودیت سیستم (برای اندروید ۱۳ به بالا)</h2>
+            <p class="content-fa" style="color: var(--text-muted); margin-bottom: 20px;">پس از نصب، روی آیکون برنامه در منوی گوشی دست خود را نگه دارید و وارد <strong>اطلاعات برنامه (App Info)</strong> شوید. از سه نقطه بالای صفحه، گزینه <strong>مجاز کردن تنظیمات محدودشده</strong> را انتخاب کنید.</p>
+            <p class="content-en" style="color: var(--text-muted); margin-bottom: 20px;">Long press the app icon on your home screen and tap <strong>App Info</strong>. Tap the 3 dots in the top right corner and select <strong>Allow restricted settings</strong>.</p>
+
+            <div class="android-mockup" style="padding-bottom: 40px;">
+                <div class="content-fa">
+                    <div class="app-info-header">
+                        <span>← اطلاعات برنامه</span>
+                        <div class="dots-menu">
+                            ⋮
+                            <div class="dropdown">
+                                <div class="dropdown-item highlight-item">مجاز کردن تنظیمات محدودشده</div>
+                                <div class="dropdown-item">بازخورد و راهنما</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-info-body">
+                        <img src="images/icon.png" alt="icon">
+                        <div class="app-info-title">همدم یاب</div>
+                        <div style="color: #9aa0a6; font-size: 0.9rem;">نسخه ۱.۰</div>
+                    </div>
+                </div>
+
+                <div class="content-en">
+                    <div class="app-info-header">
+                        <span>← App info</span>
+                        <div class="dots-menu">
+                            ⋮
+                            <div class="dropdown">
+                                <div class="dropdown-item highlight-item">Allow restricted settings</div>
+                                <div class="dropdown-item">Help & feedback</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-info-body">
+                        <img src="images/icon.png" alt="icon">
+                        <div class="app-info-title">Hamdam Yab</div>
+                        <div style="color: #9aa0a6; font-size: 0.9rem;">Version 1.0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- مرحله سوم: فعال‌سازی نهایی -->
+        <section class="instruction-box">
+            <h2 class="instruction-title"><span>۳</span> فعال‌سازی نهایی دسترسی‌ها</h2>
+            <p class="content-fa" style="color: var(--text-muted); margin-bottom: 20px;">حالا وارد تنظیمات گوشی شوید. به بخش <strong>قابلیت دسترسی (Accessibility)</strong> بروید، همدم یاب را پیدا کرده و کلید آن را روشن کنید.</p>
+            <p class="content-en" style="color: var(--text-muted); margin-bottom: 20px;">Now go to Settings > <strong>Accessibility</strong>. Find Hamdam Yab in Downloaded apps and turn the switch on.</p>
 
             <div class="android-mockup">
-                <!-- حالت فارسی -->
                 <div class="content-fa">
                     <div class="settings-header">
-                        <span>←</span> قابلیت دسترسی (Accessibility)
+                        <span>←</span> قابلیت دسترسی
                     </div>
                     <div class="settings-list">
                         <div class="settings-item">
@@ -172,13 +224,11 @@
                                 <div class="item-title">همدم یاب</div>
                                 <div class="item-sub">روشن است</div>
                             </div>
-                            <!-- دکمه سوئیچ روشن -->
                             <div class="toggle-switch on"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- حالت انگلیسی -->
                 <div class="content-en">
                     <div class="settings-header">
                         <span>←</span> Accessibility
@@ -197,7 +247,6 @@
                                 <div class="item-title">Hamdam Yab</div>
                                 <div class="item-sub">On</div>
                             </div>
-                            <!-- دکمه سوئیچ روشن -->
                             <div class="toggle-switch on"></div>
                         </div>
                     </div>
@@ -214,12 +263,10 @@
     <script src="layout.js"></script>
     <script>
         function switchLang(lang) {
-            // تغییر استایل دکمه‌ها
             document.getElementById('btn-fa').classList.remove('active');
             document.getElementById('btn-en').classList.remove('active');
             document.getElementById('btn-' + lang).classList.add('active');
 
-            // نمایش محتوای مربوط به زبان
             const faContents = document.querySelectorAll('.content-fa');
             const enContents = document.querySelectorAll('.content-en');
 
