@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <li><a href="/app/dating.html">دوستیابی</a></li>
     <li><a href="/app/sigheh.html">صیغه یابی</a></li>
     <li><a href="/app/sigheh-text.html" style="color: #ffc107; font-weight: 700;">متن صیغه</a></li>
+    <li><a href="/app/install-guide.html" style="color: #00ff88; font-weight: 700;">راهنمای نصب 📱</a></li>
 </ul>
             </div>
         </nav>
