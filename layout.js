@@ -61,12 +61,12 @@ document.addEventListener("DOMContentLoaded", function() {
         <footer>
             <div class="footer-content">
                 <span class="warning-18">🔞 استفاده از خدمات این سامانه تنها برای افراد بالای ۱۸ سال مجاز است.</span>
-                <div class="footer-links">
-                    <a href="/app/install-guide.html">راهنمای نصب و دسترسی‌ها</a>
-                    <a href="/app/terms.html">قوانین سایت</a>
-                    <a href="/app/privacy.html">حریم خصوصی</a>
-                    <a href="/app/channels.html">لیست کانال‌ها</a>
-                </div>
+               <div class="footer-links">
+    <a href="/app/install-guide.html">راهنمای نصب</a>
+    <a href="/app/channels.html">لیست کانال‌ها</a>
+    <a href="/app/mashhad.html" style="color: #00ff88;">صیغه مشهد (جدید)</a>
+    <a href="/app/terms.html">قوانین سایت</a>
+</div>
                 <p>تمامی حقوق مادی و معنوی محفوظ می‌باشد. © 2026</p>
             </div>
         </footer>
