@@ -38,32 +38,37 @@
         .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, var(--radar-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
         .page-subtitle { color: var(--text-muted); font-size: 1.1rem; }
         .highlight-city { color: var(--radar-color); font-weight: 900; font-size: 1.3rem; }
-
-        /* انیمیشن رادار با CSS */
-        .radar-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px 20px; text-align: center; backdrop-filter: blur(10px); margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,255,136,0.05); }
+/* انیمیشن رادار واقعی با CSS */
+        .radar-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px 20px; text-align: center; backdrop-filter: blur(10px); margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,255,136,0.05); overflow: hidden; }
         .radar-status { color: #fff; font-size: 1.2rem; margin-bottom: 25px; font-weight: 700; }
         .radar-status span { color: var(--radar-color); animation: pulse-text 1.5s infinite; }
         @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        .radar { position: relative; width: 280px; height: 280px; margin: 0 auto; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, rgba(0,0,0,0.8) 100%); border: 2px solid rgba(0,255,136,0.3); overflow: hidden; box-shadow: 0 0 40px rgba(0,255,136,0.2); }
-        /* خطوط داخل رادار */
-        .radar::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(0,255,136,0.3); }
-        .radar::after { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: rgba(0,255,136,0.3); }
-        .radar-circle { position: absolute; top: 25%; left: 25%; width: 50%; height: 50%; border-radius: 50%; border: 1px solid rgba(0,255,136,0.3); }
+        /* بدنه اصلی رادار */
+        .radar { position: relative; width: 300px; height: 300px; margin: 0 auto; border-radius: 50%; border: 2px solid rgba(0,255,136,0.5); background: repeating-radial-gradient(rgba(0,255,136,0.1) 0, rgba(0,255,136,0.1) 1px, transparent 1px, transparent 15%); box-shadow: 0 0 40px rgba(0,255,136,0.2), inset 0 0 30px rgba(0,255,136,0.2); }
+        .radar::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(0,255,136,0.4); }
+        .radar::after { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: rgba(0,255,136,0.4); }
         
-        /* خط اسکنر چرخنده */
-        .scanner { position: absolute; top: 50%; left: 50%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--radar-color)); transform-origin: 0 0; animation: scan 3s linear infinite; }
-        .scanner::after { content: ''; position: absolute; top: 0; right: 0; width: 10px; height: 10px; background: var(--radar-color); border-radius: 50%; box-shadow: 0 0 15px var(--radar-color); transform: translateY(-4px); }
-        @keyframes scan { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* طیف نوری چرخنده (Conic Gradient) */
+        .scanner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 75%, rgba(0,255,136,0.8) 100%); animation: scan 4s linear infinite; pointer-events: none; }
+        @keyframes scan { 100% { transform: rotate(360deg); } }
 
-        /* نقاط پیدا شده (کاربران فیک) */
-        .dot { position: absolute; width: 12px; height: 12px; background: #ff007f; border-radius: 50%; box-shadow: 0 0 15px #ff007f; opacity: 0; animation: appear 3s infinite; }
-        .dot:nth-child(1) { top: 30%; left: 60%; animation-delay: 0.5s; }
-        .dot:nth-child(2) { top: 70%; left: 35%; animation-delay: 1.2s; background: #00d2ff; box-shadow: 0 0 15px #00d2ff;}
-        .dot:nth-child(3) { top: 40%; left: 20%; animation-delay: 2.1s; }
-        .dot:nth-child(4) { top: 60%; left: 75%; animation-delay: 2.8s; }
-        @keyframes appear { 0% { opacity: 0; transform: scale(0.5); } 10% { opacity: 1; transform: scale(1.2); } 20% { opacity: 0.8; transform: scale(1); } 90% { opacity: 0.8; } 100% { opacity: 0; } }
+        /* نقطه‌های روی رادار (با سینک شدن انیمیشن روشن/خاموش) */
+        .dot { position: absolute; width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px #fff, 0 0 30px #00ff88; opacity: 0; animation: ping 4s infinite linear; }
+        
+        /* تنظیم مکان و زمان روشن شدن دقیقاً متناسب با زاویه خط رادار */
+        .dot:nth-child(2) { top: 25%; left: 70%; animation-delay: 0.5s; } /* زاویه حدود 45 درجه */
+        .dot:nth-child(3) { top: 60%; left: 80%; animation-delay: 1.2s; background: #ff007f; box-shadow: 0 0 15px #fff, 0 0 30px #ff007f;} /* زاویه حدود 120 درجه */
+        .dot:nth-child(4) { top: 75%; left: 35%; animation-delay: 2.3s; } /* زاویه حدود 200 درجه */
+        .dot:nth-child(5) { top: 30%; left: 20%; animation-delay: 3.5s; } /* زاویه حدود 315 درجه */
 
+        @keyframes ping {
+            0% { opacity: 0; transform: scale(0.5); }
+            5% { opacity: 1; transform: scale(1.5); }
+            15% { opacity: 0.8; transform: scale(1); }
+            40% { opacity: 0.2; }
+            100% { opacity: 0; }
+        }
         /* بنر دانلود */
         .cta-banner { text-align: center; margin-top: 30px; }
         .btn-download { display: inline-block; background: linear-gradient(90deg, var(--radar-color), #00b366); color: #000; text-decoration: none; padding: 15px 35px; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,255,136,0.3); transition: transform 0.3s; }
