@@ -46,4 +46,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- لندینگ آموزش متن صیغه -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/sigheh-text.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
