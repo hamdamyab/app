@@ -52,4 +52,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- راهنمای نصب (برای کلمات کلیدی خطای سپر ایمنی و اکسسیبیلیتی) -->
+  <url>
+    <loc>https://hamdamyab.github.io/app/install-guide.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
