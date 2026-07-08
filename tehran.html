@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- تنظیمات سئوی محلی (Local SEO) -->
+    <title>صیغه یابی و ازدواج موقت تهران | رادار افراد آنلاین در تهران</title>
+    <meta name="description" content="با رادار همدم یاب، افراد آنلاین برای صیغه و ازدواج موقت در تهران و محله‌های اطراف خود (قاسم آباد، وکیل آباد و...) را پیدا کنید. کاملاً امن و ناشناس.">
+    <meta name="keywords" content="صیغه تهران, صیغه یابی تهران, ازدواج موقت تهران, شماره صیغه تهران, همسریابی تهران, زنان صیغه ای تهران">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030014">
+    
+    <link rel="icon" type="image/png" href="images/icon.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #030014;
+            --primary: #ff007f;
+            --secondary: #6f00ff;
+            --radar-color: #00ff88;
+            --glass-bg: rgba(20, 20, 30, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aeb5cc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.8; }
+
+        .neon-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; background: linear-gradient(135deg, #fff 0%, var(--radar-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
+        .page-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+        .highlight-city { color: var(--radar-color); font-weight: 900; font-size: 1.3rem; }
+/* انیمیشن رادار واقعی با CSS */
+        .radar-wrapper { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px 20px; text-align: center; backdrop-filter: blur(10px); margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,255,136,0.05); overflow: hidden; }
+        .radar-status { color: #fff; font-size: 1.2rem; margin-bottom: 25px; font-weight: 700; }
+        .radar-status span { color: var(--radar-color); animation: pulse-text 1.5s infinite; }
+        @keyframes pulse-text { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        /* بدنه اصلی رادار */
+        .radar { position: relative; width: 300px; height: 300px; margin: 0 auto; border-radius: 50%; border: 2px solid rgba(0,255,136,0.5); background: repeating-radial-gradient(rgba(0,255,136,0.1) 0, rgba(0,255,136,0.1) 1px, transparent 1px, transparent 15%); box-shadow: 0 0 40px rgba(0,255,136,0.2), inset 0 0 30px rgba(0,255,136,0.2); }
+        .radar::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(0,255,136,0.4); }
+        .radar::after { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: rgba(0,255,136,0.4); }
+        
+        /* طیف نوری چرخنده (Conic Gradient) */
+        .scanner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, transparent 75%, rgba(0,255,136,0.8) 100%); animation: scan 4s linear infinite; pointer-events: none; }
+        @keyframes scan { 100% { transform: rotate(360deg); } }
+
+        /* نقطه‌های روی رادار (با سینک شدن انیمیشن روشن/خاموش) */
+        .dot { position: absolute; width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px #fff, 0 0 30px #00ff88; opacity: 0; animation: ping 4s infinite linear; }
+        
+        /* تنظیم مکان و زمان روشن شدن دقیقاً متناسب با زاویه خط رادار */
+        .dot:nth-child(2) { top: 25%; left: 70%; animation-delay: 0.5s; } /* زاویه حدود 45 درجه */
+        .dot:nth-child(3) { top: 60%; left: 80%; animation-delay: 1.2s; background: #ff007f; box-shadow: 0 0 15px #fff, 0 0 30px #ff007f;} /* زاویه حدود 120 درجه */
+        .dot:nth-child(4) { top: 75%; left: 35%; animation-delay: 2.3s; } /* زاویه حدود 200 درجه */
+        .dot:nth-child(5) { top: 30%; left: 20%; animation-delay: 3.5s; } /* زاویه حدود 315 درجه */
+
+        @keyframes ping {
+            0% { opacity: 0; transform: scale(0.5); }
+            5% { opacity: 1; transform: scale(1.5); }
+            15% { opacity: 0.8; transform: scale(1); }
+            40% { opacity: 0.2; }
+            100% { opacity: 0; }
+        }
+        /* بنر دانلود */
+        .cta-banner { text-align: center; margin-top: 30px; }
+        .btn-download { display: inline-block; background: linear-gradient(90deg, var(--radar-color), #00b366); color: #000; text-decoration: none; padding: 15px 35px; border-radius: 50px; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,255,136,0.3); transition: transform 0.3s; }
+        .btn-download:hover { transform: scale(1.05); }
+
+        /* محتوای متنی سئو (SEO Content) */
+        .seo-content { margin-top: 50px; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 15px; border: 1px dashed rgba(255,255,255,0.1); }
+        .seo-content h2, .seo-content h3 { color: #fff; margin-top: 20px; margin-bottom: 10px; }
+        .seo-content p { color: var(--text-muted); text-align: justify; margin-bottom: 15px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <div class="neon-bg"></div>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">رادار صیغه یابی تهران</h1>
+            <p class="page-subtitle">هم‌اکنون <span class="highlight-city">۳۴۸ کاربر آنلاین</span> در محدوده‌های وکیل آباد، قاسم آباد، احمدآباد و... آماده آشنایی هستند.</p>
+        </header>
+
+        <!-- بخش گیمیفیکیشن: رادار متحرک CSS -->
+        <section class="radar-wrapper">
+            <div class="radar-status">وضعیت: <span>در حال اسکن اطراف شما...</span></div>
+            <div class="radar">
+                <div class="radar-circle"></div>
+                <div class="scanner"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="cta-banner">
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem;">برای مشاهده پروفایل و چت با افراد پیدا شده، اپلیکیشن را نصب کنید.</p>
+                <a href="./apk/app-release.apk" class="btn-download" download>📥 اتصال به رادار تهران</a>
+            </div>
+        </section>
+
+        <!-- محتوای سئو شده برای ربات‌های گوگل -->
+        <article class="seo-content">
+            <h2>پیدا کردن همدم و ازدواج موقت در تهران</h2>
+            <p>جستجو برای <strong>صیغه تهران</strong> و پیدا کردن فردی مطمئن و تایید شده در کلان‌شهری مثل تهران، از طریق ربات‌ها و کانال‌های نامعتبر کار بسیار پرریسکی است. پلتفرم همدم یاب با بهره‌گیری از فیلترهای موقعیت مکانی پیشرفته، به شما اجازه می‌دهد تا کاربران آنلاین در شهر تهران را به راحتی پیدا کنید.</p>
+            
+            <h3>چگونه شماره صیغه تهران دریافت کنیم؟</h3>
+            <p>پس از نصب اپلیکیشن و روشن کردن رادار، لیست افراد تایید شده در اطراف شما نمایش داده می‌شود. شما می‌توانید از طریق سیستم چت کاملاً ناشناس و رمزنگاری شده با آن‌ها گفتگو کنید و در صورت توافق دوجانبه برای <strong>صیغه محرمیت</strong>، شماره تلفن مستقیم یکدیگر را دریافت کنید. این سیستم ۱۰۰٪ امن بوده و حریم خصوصی شما به صورت کامل حفظ می‌شود.</p>
+        </article>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="layout.js"></script>
+</body>
+</html>
