@@ -3,63 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود بازی - فروشگاه اندروید</title>
-    <!-- اضافه کردن فونت فارسی -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- آیکون‌های Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>دانلود بازی - کافه اپلیکیشن</title>
     
     <style>
+        /* استفاده از فونت‌های سیستمی برای لود درجا و بدون وقفه */
         :root {
-            --bazaar-green: #1ea05f;
-            --bazaar-green-hover: #17824c;
-            --text-main: #212121;
-            --text-muted: #757575;
-            --bg-body: #ffffff;
-            --bg-card: #f9f9f9;
-            --border-color: #e0e0e0;
+            --primary: #1ea05f;
+            --primary-dark: #157e49;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-main: #f3f4f6;
+            --bg-card: #ffffff;
+            --border-light: #e5e7eb;
+            --star-color: #fbbf24;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
+            /* فونت‌های پیش‌فرض و سریع سیستم عامل */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-body);
+            background-color: var(--bg-main);
             color: var(--text-main);
-            /* اضافه کردن فضای خالی در پایین برای دکمه موبایل */
             padding-bottom: 90px; 
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 768px;
+            max-width: 600px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: var(--bg-card);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
         }
 
-        /* هدر / نوبار بالا */
+        /* آیکون‌های SVG درون‌خطی */
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            fill: currentColor;
+        }
+
+        /* نوبار بالا */
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
+            padding: 1.2rem 1.5rem;
             position: sticky;
             top: 0;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 10;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .navbar-brand {
             font-weight: 800;
-            color: var(--bazaar-green);
-            font-size: 1.2rem;
+            color: var(--primary);
+            font-size: 1.1rem;
         }
 
-        /* اطلاعات اصلی برنامه */
+        .nav-icon {
+            width: 24px; height: 24px;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* هدر اپلیکیشن */
         .app-header {
             display: flex;
             padding: 1.5rem;
@@ -68,12 +85,12 @@
         }
 
         .app-icon {
-            width: 110px;
-            height: 110px;
-            border-radius: 22px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
             object-fit: cover;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
         }
 
         .app-title-section {
@@ -85,24 +102,36 @@
         .app-title {
             font-size: 1.4rem;
             font-weight: 800;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.2rem;
             color: var(--text-main);
         }
 
         .app-developer {
-            color: var(--bazaar-green);
-            font-size: 0.95rem;
+            color: var(--primary);
+            font-size: 0.9rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        /* نوار آمار (امتیاز، نصب، حجم) */
+        .verified-icon {
+            width: 16px; height: 16px;
+            color: var(--primary);
+        }
+
+        /* آمار اپلیکیشن - طراحی جدید جعبه‌ای */
+        .stats-container {
+            padding: 0 1.5rem;
+        }
+
         .app-stats {
             display: flex;
             justify-content: space-around;
+            background: #f8fafc;
+            border-radius: 16px;
             padding: 1.2rem 0;
-            margin: 0 1.5rem;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
         }
 
         .stat-item {
@@ -110,6 +139,18 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
+            flex: 1;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background-color: var(--border-light);
         }
 
         .stat-value {
@@ -118,48 +159,26 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            color: var(--text-main);
         }
 
         .stat-label {
             font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 5px;
+            color: var(--text-light);
+            margin-top: 4px;
         }
 
-        .rating-star {
-            color: #ffc107;
-            font-size: 0.9rem;
+        .icon-small {
+            width: 16px; height: 16px;
+            color: var(--text-light);
         }
 
-        /* دکمه دانلود (نسخه دسکتاپ) */
-        .download-wrapper-desktop {
-            padding: 1.5rem;
-            display: none; /* در موبایل مخفی، در دسکتاپ نمایش */
+        .star-icon {
+            width: 14px; height: 14px;
+            color: var(--star-color);
         }
 
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: var(--bazaar-green);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 100%;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .download-btn:hover {
-            background-color: var(--bazaar-green-hover);
-        }
-
-        /* بخش توضیحات */
+        /* بخش‌ها */
         .section {
             padding: 1.5rem;
         }
@@ -173,22 +192,31 @@
 
         .description {
             font-size: 0.95rem;
-            line-height: 1.8;
-            color: #424242;
+            color: #374151;
+            background: #f8fafc;
+            padding: 1.2rem;
+            border-radius: 16px;
         }
 
-        /* نظرات کاربران */
+        .description p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* نظرات */
         .reviews-container {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .review-card {
-            background: var(--bg-card);
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .review-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .review-header {
@@ -198,132 +226,178 @@
             margin-bottom: 0.5rem;
         }
 
-        .reviewer-name {
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* آواتار کاربر */
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            color: var(--text-light);
             font-size: 0.9rem;
         }
 
-        .review-date {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 0.95rem;
         }
 
-        .stars {
-            color: #ffc107;
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .stars-row {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 0.5rem;
             direction: ltr;
-            text-align: right;
         }
 
         .review-text {
             font-size: 0.9rem;
-            line-height: 1.6;
-            color: #424242;
+            color: #4b5563;
         }
 
-        /* دکمه دانلود ثابت برای موبایل */
+        /* دکمه دانلود */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(30, 160, 95, 0.3);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 12px 1.5rem;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid var(--border-light);
             z-index: 100;
+            display: flex;
+            justify-content: center;
         }
 
-        /* تنظیمات ریسپانسیو */
+        .bottom-nav-inner {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .desktop-download {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* ریسپانسیو دسکتاپ */
         @media (min-width: 600px) {
-            .bottom-nav {
-                display: none;
-            }
-            .download-wrapper-desktop {
-                display: block;
-            }
-            body {
-                padding-bottom: 0;
-                background-color: #f0f0f0;
-            }
-            .container {
-                margin-top: 2rem;
-                margin-bottom: 2rem;
-                border-radius: 16px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-                overflow: hidden;
-            }
+            .bottom-nav { display: none; }
+            .desktop-download { display: block; }
+            body { padding-bottom: 2rem; padding-top: 2rem; }
+            .container { border-radius: 24px; overflow: hidden; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- نوبار -->
+        <!-- نوبار با SVG -->
         <div class="navbar">
-            <i class="fa-solid fa-arrow-right" style="color: var(--text-main); font-size: 1.2rem; cursor: pointer;"></i>
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
             <span class="navbar-brand">بازار اپ</span>
-            <i class="fa-solid fa-search" style="color: var(--text-muted); font-size: 1.1rem; cursor: pointer;"></i>
+            <svg class="nav-icon" style="color:var(--text-light)" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         </div>
 
         <!-- هدر اپلیکیشن -->
         <div class="app-header">
-            <!-- لینک آیکون با https جایگزین شد -->
-            <img src="https://hamdamyab.github.io/app/images/game.png" alt="آیکون بازی" class="app-icon" onerror="this.src='https://via.placeholder.com/110?text=Icon'">
+            <img src="https://hamdamyab.github.io/app/images/game.png" alt="آیکون بازی" class="app-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllOWU5Ii8+PC9zdmc+'">
             
             <div class="app-title-section">
                 <h1 class="app-title">کافه بازی‌های کلاسیک</h1>
-                <span class="app-developer">توسعه‌دهنده: بازی بازی</span>
+                <span class="app-developer">
+                    بازی بازی
+                    <!-- آیکون تیک تایید -->
+                    <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </span>
             </div>
         </div>
 
-        <!-- آمار اپلیکیشن -->
-        <div class="app-stats">
-            <div class="stat-item">
-                <div class="stat-value">۴.۶ <i class="fa-solid fa-star rating-star"></i></div>
-                <div class="stat-label">از ۱,۸۵۰ رأی</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">+۱۰۰ هزار</div>
-                <div class="stat-label">نصب فعال</div>
-            </div>
-            <div class="stat-item">
-                <!-- حجم اصلاح شد -->
-                <div class="stat-value">12</div>
-                <div class="stat-label">مگابایت</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value"><i class="fa-solid fa-gamepad" style="color: #757575; font-size: 1.2rem;"></i></div>
-                <div class="stat-label">تفننی</div>
-            </div>
-        </div>
-
-        <!-- دکمه دانلود (مخصوص دسکتاپ/تبلت) -->
-        <div class="download-wrapper-desktop">
-            <!-- لینک به https تغییر کرد و ویژگی download اضافه شد -->
+        <!-- دکمه دسکتاپ -->
+        <div class="desktop-download">
             <a href="https://hamdamyab.github.io/app/apk/game.apk" download="game.apk" class="download-btn">
-                <i class="fa-solid fa-download"></i> دانلود مستقیم (12 مگابایت)
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                دانلود مستقیم (۲ مگابایت)
             </a>
         </div>
 
-        <!-- توضیحات برنامه -->
+        <!-- آمار اپلیکیشن -->
+        <div class="stats-container">
+            <div class="app-stats">
+                <div class="stat-item">
+                    <div class="stat-value">۴.۶ <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                    <div class="stat-label">از ۱,۸۵۰ رأی</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+۱۰۰ هزار</div>
+                    <div class="stat-label">نصب فعال</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">۲</div>
+                    <div class="stat-label">مگابایت</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">
+                        <svg class="icon-small" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 7 18.5 7 20 7.67 20 8.5 19.33 10.5 18.5 10.5z"/></svg>
+                    </div>
+                    <div class="stat-label">تفننی</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- توضیحات -->
         <div class="section">
             <h2 class="section-title">درباره برنامه</h2>
             <div class="description">
                 <p>مجموعه‌ای کامل از ۴۰ بازی کلاسیک، ورق و تخته‌ای که ساعت‌ها شما را سرگرم می‌کند!</p>
-                <br>
                 <p><strong>ویژگی‌های اصلی:</strong></p>
                 <p>✔️ شامل بازی‌های پرطرفدار مثل حکم، شلم، تخته نرد، پوکر، منچ و مافیا</p>
-                <p>✔️ گرافیک جذاب و رابط کاربری بسیار روان</p>
-                <p>✔️ امکان بازی به صورت آفلاین با هوش مصنوعی و آنلاین با دوستان</p>
-                <p>✔️ حجم بسیار بهینه شده نسبت به تنوع بازی‌ها</p>
+                <p>✔️ گرافیک جذاب و رابط کاربری روان</p>
+                <p>✔️ حجم بسیار بهینه شده (فقط ۲ مگابایت)</p>
             </div>
         </div>
 
-        <div style="height: 8px; background-color: var(--border-color); opacity: 0.3;"></div>
+        <div style="height: 6px; background-color: var(--bg-main);"></div>
 
-        <!-- بخش نظرات -->
+        <!-- نظرات -->
         <div class="section">
             <h2 class="section-title">نظرات کاربران</h2>
             
@@ -331,11 +405,18 @@
                 <!-- نظر ۱ -->
                 <div class="review-card">
                     <div class="review-header">
-                        <span class="reviewer-name">امیرحسین</span>
+                        <div class="reviewer-info">
+                            <div class="avatar">الف</div>
+                            <span class="reviewer-name">امیرحسین</span>
+                        </div>
                         <span class="review-date">۲ روز پیش</span>
                     </div>
-                    <div class="stars">
-                        ★★★★★
+                    <div class="stars-row">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                     </div>
                     <p class="review-text">بازی خیلی خوبیه. مخصوصا بخش تخته نردش خیلی طبیعی طراحی شده و پرتاب تاس‌ها واقعی به نظر میرسه. دست سازندش درد نکنه.</p>
                 </div>
@@ -343,36 +424,33 @@
                 <!-- نظر ۲ -->
                 <div class="review-card">
                     <div class="review-header">
-                        <span class="reviewer-name">سارا .م</span>
+                        <div class="reviewer-info">
+                            <div class="avatar" style="background:#e0e7ff; color:#4f46e5;">س</div>
+                            <span class="reviewer-name">سارا .م</span>
+                        </div>
                         <span class="review-date">۱ هفته پیش</span>
                     </div>
-                    <div class="stars">
-                        ★★★★☆
+                    <div class="stars-row">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" style="color:#e5e7eb" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                     </div>
                     <p class="review-text">عالیه فقط اگر میشد موقع بازی حکم، قوانین رو کمی شخصی‌سازی کرد خیلی بهتر میشد. در کل راضیم و روی گوشیم اصلا لگ نداره.</p>
-                </div>
-
-                <!-- نظر ۳ -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="reviewer-name">گیمر خفن</span>
-                        <span class="review-date">۳ هفته پیش</span>
-                    </div>
-                    <div class="stars">
-                        ★★★★★
-                    </div>
-                    <p class="review-text">حجمش نسبت به اینکه ۴۰ تا بازی توشه بی‌نظیره. من بیشتر برای وقتای بیکاری تو مترو نصب کردم و بخش آفلاینش عالی کار میکنه.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- دکمه دانلود چسبان (مخصوص موبایل) -->
+    <!-- دکمه دانلود چسبان (موبایل) -->
     <div class="bottom-nav">
-        <!-- لینک به https تغییر کرد و ویژگی download اضافه شد -->
-        <a href="https://hamdamyab.github.io/app/apk/game.apk" download="game.apk" class="download-btn">
-            <i class="fa-solid fa-download"></i> دانلود و نصب
-        </a>
+        <div class="bottom-nav-inner">
+            <a href="https://hamdamyab.github.io/app/apk/game.apk" download="game.apk" class="download-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                دانلود و نصب (۲ مگابایت)
+            </a>
+        </div>
     </div>
 
 </body>
