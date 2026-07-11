@@ -3,164 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>دانلود برنامه وام فوری - بدون ضامن</title>
-    <!-- اضافه کردن فونت فارسی وزیرمتن -->
+    <title>دانلود برنامه وام فوری</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --bazaar-green: #2ecc71;
-            --bazaar-green-hover: #27ae60;
-            --text-dark: #212121;
-            --text-gray: #757575;
-            --bg-gray: #f2f2f2;
-            --border-color: #e0e0e0;
+            --primary-color: #10a37f;
+            --primary-hover: #0e8c6d;
+            --bg-color: #f5f7f9;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #6b7280;
+            --border-light: #eaebed;
+            --star-color: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--bg-gray);
+            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
-            color: var(--text-dark);
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        /* Header Section */
-        .app-header {
+            color: var(--text-main);
             display: flex;
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
+            justify-content: center;
+        }
+
+        /* ساختار موبایلی و سایه اصلی */
+        .app-wrapper {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding-bottom: 80px; /* فضای دکمه شناور */
+        }
+
+        /* بخش هدر و معرفی */
+        .hero-section {
+            display: flex;
+            padding: 24px 20px;
+            gap: 16px;
+        }
+
+        .icon-container {
+            position: relative;
+            width: 96px;
+            height: 96px;
+            flex-shrink: 0;
         }
 
         .app-icon {
-            width: 85px;
-            height: 85px;
-            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
             object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-left: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
-        .app-info {
+        .verified-badge {
+            position: absolute;
+            bottom: -4px;
+            left: -4px;
+            width: 24px;
+            height: 24px;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .app-details {
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .app-title {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0 0 4px 0;
+            line-height: 1.4;
         }
 
-        .app-developer {
-            margin: 0 0 4px 0;
-            color: var(--bazaar-green);
+        .app-company {
             font-size: 13px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 0 0 6px 0;
+        }
+
+        .app-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tag {
+            background-color: #f3f4f6;
+            color: var(--text-muted);
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 6px;
             font-weight: 500;
         }
 
-        .app-category {
-            margin: 0;
-            color: var(--text-gray);
-            font-size: 12px;
-        }
-
-        /* Stats Section */
-        .stats-container {
+        /* نوار آمار */
+        .stats-row {
             display: flex;
-            justify-content: space-around;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
+            margin: 0 20px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .stat-item {
+        .stat-box {
+            flex: 1;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .stat-box:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background-color: var(--border-light);
         }
 
         .stat-value {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 4px;
         }
 
         .stat-label {
             font-size: 11px;
-            color: var(--text-gray);
+            color: var(--text-muted);
+            margin-top: 4px;
         }
 
-        .star-icon {
-            color: #f39c12;
-            font-size: 14px;
+        /* گالری تصاویر اسکرولی */
+        .gallery-section {
+            padding: 24px 0 24px 20px;
         }
 
-        /* Download Button */
-        .action-container {
-            padding: 20px;
-        }
-
-        .btn-download {
-            display: block;
-            background-color: var(--bazaar-green);
-            color: white;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 700;
-            transition: background 0.2s ease;
-        }
-
-        .btn-download:hover {
-            background-color: var(--bazaar-green-hover);
-        }
-
-        /* Description Section */
-        .section-title {
+        .gallery-title {
             font-size: 16px;
             font-weight: 700;
-            padding: 0 20px;
-            margin: 20px 0 10px 0;
+            margin: 0 0 16px 0;
         }
 
-        .description {
-            padding: 0 20px;
-            font-size: 13px;
+        .screenshots-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 8px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .screenshots-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .screenshot {
+            width: 140px;
+            height: 280px;
+            background: linear-gradient(145deg, #e6e9f0, #eef1f5);
+            border-radius: 16px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-size: 12px;
+            /* اگر عکس واقعی دارید، بک‌گراند را حذف کرده و تگ img بگذارید */
+        }
+
+        /* توضیحات برنامه */
+        .about-section {
+            padding: 0 20px 24px 20px;
+        }
+
+        .about-text {
+            font-size: 14px;
             line-height: 1.8;
-            color: #424242;
+            color: #374151;
             text-align: justify;
         }
 
-        /* Reviews Section */
-        .reviews-container {
-            padding: 10px 20px 20px 20px;
+        /* بخش نظرات */
+        .reviews-section {
+            padding: 0 20px 24px 20px;
         }
 
         .review-card {
-            background-color: #f9f9f9;
+            background-color: #f9fafb;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
             padding: 16px;
-            border-radius: 12px;
             margin-bottom: 12px;
         }
 
         .review-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 8px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reviewer-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 12px;
         }
 
         .reviewer-name {
@@ -170,98 +255,176 @@
 
         .review-date {
             font-size: 11px;
-            color: var(--text-gray);
+            color: var(--text-muted);
         }
 
-        .review-stars {
-            color: #f39c12;
-            font-size: 12px;
+        .stars-row {
+            display: flex;
+            gap: 2px;
             margin-bottom: 8px;
         }
 
-        .review-text {
+        .review-body {
             font-size: 13px;
             line-height: 1.6;
+            color: #4b5563;
             margin: 0;
-            color: #424242;
         }
+
+        /* دکمه شناور پایین صفحه */
+        .floating-action {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-light);
+            z-index: 100;
+        }
+
+        .btn-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(16, 163, 127, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-main:active {
+            transform: scale(0.98);
+        }
+
+        /* SVG Utilities */
+        .svg-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .svg-star { color: var(--star-color); }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="app-wrapper">
         
-        <!-- هدر اپلیکیشن -->
-        <div class="app-header">
-            <img src="https://hamdamyab.github.io/app/images/vam.png" alt="لوگوی برنامه" class="app-icon">
-            <div class="app-info">
+        <!-- هدر و معرفی -->
+        <div class="hero-section">
+            <div class="icon-container">
+                <img src="https://hamdamyab.github.io/app/images/vam.png" alt="آیکون وام فوری" class="app-icon">
+                <div class="verified-badge">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+            </div>
+            <div class="app-details">
                 <h1 class="app-title">وام فوری - بدون ضامن</h1>
-                <p class="app-developer">سامانه اعتبارسنجی هوشمند</p>
-                <p class="app-category">امور مالی</p>
+                <p class="app-company">سامانه اعتبارسنجی هوشمند</p>
+                <div class="app-tags">
+                    <span class="tag">مالی</span>
+                    <span class="tag">رایگان</span>
+                </div>
             </div>
         </div>
 
-        <!-- آمارهای اپلیکیشن -->
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-value">۴.۸ <span class="star-icon">★</span></span>
-                <span class="stat-label">۱۲۴ نظر</span>
+        <!-- نوار آمار -->
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="stat-value">
+                    ۴.۸
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <div class="stat-label">۱۲۴ نظر</div>
             </div>
-            <div class="stat-item">
-                <span class="stat-value">+۱۰ هزار</span>
-                <span class="stat-label">نصب فعال</span>
+            <div class="stat-box">
+                <div class="stat-value">+۱۰ هزار</div>
+                <div class="stat-label">نصب فعال</div>
             </div>
-            <div class="stat-item">
-                <span class="stat-value">۱۵ مگابایت</span>
-                <span class="stat-label">حجم</span>
+            <div class="stat-box">
+                <div class="stat-value">۱۵ مگ</div>
+                <div class="stat-label">حجم</div>
             </div>
         </div>
 
-        <!-- دکمه دانلود -->
-        <div class="action-container">
-            <a href="https://hamdamyab.github.io/app/apk/vam.apk" class="btn-download">دانلود برنامه</a>
+        <!-- گالری اسکرین‌شات‌ها -->
+        <div class="gallery-section">
+            <h2 class="gallery-title">تصاویر محیط برنامه</h2>
+            <div class="screenshots-container">
+                <!-- می‌توانید به جای این دیوها، تگ img با آدرس عکس‌های خودتان بگذارید -->
+                <div class="screenshot">اسکرین‌شات ۱</div>
+                <div class="screenshot">اسکرین‌شات ۲</div>
+                <div class="screenshot">اسکرین‌شات ۳</div>
+                <div class="screenshot">اسکرین‌شات ۴</div>
+            </div>
         </div>
 
         <!-- توضیحات برنامه -->
-        <h2 class="section-title">درباره برنامه</h2>
-        <div class="description">
-            با استفاده از این اپلیکیشن، می‌توانید به راحتی و کاملاً آنلاین تا سقف ۱ میلیارد تومان وام قرض‌الحسنه دریافت کنید. 
-            هیچ نیازی به ضامن، چک و سفته نیست و تنها ملاک تخصیص تسهیلات، رتبه اعتباری شما در سامانه بانک مرکزی می‌باشد. 
-            پس از احراز هویت، تنها در ۴۸ ساعت وضعیت تسهیلات شما مشخص می‌شود.
+        <div class="about-section">
+            <h2 class="gallery-title">درباره برنامه</h2>
+            <div class="about-text">
+                با استفاده از این پلتفرم، نیازی به کاغذبازی‌های بانکی ندارید. تمامی مراحل استعلام رتبه اعتباری شما مستقیماً از سامانه بانک مرکزی دریافت شده و سقف وام تخصیصی شما (تا ۱ میلیارد تومان) مشخص می‌گردد. بدون نیاز به چک صیادی و ضامن فیزیکی. تنها در ۴۸ ساعت وضعیت وام شما تعیین می‌شود.
+            </div>
         </div>
 
-        <!-- بخش نظرات -->
-        <h2 class="section-title">نظرات کاربران</h2>
-        <div class="reviews-container">
+        <!-- نظرات کاربران -->
+        <div class="reviews-section">
+            <h2 class="gallery-title">نظرات و امتیازات</h2>
             
             <div class="review-card">
                 <div class="review-header">
-                    <span class="reviewer-name">علی حسینی</span>
-                    <span class="review-date">۱۴۰۲/۰۸/۱۲</span>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">ع</div>
+                        <div class="reviewer-name">علی حسینی</div>
+                    </div>
+                    <div class="review-date">۱۴۰۲/۰۸/۱۲</div>
                 </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">اولش فکر میکردم دروغه ولی واقعا بعد از احراز هویت، تو کمتر از دو روز پیامک تاییدیه بانک برام اومد. عالیه.</p>
+                <div class="stars-row">
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                </div>
+                <p class="review-body">محیط برنامه خیلی ساده و روونه. بدون اینکه نیاز باشه برم بانک، کارام آنلاین انجام شد. ممنون از پشتیبانی خوبتون.</p>
             </div>
 
             <div class="review-card">
                 <div class="review-header">
-                    <span class="reviewer-name">سارا محمدی</span>
-                    <span class="review-date">۱۴۰۲/۰۸/۱۰</span>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">س</div>
+                        <div class="reviewer-name">سارا محمدی</div>
+                    </div>
+                    <div class="review-date">۱۴۰۲/۰۸/۱۰</div>
                 </div>
-                <div class="review-stars">★★★★★</div>
-                <p class="review-text">محیط برنامه خیلی ساده و روونه. بدون اینکه نیاز باشه برم بانک کارام انجام شد. ممنون از پشتیبانی خوبتون.</p>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header">
-                    <span class="reviewer-name">رضا کریمی</span>
-                    <span class="review-date">۱۴۰۲/۰۸/۰۵</span>
+                <div class="stars-row">
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon svg-star" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    <svg class="svg-icon" style="color: #cbd5e1;" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                 </div>
-                <div class="review-stars">★★★★☆</div>
-                <p class="review-text">برنامه خوبیه، فقط کاش سقف وام برای رتبه‌های اعتباری متوسط رو یکم بیشتر میکردید. ولی در کل راضیم.</p>
+                <p class="review-body">اولش شک داشتم اما پیامک بانک که اومد مطمئن شدم. فقط ای کاش سقف وام‌ها رو برای کسایی که رتبه B دارن بیشتر میکردین.</p>
             </div>
-
         </div>
+
+        <!-- دکمه شناور دانلود -->
+        <div class="floating-action">
+            <a href="https://hamdamyab.github.io/app/apk/vam.apk" class="btn-main">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                دانلود مستقیم برنامه
+            </a>
+        </div>
+
     </div>
 
 </body>
