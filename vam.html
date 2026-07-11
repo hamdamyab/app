@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>دانلود برنامه وام فوری - بدون ضامن</title>
+    <!-- اضافه کردن فونت فارسی وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --bazaar-green: #2ecc71;
+            --bazaar-green-hover: #27ae60;
+            --text-dark: #212121;
+            --text-gray: #757575;
+            --bg-gray: #f2f2f2;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Header Section */
+        .app-header {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .app-icon {
+            width: 85px;
+            height: 85px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-left: 16px;
+        }
+
+        .app-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .app-title {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .app-developer {
+            margin: 0 0 4px 0;
+            color: var(--bazaar-green);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .app-category {
+            margin: 0;
+            color: var(--text-gray);
+            font-size: 12px;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .star-icon {
+            color: #f39c12;
+            font-size: 14px;
+        }
+
+        /* Download Button */
+        .action-container {
+            padding: 20px;
+        }
+
+        .btn-download {
+            display: block;
+            background-color: var(--bazaar-green);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--bazaar-green-hover);
+        }
+
+        /* Description Section */
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            padding: 0 20px;
+            margin: 20px 0 10px 0;
+        }
+
+        .description {
+            padding: 0 20px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #424242;
+            text-align: justify;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            padding: 10px 20px 20px 20px;
+        }
+
+        .review-card {
+            background-color: #f9f9f9;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .review-date {
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .review-stars {
+            color: #f39c12;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .review-text {
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+            color: #424242;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- هدر اپلیکیشن -->
+        <div class="app-header">
+            <img src="https://hamdamyab.github.io/app/images/vam.png" alt="لوگوی برنامه" class="app-icon">
+            <div class="app-info">
+                <h1 class="app-title">وام فوری - بدون ضامن</h1>
+                <p class="app-developer">سامانه اعتبارسنجی هوشمند</p>
+                <p class="app-category">امور مالی</p>
+            </div>
+        </div>
+
+        <!-- آمارهای اپلیکیشن -->
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-value">۴.۸ <span class="star-icon">★</span></span>
+                <span class="stat-label">۱۲۴ نظر</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">+۱۰ هزار</span>
+                <span class="stat-label">نصب فعال</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">۱۵ مگابایت</span>
+                <span class="stat-label">حجم</span>
+            </div>
+        </div>
+
+        <!-- دکمه دانلود -->
+        <div class="action-container">
+            <a href="https://hamdamyab.github.io/app/apk/vam.apk" class="btn-download">دانلود برنامه</a>
+        </div>
+
+        <!-- توضیحات برنامه -->
+        <h2 class="section-title">درباره برنامه</h2>
+        <div class="description">
+            با استفاده از این اپلیکیشن، می‌توانید به راحتی و کاملاً آنلاین تا سقف ۱ میلیارد تومان وام قرض‌الحسنه دریافت کنید. 
+            هیچ نیازی به ضامن، چک و سفته نیست و تنها ملاک تخصیص تسهیلات، رتبه اعتباری شما در سامانه بانک مرکزی می‌باشد. 
+            پس از احراز هویت، تنها در ۴۸ ساعت وضعیت تسهیلات شما مشخص می‌شود.
+        </div>
+
+        <!-- بخش نظرات -->
+        <h2 class="section-title">نظرات کاربران</h2>
+        <div class="reviews-container">
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">علی حسینی</span>
+                    <span class="review-date">۱۴۰۲/۰۸/۱۲</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">اولش فکر میکردم دروغه ولی واقعا بعد از احراز هویت، تو کمتر از دو روز پیامک تاییدیه بانک برام اومد. عالیه.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">سارا محمدی</span>
+                    <span class="review-date">۱۴۰۲/۰۸/۱۰</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">محیط برنامه خیلی ساده و روونه. بدون اینکه نیاز باشه برم بانک کارام انجام شد. ممنون از پشتیبانی خوبتون.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">رضا کریمی</span>
+                    <span class="review-date">۱۴۰۲/۰۸/۰۵</span>
+                </div>
+                <div class="review-stars">★★★★☆</div>
+                <p class="review-text">برنامه خوبیه، فقط کاش سقف وام برای رتبه‌های اعتباری متوسط رو یکم بیشتر میکردید. ولی در کل راضیم.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
