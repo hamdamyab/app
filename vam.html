@@ -72,7 +72,7 @@
         .stat-value { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
         .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
 
-        .section-title { font-size: 16px; font-weight: 700; margin: 0 0 16px 0; }
+        .section-title { font-size: 16px; font-weight: 700; margin: 0 0 16px 0; display: flex; align-items: center; justify-content: space-between;}
 
         .about-section { padding: 24px 20px; }
         .about-text { font-size: 14px; line-height: 1.8; color: #374151; text-align: justify; }
@@ -80,190 +80,163 @@
         /* استایل‌های بخش آموزش تعاملی (پیام سپـر ایمنـی) */
         .tutorial-section {
             padding: 0 20px 24px 20px;
-            position: relative;
         }
+        
         .play-protect-modal {
-            background: #fff;
-            border-radius: 24px;
-            padding: 32px 24px 24px 24px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            position: relative;
-            animation: modalFadeIn 0.5s ease-out forwards;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #f1f3f4;
+            position: relative; /* بسیار مهم برای موقعیت نشانگر */
+            overflow: hidden;
         }
         
         .play-protect-header {
             display: flex;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             color: #5f6368;
+            gap: 8px;
         }
         .play-protect-header-icon {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: #5f6368;
-            margin-left: 8px;
         }
         .play-protect-logo-text {
-            display: flex;
-            align-items: center;
             font-size: 13px;
+            font-weight: 600;
         }
         
         .play-protect-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             color: #202124;
-            line-height: 1.4;
-            margin-bottom: 24px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
         
         .app-info-box {
             background-color: #f8f9fa;
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             position: relative;
         }
         .app-info-box .app-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         .app-info-name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: #202124;
         }
         .warning-badge {
             background-color: #fdd835;
             color: #fff;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
             position: absolute;
-            bottom: 12px;
+            bottom: 8px;
             right: 12px;
+            font-weight: bold;
         }
         
         .warning-paragraphs {
             font-size: 13px;
             line-height: 1.8;
             color: #5f6368;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .warning-paragraphs p { margin: 0; }
-        .warning-paragraphs p + p { margin-top: 8px; }
+        .warning-paragraphs p + p { margin-top: 12px; }
         
         .simulate-link {
             color: #202124;
+            font-weight: 800;
             text-decoration: underline;
-            font-weight: 700;
-            cursor: pointer;
         }
         
-        /* بخشی که پس از کلیک روی 'بیشتر' ظاهر می‌شود */
+        /* انیمیشن باز شدن کادر متن دوم */
         .tutorial-text-reveal {
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            position: relative;
+            overflow: hidden;
+            animation: textRevealSequence 8s ease-in-out infinite;
         }
+        
         .install-anyway-container {
             display: flex;
-            justify-content: flex-end;
-            margin-top: 8px;
+            justify-content: flex-start; /* در راست‌چین باعث می‌شود سمت راست قرار بگیرد */
+            margin-top: 16px;
         }
         .simulate-action-link {
             color: #202124;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            position: relative;
+            font-weight: 800;
+            font-size: 14px;
         }
         
-        /* دکمه‌های پایینی کادر */
         .play-protect-buttons {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 32px;
+            margin-top: 12px;
         }
         .btn-confirm {
             background-color: #3b82f6;
             color: white;
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 24px;
+            padding: 14px;
             text-align: center;
             font-weight: 700;
             font-size: 15px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
         }
         
-        /* استایل‌های انیمیشن آموزشی و نشانگر */
+        /* استایل‌های اختصاصی نشانگر دست */
         .pointer-hand {
             position: absolute;
-            width: 32px;
-            height: 32px;
-            pointer-events: none;
-            opacity: 0;
+            width: 48px;
+            height: 48px;
             z-index: 1000;
+            pointer-events: none;
+            /* رنگ دست قرمز جذاب تا کاملا مشخص باشد */
+            fill: #ef4444; 
+            stroke: #ffffff;
+            stroke-width: 1.5px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
             animation: pointerSequence 8s ease-in-out infinite;
         }
-        
-        @keyframes pointerSequence {
-            0% { transform: translate(50vw, 80vh); opacity: 0; }
-            10% { transform: translate(65%, calc(100% - 150px)); opacity: 1; }
-            20% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 1; }
-            25% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 0.8; }
-            28% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 1; }
-            
-            35% { transform: translate(25%, calc(100% - 110px)); opacity: 1; }
-            
-            45% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 1; }
-            50% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 0.8; }
-            53% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 1; }
-            
-            65% { transform: translate(50%, calc(100% - 60px)); opacity: 1; }
-            
-            75% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 1; }
-            80% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 0.8; }
-            83% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 1; }
-            
-            90% { transform: translate(50vw, -10vh); opacity: 0; }
-            100% { transform: translate(50vw, -10vh); opacity: 0; }
-        }
-        
-        @keyframes modalFadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* انیمیشن باز شدن کادر متن */
+
+        /* زمان‌بندی دقیق انیمیشن متن */
         @keyframes textRevealSequence {
-            0%, 25% { opacity: 0; transform: translateY(-10px); visibility: hidden; }
-            30%, 85% { opacity: 1; transform: translateY(0); visibility: visible; }
-            90%, 100% { opacity: 0; transform: translateY(-10px); visibility: hidden; }
+            0%, 22% { max-height: 0; opacity: 0; margin-top: 0; }
+            26%, 65% { max-height: 200px; opacity: 1; margin-top: 12px; }
+            70%, 100% { max-height: 0; opacity: 0; margin-top: 0; }
         }
-        .tutorial-text-reveal {
-            animation: textRevealSequence 8s ease-in-out infinite;
-        }
-        
-        /* انیمیشن نهایی برای خود کادر */
-        @keyframes modalPulseFade {
-            0%, 85% { opacity: 1; }
-            90%, 100% { opacity: 0.5; transform: scale(0.98); }
-        }
-        .play-protect-modal {
-            animation: modalPulseFade 8s ease-in-out infinite;
+
+        /* زمان‌بندی دقیق حرکت دست */
+        @keyframes pointerSequence {
+            0% { top: 90%; right: 10%; opacity: 0; transform: scale(1); }
+            10% { top: 57%; right: 70%; opacity: 1; transform: scale(1); } /* حرکت به سمت 'بیشتر' */
+            15% { top: 57%; right: 70%; opacity: 1; transform: scale(0.8); } /* کلیک کردن */
+            20% { top: 57%; right: 70%; opacity: 1; transform: scale(1); } /* رها کردن */
+            
+            35% { top: 76%; right: 20%; opacity: 1; transform: scale(1); } /* حرکت به سمت 'درهرحال نصب شود' */
+            40% { top: 76%; right: 20%; opacity: 1; transform: scale(0.8); } /* کلیک کردن */
+            45% { top: 76%; right: 20%; opacity: 1; transform: scale(1); } /* رها کردن */
+            
+            60% { top: 90%; right: 10%; opacity: 0; transform: scale(1); } /* خروج از صفحه */
+            100% { top: 90%; right: 10%; opacity: 0; transform: scale(1); }
         }
 
         .reviews-section { padding: 0 20px 24px 20px; }
@@ -301,7 +274,6 @@
 </head>
 <body>
 
-    <!-- مخزن آیکون‌های SVG برای جلوگیری از تکرار کد و کاهش چشمگیر حجم صفحه -->
     <svg style="display: none;">
         <symbol id="icon-star-solid" viewBox="0 0 20 20">
             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
@@ -352,19 +324,19 @@
             </div>
         </div>
 
-        <!-- بخش جدید: آموزش تعاملی سپـر ایمنـی -->
+        <!-- بخش آموزش تعاملی سپـر ایمنـی -->
         <div class="tutorial-section">
-            <h2 class="section-title">راهنمای نصب (تست)</h2>
+            <h2 class="section-title">
+                راهنمای نصب (تست)
+            </h2>
             
-            <!-- نشانگر تعاملی -->
-            <svg class="pointer-hand" viewBox="0 0 24 24"><path d="M2 13v-3h2v3H2zM2 17h2v3H2v-3zM2 5h2v3H2V5zM22 13v-3h2v3h-2zM22 17h2v3h-2v-3zM22 5h2v3h-2V5zM13 2v2h3V2h-3zM17 2v2h3V2h-3zM5 2v2h3V2H5zM9 2v2h3V2H9zM12.91 10.45l2.09 2.09c.78.78.78 2.05 0 2.83l-2.09 2.09c-.78.78-2.05.78-2.83 0l-2.09-2.09a2.003 2.003 0 0 1 0-2.83c.78-.78 2.05-.78 2.83 0zM12.91 13.91l2.09 2.09a.996.996 0 0 0 0-1.41l-2.09-2.09-.71.71zm-2.83-2.83l-2.09-2.09a.996.996 0 0 0 0 1.41l2.09 2.09.71-.71z"/></svg>
-
             <div class="play-protect-modal">
+                <!-- نشانگر موس به داخل خود کادر منتقل شد تا موقعیتش دقیق باشد -->
+                <svg class="pointer-hand" viewBox="0 0 24 24"><path d="M13.5 4.5l-3 3-3-3m3-2v9M2 13.5v-3h2v3H2zm0 4h2v3H2v-3zm0-12h2v3H2v-3zM22 13.5v-3h2v3h-2zm0 4h2v3h-2v-3zm0-12h2v3h-2v-3zM13 2.5v2h3v-2h-3zm4 0v2h3v-2h-3zM5 2.5v2h3v-2H5zM9 2.5v2h3v-2H9zm3.91 8.45l2.09 2.09c.78.78.78 2.05 0 2.83l-2.09 2.09c-.78.78-2.05.78-2.83 0l-2.09-2.09a2.003 2.003 0 0 1 0-2.83c.78-.78 2.05-.78 2.83 0zm0 3.46l2.09 2.09a.996.996 0 0 0 0-1.41l-2.09-2.09-.71.71zm-2.83-2.83l-2.09-2.09a.996.996 0 0 0 0 1.41l2.09 2.09.71-.71z"/></svg>
+
                 <div class="play-protect-header">
                     <svg class="play-protect-header-icon" viewBox="0 0 24 24"><path d="M12 2L4 5v11c0 5.25 3.41 10.16 8 11.5 4.59-1.34 8-6.25 8-11.5V5l-8-3zm0 6.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
-                    <div class="play-protect-logo-text">
-                        سپر ایمنی Google Play
-                    </div>
+                    <div class="play-protect-logo-text">سپر ایمنی Google Play</div>
                 </div>
                 
                 <h3 class="play-protect-title">برای حفاظت از دستگاهتان برنامه مسدود شد</h3>
@@ -377,21 +349,20 @@
                 
                 <div class="warning-paragraphs">
                     <p>«سپر ایمنی Play» قبلاً برنامه‌ای از این توسعه‌دهنده ندیده است. ممکن است ناایمن باشد.</p>
-                    <p>ممکن است نصب این برنامه دستگاهتان را درمعرض خطر قرار دهد. درباره «سپر ایمنی Play <span id="simulate-more" class="simulate-link">بیشتر</span> بدانید.</p>
+                    <p>ممکن است نصب این برنامه دستگاهتان را درمعرض خطر قرار دهد. درباره «سپر ایمنی Play» <span class="simulate-link">بیشتر</span> بدانید.</p>
                     
-                    <!-- متنی که ظاهر می‌شود -->
+                    <!-- متنی که با انیمیشن ظاهر می‌شود -->
                     <div class="tutorial-text-reveal">
                         <p>«سپر ایمنی Play» همچنان توصیه می‌کند که این برنامه را نصب نکنید. بااین‌حال، اگر از خطر آگاهید و به این برنامه اعتماد دارید، همچنان می‌توانید آن را نصب کنید.</p>
                         <div class="install-anyway-container">
-                            <span id="simulate-install-anyway" class="simulate-action-link">درهرحال نصب شود</span>
+                            <span class="simulate-action-link">درهرحال نصب شود</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="play-protect-buttons">
-                    <div id="simulate-confirm" class="btn-confirm">متوجم</div>
+                    <div class="btn-confirm">متوجهم</div>
                 </div>
-                
             </div>
         </div>
 
