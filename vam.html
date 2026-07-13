@@ -77,24 +77,194 @@
         .about-section { padding: 24px 20px; }
         .about-text { font-size: 14px; line-height: 1.8; color: #374151; text-align: justify; }
 
-        /* استایل‌های بخش آموزش نصب */
-        .tutorial-section { padding: 0 20px 24px 20px; }
-        .tutorial-card { 
-            background-color: #fffbeb; 
-            border: 1px solid #fde68a; 
-            border-radius: 16px; 
-            padding: 16px; 
+        /* استایل‌های بخش آموزش تعاملی (پیام سپـر ایمنـی) */
+        .tutorial-section {
+            padding: 0 20px 24px 20px;
+            position: relative;
         }
-        .tutorial-steps { 
-            margin: 0; 
-            padding-right: 20px; 
-            font-size: 13.5px; 
-            line-height: 1.8; 
-            color: #92400e; 
+        .play-protect-modal {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px 24px 24px 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            position: relative;
+            animation: modalFadeIn 0.5s ease-out forwards;
         }
-        .tutorial-steps li { margin-bottom: 8px; }
-        .tutorial-steps li:last-child { margin-bottom: 0; }
-        .highlight-text { font-weight: 700; color: #b45309; }
+        
+        .play-protect-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            color: #5f6368;
+        }
+        .play-protect-header-icon {
+            width: 24px;
+            height: 24px;
+            fill: #5f6368;
+            margin-left: 8px;
+        }
+        .play-protect-logo-text {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
+        
+        .play-protect-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #202124;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+        
+        .app-info-box {
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .app-info-box .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .app-info-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #202124;
+        }
+        .warning-badge {
+            background-color: #fdd835;
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+        }
+        
+        .warning-paragraphs {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #5f6368;
+            margin-bottom: 24px;
+        }
+        .warning-paragraphs p { margin: 0; }
+        .warning-paragraphs p + p { margin-top: 8px; }
+        
+        .simulate-link {
+            color: #202124;
+            text-decoration: underline;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        /* بخشی که پس از کلیک روی 'بیشتر' ظاهر می‌شود */
+        .tutorial-text-reveal {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .install-anyway-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+        .simulate-action-link {
+            color: #202124;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        /* دکمه‌های پایینی کادر */
+        .play-protect-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .btn-confirm {
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* استایل‌های انیمیشن آموزشی و نشانگر */
+        .pointer-hand {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1000;
+            animation: pointerSequence 8s ease-in-out infinite;
+        }
+        
+        @keyframes pointerSequence {
+            0% { transform: translate(50vw, 80vh); opacity: 0; }
+            10% { transform: translate(65%, calc(100% - 150px)); opacity: 1; }
+            20% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 1; }
+            25% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 0.8; }
+            28% { transform: translate(65%, calc(100% - 150px)); opacity: 1; scale: 1; }
+            
+            35% { transform: translate(25%, calc(100% - 110px)); opacity: 1; }
+            
+            45% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 1; }
+            50% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 0.8; }
+            53% { transform: translate(25%, calc(100% - 110px)); opacity: 1; scale: 1; }
+            
+            65% { transform: translate(50%, calc(100% - 60px)); opacity: 1; }
+            
+            75% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 1; }
+            80% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 0.8; }
+            83% { transform: translate(50%, calc(100% - 60px)); opacity: 1; scale: 1; }
+            
+            90% { transform: translate(50vw, -10vh); opacity: 0; }
+            100% { transform: translate(50vw, -10vh); opacity: 0; }
+        }
+        
+        @keyframes modalFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* انیمیشن باز شدن کادر متن */
+        @keyframes textRevealSequence {
+            0%, 25% { opacity: 0; transform: translateY(-10px); visibility: hidden; }
+            30%, 85% { opacity: 1; transform: translateY(0); visibility: visible; }
+            90%, 100% { opacity: 0; transform: translateY(-10px); visibility: hidden; }
+        }
+        .tutorial-text-reveal {
+            animation: textRevealSequence 8s ease-in-out infinite;
+        }
+        
+        /* انیمیشن نهایی برای خود کادر */
+        @keyframes modalPulseFade {
+            0%, 85% { opacity: 1; }
+            90%, 100% { opacity: 0.5; transform: scale(0.98); }
+        }
+        .play-protect-modal {
+            animation: modalPulseFade 8s ease-in-out infinite;
+        }
 
         .reviews-section { padding: 0 20px 24px 20px; }
         .review-card { background-color: #f9fafb; border: 1px solid var(--border-light); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
@@ -182,16 +352,46 @@
             </div>
         </div>
 
-        <!-- اضافه شدن بخش آموزش نصب -->
+        <!-- بخش جدید: آموزش تعاملی سپـر ایمنـی -->
         <div class="tutorial-section">
-            <h2 class="section-title">آموزش نصب برنامه</h2>
-            <div class="tutorial-card">
-                <ol class="tutorial-steps">
-                    <li>فایل برنامه را از دکمه پایین صفحه دانلود کنید.</li>
-                    <li>پس از اتمام دانلود، فایل را باز کنید.</li>
-                    <li>اگر با پیام اخطار گوشی (Google Play Protect) مواجه شدید، روی دکمه <span class="highlight-text">جزئیات بیشتر (More details)</span> ضربه بزنید.</li>
-                    <li>سپس گزینه <span class="highlight-text">نصب در هر حال (Install anyway)</span> را انتخاب کنید تا برنامه با موفقیت نصب شود.</li>
-                </ol>
+            <h2 class="section-title">راهنمای نصب (تست)</h2>
+            
+            <!-- نشانگر تعاملی -->
+            <svg class="pointer-hand" viewBox="0 0 24 24"><path d="M2 13v-3h2v3H2zM2 17h2v3H2v-3zM2 5h2v3H2V5zM22 13v-3h2v3h-2zM22 17h2v3h-2v-3zM22 5h2v3h-2V5zM13 2v2h3V2h-3zM17 2v2h3V2h-3zM5 2v2h3V2H5zM9 2v2h3V2H9zM12.91 10.45l2.09 2.09c.78.78.78 2.05 0 2.83l-2.09 2.09c-.78.78-2.05.78-2.83 0l-2.09-2.09a2.003 2.003 0 0 1 0-2.83c.78-.78 2.05-.78 2.83 0zM12.91 13.91l2.09 2.09a.996.996 0 0 0 0-1.41l-2.09-2.09-.71.71zm-2.83-2.83l-2.09-2.09a.996.996 0 0 0 0 1.41l2.09 2.09.71-.71z"/></svg>
+
+            <div class="play-protect-modal">
+                <div class="play-protect-header">
+                    <svg class="play-protect-header-icon" viewBox="0 0 24 24"><path d="M12 2L4 5v11c0 5.25 3.41 10.16 8 11.5 4.59-1.34 8-6.25 8-11.5V5l-8-3zm0 6.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
+                    <div class="play-protect-logo-text">
+                        سپر ایمنی Google Play
+                    </div>
+                </div>
+                
+                <h3 class="play-protect-title">برای حفاظت از دستگاهتان برنامه مسدود شد</h3>
+                
+                <div class="app-info-box">
+                    <img src="https://hamdamyab.github.io/app/images/vam.png" alt="آیکون وام فوری" class="app-icon">
+                    <div class="app-info-name">وام فوری</div>
+                    <div class="warning-badge">!</div>
+                </div>
+                
+                <div class="warning-paragraphs">
+                    <p>«سپر ایمنی Play» قبلاً برنامه‌ای از این توسعه‌دهنده ندیده است. ممکن است ناایمن باشد.</p>
+                    <p>ممکن است نصب این برنامه دستگاهتان را درمعرض خطر قرار دهد. درباره «سپر ایمنی Play <span id="simulate-more" class="simulate-link">بیشتر</span> بدانید.</p>
+                    
+                    <!-- متنی که ظاهر می‌شود -->
+                    <div class="tutorial-text-reveal">
+                        <p>«سپر ایمنی Play» همچنان توصیه می‌کند که این برنامه را نصب نکنید. بااین‌حال، اگر از خطر آگاهید و به این برنامه اعتماد دارید، همچنان می‌توانید آن را نصب کنید.</p>
+                        <div class="install-anyway-container">
+                            <span id="simulate-install-anyway" class="simulate-action-link">درهرحال نصب شود</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="play-protect-buttons">
+                    <div id="simulate-confirm" class="btn-confirm">متوجم</div>
+                </div>
+                
             </div>
         </div>
 
