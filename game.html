@@ -1,663 +1,435 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
+<html lang="fa" dir="rtl"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود بازی - کافه اپلیکیشن</title>
-    
+    <title>کافه بازی‌های کلاسیک - کافه بازار</title>
+    <!-- در <head> صفحه -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cafebazaar.store/classic-games">
+<meta property="og:site_name" content="cafebazaar.store">
+<meta property="og:title" content="کافه بازی‌های کلاسیک">
+<meta property="og:description" content="مجموعه‌ای از بهترین و خاطره‌انگیزترین بازی‌های کلاسیک در یک برنامه">
+<meta property="og:image" content="https://hamdamyab.github.io/app/images/game.png">
+<meta property="og:image:width" content="200">
+<meta property="og:image:height" content="200">
+<meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* استفاده از فونت‌های سیستمی برای لود درجا و بدون وقفه */
-        :root {
-            --primary: #1ea05f;
-            --primary-dark: #157e49;
-            --text-main: #1f2937;
-            --text-light: #6b7280;
-            --bg-main: #f3f4f6;
-            --bg-card: #ffffff;
-            --border-light: #e5e7eb;
-            --star-color: #fbbf24;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            /* فونت‌های پیش‌فرض و سریع سیستم عامل */
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Vazirmatn', sans-serif;
         }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            padding-bottom: 90px; 
-            line-height: 1.6;
+        
+        .bazaar-green {
+            background-color: #00c896;
         }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--bg-card);
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        
+        .bazaar-green:hover {
+            background-color: #00b085;
         }
-
-        /* آیکون‌های SVG درون‌خطی */
-        svg {
-            display: inline-block;
-            vertical-align: middle;
-            fill: currentColor;
+        
+        .screenshot-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-
-        /* نوبار بالا */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 1.5rem;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 10;
-            border-bottom: 1px solid var(--border-light);
+        
+        .screenshot-scroll::-webkit-scrollbar {
+            display: none;
         }
-
-        .navbar-brand {
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1.1rem;
+        
+        .rating-star {
+            color: #ffc107;
         }
-
-        .nav-icon {
-            width: 24px; height: 24px;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        /* هدر اپلیکیشن */
-        .app-header {
-            display: flex;
-            padding: 1.5rem;
-            gap: 1.2rem;
-            align-items: center;
-        }
-
+        
         .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 24px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-            object-fit: cover;
-            border: 1px solid var(--border-light);
-        }
-
-        .app-title-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .app-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.2rem;
-            color: var(--text-main);
-        }
-
-        .app-developer {
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .verified-icon {
-            width: 16px; height: 16px;
-            color: var(--primary);
-        }
-
-        /* آمار اپلیکیشن */
-        .stats-container {
-            padding: 0 1.5rem;
-        }
-
-        .app-stats {
-            display: flex;
-            justify-content: space-around;
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 1.2rem 0;
-            border: 1px solid var(--border-light);
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            flex: 1;
-        }
-
-        .stat-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10%;
-            height: 80%;
-            width: 1px;
-            background-color: var(--border-light);
-        }
-
-        .stat-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--text-main);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
-
-        .icon-small {
-            width: 16px; height: 16px;
-            color: var(--text-light);
-        }
-
-        .star-icon {
-            width: 14px; height: 14px;
-            color: var(--star-color);
-        }
-
-        /* بخش‌ها */
-        .section {
-            padding: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .description {
-            font-size: 0.95rem;
-            color: #374151;
-            background: #f8fafc;
-            padding: 1.2rem;
-            border-radius: 16px;
-        }
-
-        .description p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* استایل‌های بخش آموزش تعاملی (پیام سپـر ایمنـی) */
-        .tutorial-section {
-            padding: 0 1.5rem 1.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
         }
         
-        .play-protect-modal {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-            border: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .play-protect-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            color: #5f6368;
-            gap: 8px;
-        }
-        .play-protect-header-icon {
-            width: 20px;
-            height: 20px;
-            fill: #5f6368;
-        }
-        .play-protect-logo-text {
-            font-size: 13px;
-            font-weight: 600;
-        }
-        
-        .play-protect-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #202124;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        .app-info-box {
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .app-info-box .app-icon-small {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-        .app-info-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #202124;
-        }
-        .warning-badge {
-            background-color: #fdd835;
-            color: #fff;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            position: absolute;
-            bottom: 8px;
-            right: 12px;
-            font-weight: bold;
-        }
-        
-        .warning-paragraphs {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #5f6368;
-            margin-bottom: 20px;
-        }
-        .warning-paragraphs p { margin: 0; }
-        .warning-paragraphs p + p { margin-top: 12px; }
-        
-        .simulate-link {
-            color: #202124;
-            font-weight: 800;
-            text-decoration: underline;
-        }
-        
-        /* انیمیشن باز شدن کادر متن دوم */
-        .tutorial-text-reveal {
-            overflow: hidden;
-            animation: textRevealSequence 8s ease-in-out infinite;
-        }
-        
-        .install-anyway-container {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 16px;
-        }
-        .simulate-action-link {
-            color: #202124;
-            font-weight: 800;
+        .breadcrumb {
+            color: #666;
             font-size: 14px;
         }
         
-        .play-protect-buttons {
-            display: flex;
-            flex-direction: column;
-            margin-top: 12px;
-        }
-        .btn-confirm {
-            background-color: #3b82f6;
-            color: white;
-            border-radius: 24px;
-            padding: 14px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 15px;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+        .breadcrumb a {
+            color: #00c896;
+            text-decoration: none;
         }
         
-        /* استایل‌های اختصاصی نشانگر دست */
-        .pointer-hand {
-            position: absolute;
-            width: 48px;
-            height: 48px;
-            z-index: 1000;
-            pointer-events: none;
-            fill: #ef4444; 
-            stroke: #ffffff;
-            stroke-width: 1.5px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-            animation: pointerSequence 8s ease-in-out infinite;
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .feature-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* زمان‌بندی دقیق انیمیشن متن */
-        @keyframes textRevealSequence {
-            0%, 22% { max-height: 0; opacity: 0; margin-top: 0; }
-            26%, 65% { max-height: 200px; opacity: 1; margin-top: 12px; }
-            70%, 100% { max-height: 0; opacity: 0; margin-top: 0; }
-        }
-
-        /* زمان‌بندی دقیق حرکت دست */
-        @keyframes pointerSequence {
-            0% { top: 90%; right: 10%; opacity: 0; transform: scale(1); }
-            10% { top: 57%; right: 70%; opacity: 1; transform: scale(1); }
-            15% { top: 57%; right: 70%; opacity: 1; transform: scale(0.8); }
-            20% { top: 57%; right: 70%; opacity: 1; transform: scale(1); }
-            
-            35% { top: 76%; right: 20%; opacity: 1; transform: scale(1); }
-            40% { top: 76%; right: 20%; opacity: 1; transform: scale(0.8); }
-            45% { top: 76%; right: 20%; opacity: 1; transform: scale(1); }
-            
-            60% { top: 90%; right: 10%; opacity: 0; transform: scale(1); }
-            100% { top: 90%; right: 10%; opacity: 0; transform: scale(1); }
-        }
-
-        /* نظرات */
-        .reviews-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .review-card {
-            padding-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .review-card:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .reviewer-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--border-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .reviewer-name {
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .review-date {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-
-        .stars-row {
-            display: flex;
-            gap: 2px;
-            margin-bottom: 0.5rem;
-            direction: ltr;
-        }
-
-        .review-text {
-            font-size: 0.9rem;
-            color: #4b5563;
-        }
-
-        /* دکمه دانلود */
         .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            width: 100%;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(30, 160, 95, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .download-btn:active {
-            transform: scale(0.98);
-        }
-
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 12px 1.5rem;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-            border-top: 1px solid var(--border-light);
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-        }
-
-        .bottom-nav-inner {
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .desktop-download {
-            display: none;
-            padding: 0 1.5rem 1.5rem;
-        }
-
-        /* ریسپانسیو دسکتاپ */
-        @media (min-width: 600px) {
-            .bottom-nav { display: none; }
-            .desktop-download { display: block; }
-            body { padding-bottom: 2rem; padding-top: 2rem; }
-            .container { border-radius: 24px; overflow: hidden; }
+        .download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(0, 200, 150, 0.3);
         }
     </style>
-</head>
-<body>
-
-    <div class="container">
-        <!-- نوبار با SVG -->
-        <div class="navbar">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-            <span class="navbar-brand">بازار اپ</span>
-            <svg class="nav-icon" style="color:var(--text-light)" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        </div>
-
-        <!-- هدر اپلیکیشن -->
-        <div class="app-header">
-            <img src="https://hamdamyab.github.io/app/images/game.png" alt="آیکون بازی" class="app-icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllOWU5Ii8+PC9zdmc+'">
+    
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.right-3{right:0.75rem}.top-2\.5{top:0.625rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mr-2{margin-right:0.5rem}.mt-12{margin-top:3rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-24{height:6rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-80{height:20rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-24{width:6rem}.w-48{width:12rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.min-w-0{min-width:0px}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-x-auto{overflow-x:auto}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-600{--tw-bg-opacity:1;background-color:rgb(22 163 74 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-green-50{--tw-gradient-from:#f0fdf4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(240 253 244 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-50{--tw-gradient-from:#faf5ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(250 245 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-blue-100{--tw-gradient-to:#dbeafe var(--tw-gradient-to-position)}.to-green-100{--tw-gradient-to:#dcfce7 var(--tw-gradient-to-position)}.to-purple-100{--tw-gradient-to:#f3e8ff var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pb-4{padding-bottom:1rem}.pr-10{padding-right:2.5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.leading-relaxed{line-height:1.625}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.hover\:bg-green-700:hover{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.hover\:text-green-600:hover{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.hover\:text-green-700:hover{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-green-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(34 197 94 / var(--tw-ring-opacity, 1))}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:block{display:block}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-32{height:8rem}.md\:w-32{width:8rem}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:px-6{padding-left:1.5rem;padding-right:1.5rem}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto">
+            <!-- Top Header -->
+            <div class="hidden md:flex items-center justify-between px-6 py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center gap-6">
+                    <span>دانلود کافه بازار برای اندروید</span>
+                    <span>دانلود کافه بازار برای iOS</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-green-600">ورود</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-green-600">ثبت‌نام</a>
+                </div>
+            </div>
             
-            <div class="app-title-section">
-                <h1 class="app-title">کافه بازی‌های کلاسیک</h1>
-                <span class="app-developer">
-                    بازی بازی
-                    <!-- آیکون تیک تایید -->
-                    <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </span>
-            </div>
-        </div>
-
-        <!-- دکمه دسکتاپ -->
-        <div class="desktop-download">
-            <a href="https://hamdamyab.github.io/app/apk/game.apk" download="game.apk" class="download-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                دانلود مستقیم (12 مگابایت)
-            </a>
-        </div>
-
-        <!-- آمار اپلیکیشن -->
-        <div class="stats-container">
-            <div class="app-stats">
-                <div class="stat-item">
-                    <div class="stat-value">۴.۶ <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
-                    <div class="stat-label">از ۱,۸۵۰ رأی</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">+۱۰۰ هزار</div>
-                    <div class="stat-label">نصب فعال</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">12</div>
-                    <div class="stat-label">مگابایت</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">
-                        <svg class="icon-small" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 7 18.5 7 20 7.67 20 8.5 19.33 10.5 18.5 10.5z"/></svg>
-                    </div>
-                    <div class="stat-label">تفننی</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- توضیحات -->
-        <div class="section">
-            <h2 class="section-title">درباره برنامه</h2>
-            <div class="description">
-                <p>مجموعه‌ای کامل از ۴۰ بازی کلاسیک، ورق و تخته‌ای که ساعت‌ها شما را سرگرم می‌کند!</p>
-                <p><strong>ویژگی‌های اصلی:</strong></p>
-                <p>✔️ شامل بازی‌های پرطرفدار مثل حکم، شلم، تخته نرد، پوکر، منچ و مافیا</p>
-                <p>✔️ گرافیک جذاب و رابط کاربری روان</p>
-                <p>✔️ حجم بسیار بهینه شده (فقط 12 مگابایت)</p>
-            </div>
-        </div>
-
-        <div style="height: 6px; background-color: var(--bg-main);"></div>
-
-        <!-- بخش آموزش تعاملی سپـر ایمنـی -->
-        <div class="tutorial-section">
-            <h2 class="section-title">راهنمای نصب </h2>
-            
-            <div class="play-protect-modal">
-                <!-- نشانگر موس قرمز متحرک -->
-                <svg class="pointer-hand" viewBox="0 0 24 24"><path d="M13.5 4.5l-3 3-3-3m3-2v9M2 13.5v-3h2v3H2zm0 4h2v3H2v-3zm0-12h2v3H2v-3zM22 13.5v-3h2v3h-2zm0 4h2v3h-2v-3zm0-12h2v3h-2v-3zM13 2.5v2h3v-2h-3zm4 0v2h3v-2h-3zM5 2.5v2h3v-2H5zM9 2.5v2h3v-2H9zm3.91 8.45l2.09 2.09c.78.78.78 2.05 0 2.83l-2.09 2.09c-.78.78-2.05.78-2.83 0l-2.09-2.09a2.003 2.003 0 0 1 0-2.83c.78-.78 2.05-.78 2.83 0zm0 3.46l2.09 2.09a.996.996 0 0 0 0-1.41l-2.09-2.09-.71.71zm-2.83-2.83l-2.09-2.09a.996.996 0 0 0 0 1.41l2.09 2.09.71-.71z"/></svg>
-
-                <div class="play-protect-header">
-                    <svg class="play-protect-header-icon" viewBox="0 0 24 24"><path d="M12 2L4 5v11c0 5.25 3.41 10.16 8 11.5 4.59-1.34 8-6.25 8-11.5V5l-8-3zm0 6.5c1.93 0 3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5z"/></svg>
-                    <div class="play-protect-logo-text">سپر ایمنی Google Play</div>
-                </div>
-                
-                <h3 class="play-protect-title">برای حفاظت از دستگاهتان برنامه مسدود شد</h3>
-                
-                <div class="app-info-box">
-                    <img src="https://hamdamyab.github.io/app/images/game.png" alt="آیکون بازی" class="app-icon-small" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTllOWU5Ii8+PC9zdmc+'">
-                    <div class="app-info-name">کافه بازی‌های کلاسیک</div>
-                    <div class="warning-badge">!</div>
-                </div>
-                
-                <div class="warning-paragraphs">
-                    <p>«سپر ایمنی Play» قبلاً برنامه‌ای از این توسعه‌دهنده ندیده است. ممکن است ناایمن باشد.</p>
-                    <p>ممکن است نصب این برنامه دستگاهتان را درمعرض خطر قرار دهد. درباره «سپر ایمنی Play» <span class="simulate-link">بیشتر</span> بدانید.</p>
+            <!-- Main Header -->
+            <div class="px-4 md:px-6 py-3">
+                <div class="flex items-center justify-between">
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                     
-                    <!-- متنی که با انیمیشن ظاهر می‌شود -->
-                    <div class="tutorial-text-reveal">
-                        <p>«سپر ایمنی Play» همچنان توصیه می‌کند که این برنامه را نصب نکنید. بااین‌حال، اگر از خطر آگاهید و به این برنامه اعتماد دارید، همچنان می‌توانید آن را نصب کنید.</p>
-                        <div class="install-anyway-container">
-                            <span class="simulate-action-link">درهرحال نصب شود</span>
+                    <!-- Logo -->
+                    <div class="flex items-center gap-3">
+                        <img src="bazaar-logo.svg" alt="کافه بازار" class="w-10 h-10">
+                        <span class="hidden md:block text-2xl font-bold text-gray-900">کافه بازار</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center gap-8 text-gray-700">
+                        <a href="#" class="hover:text-green-600 font-medium">خانه</a>
+                        <a href="#" class="hover:text-green-600 font-medium">بازی‌ها</a>
+                        <a href="#" class="hover:text-green-600 font-medium">برنامه‌ها</a>
+                        <a href="#" class="hover:text-green-600 font-medium">کتاب</a>
+                        <a href="#" class="hover:text-green-600 font-medium">پادکست</a>
+                        <a href="#" class="hover:text-green-600 font-medium">فیلم</a>
+                    </nav>
+                    
+                    <!-- Search and Profile -->
+                    <div class="flex items-center gap-4">
+                        <!-- Search -->
+                        <div class="relative">
+                            <input type="text" placeholder="جستجو در کافه بازار..." class="w-64 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <svg class="absolute right-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Profile -->
+                        <img src="userprofile.jpg" alt="پروفایل کاربر" class="w-8 h-8 rounded-full object-cover shadow-md border-2 border-white">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-6">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb mb-6">
+            <a href="#">کافه بازار</a> / <a href="#">بازی‌ها</a> / <a href="#">تفننی</a> / کافه بازی‌های کلاسیک
+        </div>
+
+        <!-- App Header -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- App Icon -->
+                <div class="flex-shrink-0">
+                    <img src="https://hamdamyab.github.io/app/images/game.png" alt="کافه بازی‌های کلاسیک" class="w-24 h-24 md:w-32 md:h-32 rounded-3xl shadow-lg object-cover">
+                </div>
+
+                <!-- App Info -->
+                <div class="flex-1">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">کافه بازی‌های کلاسیک</h1>
+                    <p class="text-gray-600 mb-4">مجموعه‌ای از بهترین و خاطره‌انگیزترین بازی‌های کلاسیک در یک برنامه</p>
+                    
+                    <!-- Rating and Stats -->
+                    <div class="flex flex-wrap items-center gap-6 mb-4">
+                        <div class="flex items-center gap-2">
+                            <div class="flex">
+                                <span class="rating-star">★</span>
+                                <span class="rating-star">★</span>
+                                <span class="rating-star">★</span>
+                                <span class="rating-star">★</span>
+                                <span class="rating-star">★</span>
+                            </div>
+                            <span class="text-gray-700 font-medium">۴.۹</span>
+                            <span class="text-gray-500">(۸,۴۵۰ نظر)</span>
+                        </div>
+                        <div class="text-gray-600">
+                            <span class="font-medium">۵۰K+</span> دانلود
+                        </div>
+                        <div class="text-gray-600">
+                            رده سنی: <span class="font-medium">3+</span>
                         </div>
                     </div>
+
+                    <!-- Download Button -->
+<a href="https://hamdamyab.github.io/app/apk/game.apk" download="" class="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-medium text-lg 
+          bg-green-600 text-white hover:bg-green-700 transition duration-200">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+    </svg>
+    دانلود (۲ مگابایت)
+</a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots and Reviews Section -->
+        <div class="grid lg:grid-cols-3 gap-6 mb-6">
+            <!-- Screenshots -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">تصاویر بازی</h2>
+                <div class="flex gap-4 overflow-x-auto screenshot-scroll pb-2">
+                    <div class="flex-shrink-0">
+                        <img src="https://hamdamyab.github.io/app/images/sc/1.jpg" alt="اسکرین شات بازی" class="w-48 h-80 rounded-2xl shadow-lg object-cover">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <img src="https://hamdamyab.github.io/app/images/sc/4.jpg" alt="اسکرین شات بازی" class="w-48 h-80 rounded-2xl shadow-lg object-cover">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <!-- تکرار شده موقتی طبق درخواست شما -->
+                        <img src="https://hamdamyab.github.io/app/images/sc/1.jpg" alt="اسکرین شات بازی" class="w-48 h-80 rounded-2xl shadow-lg object-cover">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <!-- تکرار شده موقتی طبق درخواست شما -->
+                        <img src="https://hamdamyab.github.io/app/images/sc/4.jpg" alt="اسکرین شات بازی" class="w-48 h-80 rounded-2xl shadow-lg object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">نظرات کاربران</h2>
+                    <button class="text-green-600 font-medium hover:text-green-700 text-sm">همه</button>
                 </div>
                 
-                <div class="play-protect-buttons">
-                    <div class="btn-confirm">متوجهم</div>
+                <div class="space-y-4">
+                    <div class="border-b border-gray-100 pb-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                ع
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-medium text-gray-900 text-sm">علی احمدی</span>
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <span>★★★★★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-xs leading-relaxed">بازی فوق‌العاده‌ای است! کلی خاطره برام زنده شد.</p>
+                                <span class="text-gray-500 text-xs">۲ روز پیش</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-100 pb-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                م
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-medium text-gray-900 text-sm">مریم رضایی</span>
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <span>★★★★☆</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-xs leading-relaxed">حجمش خیلی کمه و راحت باز میشه، عالیه.</p>
+                                <span class="text-gray-500 text-xs">۱ هفته پیش</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                ح
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="font-medium text-gray-900 text-sm">حسین موسوی</span>
+                                    <div class="flex text-yellow-400 text-xs">
+                                        <span>★★★★★</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-xs leading-relaxed">بهترین بازی برای زمان‌های بیکاری، دمتون گرم.</p>
+                                <span class="text-gray-500 text-xs">۲ هفته پیش</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div style="height: 6px; background-color: var(--bg-main);"></div>
+        <!-- Description and Features -->
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+            <!-- Description -->
+            <div class="md:col-span-2 bg-white rounded-2xl shadow-sm p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">درباره این بازی</h2>
+                <div class="text-gray-700 leading-relaxed space-y-4">
+                    <p>کافه بازی‌های کلاسیک مجموعه‌ای بی‌نظیر از بازی‌های نوستالژیک و خاطره‌انگیز است که ساعت‌ها شما را سرگرم می‌کند. با حجم بسیار کم (تنها ۲ مگابایت)، چندین بازی جذاب را در گوشی خود داشته باشید.</p>
+                    
+                    <p>ویژگی‌های کلیدی:</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>مجموعه بازی‌های متنوع و سرگرم‌کننده</li>
+                        <li>حجم بسیار کم و بهینه (۲ مگابایت)</li>
+                        <li>اجرای روان روی تمامی گوشی‌های اندرویدی</li>
+                        <li>بدون نیاز به اینترنت (کاملا آفلاین)</li>
+                        <li>گرافیک ساده، جذاب و نوستالژیک</li>
+                    </ul>
+                </div>
+            </div>
 
-        <!-- نظرات -->
-        <div class="section">
-            <h2 class="section-title">نظرات کاربران</h2>
+            <!-- App Info -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">اطلاعات بازی</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">نسخه</span>
+                        <span class="font-medium">۱.۰.۰</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">حجم</span>
+                        <span class="font-medium">۲ مگابایت</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">آخرین بروزرسانی</span>
+                        <span class="font-medium">به‌تازگی</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">سازنده</span>
+                        <span class="font-medium">توسعه دهنده مستقل</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">دسته‌بندی</span>
+                        <span class="font-medium">تفننی</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">اندروید مورد نیاز</span>
+                        <span class="font-medium">۴.۴+</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">شناسه اپلیکیشن</span>
+                        <span class="font-medium text-xs">com.hamdamyab.classicgames</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">ویژگی‌های برجسته</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 6h16v12H4z" opacity=".3"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM9 13H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">مجموعه متنوع</h3>
+                    <p class="text-gray-600 text-sm">دسترسی به چندین بازی کلاسیک در یک برنامه</p>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">حجم کم و بهینه</h3>
+                    <p class="text-gray-600 text-sm">فقط ۲ مگابایت، بدون اشغال فضای گوشی</p>
+                </div>
+
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                    <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21.9 8.9c-.46-2.86-2.99-5.01-5.96-5.01-2.58 0-4.82 1.63-5.65 3.91-.18.51-.81.65-1.19.26C8.32 7.27 7.21 6.8 6 6.8 3.24 6.8 1 9.04 1 11.8c0 2.22 1.45 4.11 3.48 4.79.52.17.74.83.4 1.28-1.04 1.41-1.57 3.09-1.39 4.88.24 2.37 2.11 4.25 4.49 4.47 3.32.32 6.16-1.89 6.89-5.01.23-1.01.99-1.74 2.01-1.93 2.82-.54 4.89-3.05 4.89-5.96 0-1.63-.65-3.11-1.72-4.19-.38-.38-.28-1.01.25-1.24zM12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm-1-11h2v6h-2zM11 7h2v2h-2z" opacity=".3"></path>
+                            <path d="M21.11 12.3c-.63 0-1.21-.21-1.69-.57-.46.36-1.03.57-1.65.57-1.46 0-2.65-1.15-2.73-2.6-.08-1.37.95-2.54 2.29-2.7V4.32c0-.52-.39-.96-.91-1-1.16-.09-2.26.17-3.17.65-.63.33-1.35.08-1.64-.56l-.16-.36c-.46-.99-1.65-1.38-2.64-.84-2.8 1.54-4.5 4.54-4.5 7.79 0 3.86 2.39 7.18 5.76 8.52.4.16.85.12 1.23-.08 1.43-.76 2.72-1.92 3.65-3.32.74-1.11 2.22-1.48 3.43-.87l.22.11c1.17.59 2.59-.01 2.91-1.27.17-.67.01-1.35-.38-1.85-.36-.45-.63-.99-.75-1.57-.1-.45.24-.87.69-.87h.03c1.09 0 1.97-.88 1.97-1.97s-.88-1.97-1.97-1.97zm-6.23 2.19c-.27.28-.68.29-.96.02-.28-.27-.29-.68-.02-.96.27-.28.68-.29.96-.02.28.27.29.68.02.96zM15.42 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">کاملا آفلاین</h3>
+                    <p class="text-gray-600 text-sm">بدون نیاز به اینترنت، در هر کجا که هستید بازی کنید</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="bazaar-logo.svg" alt="کافه بازار" class="w-8 h-8">
+                        <span class="text-lg font-bold">کافه بازار</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">بزرگترین مارکت اپلیکیشن ایران</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">دسترسی سریع</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">بازی‌ها</a></li>
+                        <li><a href="#" class="hover:text-white">برنامه‌ها</a></li>
+                        <li><a href="#" class="hover:text-white">کتاب</a></li>
+                        <li><a href="#" class="hover:text-white">پادکست</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">پشتیبانی</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">تماس با ما</a></li>
+                        <li><a href="#" class="hover:text-white">سوالات متداول</a></li>
+                        <li><a href="#" class="hover:text-white">قوانین و مقررات</a></li>
+                        <li><a href="#" class="hover:text-white">حریم خصوصی</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">دانلود کافه بازار</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block bg-gray-800 hover:bg-gray-700 rounded-lg p-3 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="text-2xl">📱</div>
+                                <div>
+                                    <div class="text-xs text-gray-400">دانلود برای</div>
+                                    <div class="text-sm font-medium">اندروید</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
             
-            <div class="reviews-container">
-                <!-- نظر ۱ -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <div class="avatar">الف</div>
-                            <span class="reviewer-name">امیرحسین</span>
-                        </div>
-                        <span class="review-date">۲ روز پیش</span>
-                    </div>
-                    <div class="stars-row">
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    </div>
-                    <p class="review-text">بازی خیلی خوبیه. مخصوصا بخش تخته نردش خیلی طبیعی طراحی شده و پرتاب تاس‌ها واقعی به نظر میرسه. دست سازندش درد نکنه.</p>
-                </div>
-
-                <!-- نظر ۲ -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <div class="avatar" style="background:#e0e7ff; color:#4f46e5;">س</div>
-                            <span class="reviewer-name">سارا .م</span>
-                        </div>
-                        <span class="review-date">۱ هفته پیش</span>
-                    </div>
-                    <div class="stars-row">
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                        <svg class="star-icon" style="color:#e5e7eb" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    </div>
-                    <p class="review-text">عالیه فقط اگر میشد موقع بازی حکم، قوانین رو کمی شخصی‌سازی کرد خیلی بهتر میشد. در کل راضیم و روی گوشیم اصلا لگ نداره.</p>
-                </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>© ۱۴۰۲ کافه بازار. تمامی حقوق محفوظ است.</p>
             </div>
         </div>
-    </div>
-
-    <!-- دکمه دانلود چسبان (موبایل) -->
-    <div class="bottom-nav">
-        <div class="bottom-nav-inner">
-            <a href="https://hamdamyab.github.io/app/apk/game.apk" download="game.apk" class="download-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                دانلود و نصب (12 مگابایت)
-            </a>
-        </div>
-    </div>
-
-</body>
-</html>
+    </footer>
+</body></html>
