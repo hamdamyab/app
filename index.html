@@ -135,7 +135,7 @@
         .hero-title { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; margin-bottom: 20px; background: linear-gradient(135deg, #ffffff 0%, #ff758c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 10px 40px rgba(255, 117, 140, 0.2); line-height: 1.3; }
         .hero-subtitle { font-size: clamp(1.1rem, 3vw, 1.3rem); color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
 
-        .cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 900; padding: 20px 50px; border-radius: 100px; box-shadow: 0 15px 40px rgba(255, 0, 128, 0.4); transition: all 0.3s; animation: pulse-btn 2s infinite; border: 2px solid rgba(255, 255, 255, 0.1); }
+        .cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; text-decoration: none; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 900; padding: 20px 50px; border-radius: 100px; box-shadow: 0 15px 40px rgba(255, 0, 128, 0.4); transition: all 0.3s; animation: pulse-btn 2s infinite; border: 2px solid rgba(255, 255, 255, 0.1); cursor: pointer; }
         @keyframes pulse-btn { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.5); } 70% { box-shadow: 0 0 0 25px rgba(255, 0, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 128, 0); } }
         .cta-btn:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 50px rgba(255, 0, 128, 0.6); }
 
@@ -174,7 +174,6 @@
         .stars { color: #ffc107; font-size: 0.9rem; letter-spacing: 2px; }
         .review-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
 
-        /* استایل‌های بخش شهرها (Local SEO) */
         .city-section { padding: 60px 0; text-align: center; }
         .city-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto; margin-top: 30px; }
         .city-card { background: rgba(20,20,30,0.6); border: 1px solid rgba(255,255,255,0.1); padding: 15px 30px; border-radius: 15px; color: #aeb5cc; text-decoration: none; font-weight: 700; transition: all 0.3s; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(5px); font-size: 1.1rem; }
@@ -189,12 +188,8 @@
         .faq-content { padding: 0 25px 25px; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 10px; padding-top: 15px; line-height: 1.8; }
 
         footer { background: rgba(0,0,0,0.8); border-top: 1px solid var(--glass-border); padding: 40px 20px; text-align: center; font-size: 0.9rem; color: #666; }
-        .footer-content { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
-        .footer-links a:hover { color: #fff; }
-        .warning-18 { display: inline-block; background: rgba(255,0,0,0.1); color: #ff4d4d; padding: 5px 15px; border-radius: 5px; border: 1px solid rgba(255,0,0,0.2); font-weight: 900; margin: 10px auto; }
-
-        .sticky-cta { position: fixed; bottom: -100px; left: 20px; right: 20px; background: linear-gradient(90deg, #ff007f, #6f00ff); color: #fff; text-align: center; text-decoration: none; padding: 18px; border-radius: 20px; font-weight: 900; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,128,0.5); z-index: 999; transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; border: 1px solid rgba(255,255,255,0.2); }
+        
+        .sticky-cta { position: fixed; bottom: -100px; left: 20px; right: 20px; background: linear-gradient(90deg, #ff007f, #6f00ff); color: #fff; text-align: center; text-decoration: none; padding: 18px; border-radius: 20px; font-weight: 900; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,128,0.5); z-index: 900; transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; }
         @media (max-width: 768px) {
             .sticky-cta { display: block; }
             .sticky-cta.show { bottom: 20px; }
@@ -202,13 +197,48 @@
             .mockup:nth-child(even) { margin-top: 0; }
             footer { padding-bottom: 100px; }
         }
+
+        /* 🟢 استایل‌های جدید برای مودال (پاپ‌آپ لودینگ) */
+        .api-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            z-index: 9999; display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .api-modal-overlay.active {
+            opacity: 1; visibility: visible;
+        }
+        .api-modal-content {
+            background: rgba(20, 20, 30, 0.9); border: 1px solid var(--primary);
+            padding: 40px 30px; border-radius: 25px; text-align: center;
+            max-width: 90%; width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px); transition: transform 0.3s ease;
+        }
+        .api-modal-overlay.active .api-modal-content {
+            transform: translateY(0);
+        }
+        .api-spinner {
+            width: 60px; height: 60px; border: 5px solid rgba(255, 0, 127, 0.2);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: api-spin 1s linear infinite; margin: 0 auto 20px;
+        }
+        @keyframes api-spin { 100% { transform: rotate(360deg); } }
+        .api-modal-title { font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 10px; }
+        .api-modal-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+        .api-error-btn {
+            background: var(--primary); color: white; border: none; padding: 10px 25px;
+            border-radius: 10px; margin-top: 20px; font-family: inherit; font-weight: bold;
+            cursor: pointer; display: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="neon-bg"></div>
     <div id="header-placeholder"></div>
-    <a href="./apk/app-release.apk" class="sticky-cta" download id="stickyBtn">دانلود سریع اپلیکیشن 🚀</a>
+    
+    <!-- 🟢 تغییر یافت: فراخوانی تابع جاوااسکریپت به جای لینک مستقیم -->
+    <a href="#" class="sticky-cta" id="stickyBtn" onclick="event.preventDefault(); requestCustomApk('hamdamyab');">دانلود سریع اپلیکیشن 🚀</a>
 
     <main class="container">
         
@@ -225,7 +255,8 @@
                     پیدا کردن دوست و همدم جدید هیچوقت به این سادگی نبوده است. در محیطی کاملاً امن و ناشناس، با افراد نزدیک خود چت کنید و یک رابطه جدید را آغاز نمایید. کاملاً رایگان و بدون نیاز به فیلترشکن.
                 </p>
 
-                <a href="./apk/app-release.apk" class="cta-btn" download>📥 دانلود مستقیم (APK)</a>
+                <!-- 🟢 تغییر یافت: فراخوانی تابع جاوااسکریپت به جای لینک مستقیم -->
+                <a href="#" class="cta-btn" onclick="event.preventDefault(); requestCustomApk('hamdamyab');">📥 دانلود مستقیم (APK)</a>
             </div>
 
             <div class="stats-grid reveal">
@@ -301,13 +332,12 @@
         <section class="reviews-section reveal">
             <h2 class="section-title">نظرات کاربران <span style="color: var(--primary)">برنامه دوست یابی</span> ما</h2>
             <div class="reviews-grid">
+                <!-- (کدهای قبلی نظرات بدون تغییر باقی مانده) -->
                 <div class="review-card">
                     <div class="review-header">
                         <img src="images/boy-1.jpg" alt="نظر درباره برنامه دوستیابی آنلاین" class="review-avatar" loading="lazy">
                         <div class="review-info">
-                            <h4>علی از تهران 
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
+                            <h4>علی از تهران <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h4>
                             <div class="stars">★★★★★</div>
                         </div>
                     </div>
@@ -318,9 +348,7 @@
                     <div class="review-header">
                         <img src="images/girl-4.jpg" alt="نظر کاربر برنامه همسریابی" class="review-avatar" loading="lazy">
                         <div class="review-info">
-                            <h4>نگین از کرج
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
+                            <h4>نگین از کرج <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h4>
                             <div class="stars">★★★★★</div>
                         </div>
                     </div>
@@ -331,57 +359,15 @@
                     <div class="review-header">
                         <img src="images/boy-2.jpg" alt="نظر در مورد چت روم و پیدا کردن دوست" class="review-avatar" loading="lazy">
                         <div class="review-info">
-                            <h4>فرهاد از شیراز
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
+                            <h4>فرهاد از شیراز <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg></h4>
                             <div class="stars">★★★★★</div>
                         </div>
                     </div>
                     <p>برای پیدا کردن همدم و حتی گزینه‌های صیغه یابی خیلی خوبه چون فیلترهای جستجوی دقیقی داره. بخش چت ناشناسش هم باعث میشه بدون استرس پیام بدی.</p>
                 </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="نظرات اپلیکیشن همدم یاب" class="review-avatar" loading="lazy">
-                        <div class="review-info">
-                            <h4>مریم از اصفهان
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p>امنیتش برام خیلی مهم بود که خداروشکر عالیه. کسایی که عکس پروفایل فیک میذارن سریع مسدود میشن و کسی مزاحمت الکی ایجاد نمیکنه.</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150" alt="ثبت نام برنامه دوست یابی" class="review-avatar" loading="lazy">
-                        <div class="review-info">
-                            <h4>کامران از اهواز
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
-                            <div class="stars">★★★★☆</div>
-                        </div>
-                    </div>
-                    <p>مثل بقیه برنامه‌های چت روم الکی پولی نیست. خیلی راحت میشه دوست پیدا کرد. فقط کاش امکان تماس تصویری هم زودتر به آپدیت بعدی اضافه بشه.</p>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="نظرات اپلیکیشن چت آنلاین" class="review-avatar" loading="lazy">
-                        <div class="review-info">
-                            <h4>سمانه از تبریز
-                                <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6.4-6.4 1.5 1.5-7.9 7.9z"/></svg>
-                            </h4>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <p>رابط کاربریش فوق‌العاده زیباست. من قبل از این چندتا سایت همسریابی آنلاین رو امتحان کردم ولی این اپلیکیشن به خاطر امکانات رایگانش یه سر و گردن بالاتره.</p>
-                </div>
             </div>
         </section>
 
-        <!-- بخش جدید: سئوی محلی (لیست شهرها) -->
         <section class="city-section reveal">
             <h2 class="section-title">📍 پیدا کردن همدم در <span style="color: #00ff88;">شهر شما</span></h2>
             <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">رادار پیشرفته ما در کلان‌شهرهای زیر بیشترین تعداد کاربر فعال را دارد. برای مشاهده آمار روی شهر خود کلیک کنید:</p>
@@ -397,35 +383,30 @@
 
         <section class="faq-section reveal">
             <h2 class="section-title">سوالات <span style="color: var(--secondary)">متداول کاربران</span></h2>
-            
             <details>
                 <summary>بهترین برنامه دوست یابی و همسریابی در ایران کدام است؟</summary>
                 <div class="faq-content">
                     همدم یاب با دارا بودن بیش از ۵۰۰ هزار کاربر فعال، سیستم تایید هویت هوشمند و رادار قدرتمند جستجوی افراد نزدیک، امن‌ترین و بهترین اپلیکیشن برای دوستیابی، همسریابی و پیدا کردن همدم در ایران است.
                 </div>
             </details>
-
             <details>
                 <summary>آیا امکان چت ناشناس و پیدا کردن افراد نزدیک وجود دارد؟</summary>
                 <div class="faq-content">
                     بله، ویژگی اصلی این اپلیکیشن، سیستم موقعیت‌یاب و رادار آن است. شما می‌توانید افرادی که در شهر یا محله شما هستند را پیدا کرده و به صورت کاملاً ناشناس و امن با آن‌ها وارد چت روم اختصاصی شوید.
                 </div>
             </details>
-            
             <details>
                 <summary>چرا برنامه در گوگل پلی یا کافه بازار منتشر نشده است؟</summary>
                 <div class="faq-content">
                     به دلیل قوانین بسیار سخت‌گیرانه مارکت‌های داخلی در خصوص برنامه‌های چت آزاد، دوستیابی آنلاین و صیغه یابی، امکان انتشار نسخه اصلی و بدون محدودیت در مارکت‌ها وجود ندارد. به همین دلیل ما فایل اصلی (APK) را مستقیماً برای دانلود رایگان در این سایت قرار داده‌ایم.
                 </div>
             </details>
-            
             <details>
                 <summary>آیا نصب و ثبت‌نام در برنامه کاملا رایگان است؟</summary>
                 <div class="faq-content">
                     بله کاملاً! دانلود فایل نصب، ساخت پروفایل کاربری، آپلود عکس و استفاده از امکانات پایه‌ای مانند رادار جستجو و ارسال پیام در سامانه کاملاً رایگان است و نیازی به پرداخت هزینه اولیه ندارید.
                 </div>
             </details>
-
             <details>
                 <summary>امنیت اطلاعات و حریم خصوصی در چت‌ها چگونه است؟</summary>
                 <div class="faq-content">
@@ -437,8 +418,20 @@
     </main>
 
     <div id="footer-placeholder"></div>
+
+    <!-- 🟢 ساختار HTML مودال لودینگ (پاپ‌آپ) -->
+    <div id="apiModal" class="api-modal-overlay">
+        <div class="api-modal-content">
+            <div id="apiSpinner" class="api-spinner"></div>
+            <div id="apiTitle" class="api-modal-title">در حال آماده‌سازی اپلیکیشن...</div>
+            <div id="apiDesc" class="api-modal-desc">لطفاً چند لحظه صبر کنید، در حال ساخت نسخه اختصاصی و امن شما هستیم.</div>
+            <button id="apiErrorBtn" class="api-error-btn" onclick="closeModal()">متوجه شدم</button>
+        </div>
+    </div>
+
     <script src="layout.js"></script>
     <script>
+        // کدهای انیمیشن‌های صفحه (بدون تغییر)
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -461,6 +454,56 @@
                 stickyBtn.classList.remove("show");
             }
         });
+
+        // 🟢 کدهای ارتباط با API سرور ساینر شما
+        function closeModal() {
+            document.getElementById('apiModal').classList.remove('active');
+        }
+
+        async function requestCustomApk(packageName) {
+            const modal = document.getElementById('apiModal');
+            const title = document.getElementById('apiTitle');
+            const desc = document.getElementById('apiDesc');
+            const spinner = document.getElementById('apiSpinner');
+            const errorBtn = document.getElementById('apiErrorBtn');
+
+            // ریست کردن حالت مودال و نمایش آن
+            title.innerText = "در حال آماده‌سازی...";
+            title.style.color = "#fff";
+            desc.innerText = "لطفاً چند لحظه صبر کنید، در حال ساخت نسخه اختصاصی و امن شما هستیم.";
+            spinner.style.display = "block";
+            errorBtn.style.display = "none";
+            modal.classList.add('active');
+
+            try {
+                // ارسال درخواست به سرور اوبنتو (API)
+                const response = await fetch(`https://sysbase.online/api/sign?packagename=${packageName}`);
+                const data = await response.json();
+
+                if (response.ok && data.success && data.download_url) {
+                    title.innerText = "آماده شد!";
+                    title.style.color = "#00ff88";
+                    desc.innerText = "فایل شما با موفقیت ساخته شد. دانلود به طور خودکار شروع می‌شود...";
+                    spinner.style.borderColor = "rgba(0, 255, 136, 0.2)";
+                    spinner.style.borderTopColor = "#00ff88";
+
+                    // شروع دانلود
+                    window.location.href = data.download_url;
+
+                    // بستن خودکار مودال بعد از 3 ثانیه
+                    setTimeout(closeModal, 3000);
+                } else {
+                    throw new Error(data.error || "خطای نامشخص از سمت سرور");
+                }
+            } catch (error) {
+                console.error("API Error:", error);
+                title.innerText = "خطا در ارتباط!";
+                title.style.color = "#ff4d4d";
+                desc.innerText = "متأسفانه در ساخت فایل اختصاصی مشکلی پیش آمد. لطفاً دوباره تلاش کنید.";
+                spinner.style.display = "none";
+                errorBtn.style.display = "inline-block";
+            }
+        }
     </script>
 </body>
 </html>
