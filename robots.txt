@@ -1,13 +1,10 @@
 User-agent: *
-
 # مسدود کردن پوشه فایل‌های نصبی
 Disallow: /apk/
-
 # مسدود کردن صفحات نامرتبط و تستی
 Disallow: /cafebazaar.html
 Disallow: /googleplay.html
 Disallow: /kalabarg-cafebazar.html
 Disallow: /miner.html
-
 # معرفی نقشه سایت به ربات‌ها
-Sitemap: https://hamdamyab.github.io/app/sitemap.xml
+Sitemap: https://sigheyab.online/sitemap.xml
