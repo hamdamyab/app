@@ -1,0 +1,23 @@
+# Sigheyab
+
+> پلتفرم آنلاین آشنایی، دوستیابی و صیغه‌یابی برای کاربران فارسی‌زبان.
+
+سایت Sigheyab امکان آشنایی، چت ناشناس، پیدا کردن افراد نزدیک، و آشنایی با هدف دوستیابی یا ازدواج موقت (صیغه) و دائم را برای کاربران فراهم می‌کند.
+
+## صفحات اصلی
+
+- [صفحه اصلی](https://sigheyab.online/): معرفی کلی پلتفرم و امکانات
+- [افراد نزدیک](https://sigheyab.online/radar.html): پیدا کردن افراد نزدیک به موقعیت مکانی کاربر
+- [دوستیابی](https://sigheyab.online/dating.html): آشنایی و دوستیابی آنلاین
+- [چت ناشناس](https://sigheyab.online/anonymous-chat.html): گفتگوی ناشناس با کاربران دیگر
+- [صیغه‌یابی](https://sigheyab.online/sigheh.html): آشنایی با هدف ازدواج موقت
+- [همسریابی دائم](https://sigheyab.online/marriage.html): آشنایی با هدف ازدواج دائم
+- [آموزش متن صیغه](https://sigheyab.online/sigheh-text.html): راهنمای خواندن و متن عقد صیغه
+- [راهنمای نصب](https://sigheyab.online/install-guide.html): راهنمای نصب اپلیکیشن و رفع خطاهای نصب
+- [کانال‌های تلگرام و روبیکا](https://sigheyab.online/channels.html): معرفی کانال‌های مرتبط
+- [مشهد](https://sigheyab.online/mashhad.html): آشنایی محلی در شهر مشهد
+
+## Optional
+
+- [robots.txt](https://sigheyab.online/robots.txt)
+- [sitemap.xml](https://sigheyab.online/sitemap.xml)
